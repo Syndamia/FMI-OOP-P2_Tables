@@ -1,21 +1,17 @@
-#ifndef HEADER_CELLFORMULA
-#define HEADER_CELLFORMULA
+#include "CellFormula.h"
+#include <cstring>
 
-#include "Cell.h"
-#include "../Generic/List/List.hpp"
+String CellFormula::getValueForPrint() {
+	return String() += value;
+}
 
-class CellFormula : public Cell {
-	List<Cell*> referencedCells;
-	String rawFormula;
-	double value;
+void CellFormula::parseAndSetValue(const char* str) {
+}
 
-public:
-	CellFormula() = default;
+void CellFormula::readFromFile(std::ifstream& file) {
+	file >> rawFormula;
+}
 
-	String getValueForPrint() override;
-	void parseAndSetValue(const char* str) override;
-	void readFromFile(std::ifstream& file) override;
-	void writeToFile(std::ofstream& file) override;
-};
-
-#endif
+void CellFormula::writeToFile(std::ofstream& file) {
+	file << rawFormula;
+}

@@ -14,7 +14,9 @@ double CellFormula::calculate(unsigned index) {
 		case minus: return lval - calculate(index++);
 		case mult:  return lval * calculate(index++);
 		case div:   return lval / calculate(index++);
-		default: return lval;
+		case pow:
+		case none:
+		default:    return lval;
 	}
 }
 

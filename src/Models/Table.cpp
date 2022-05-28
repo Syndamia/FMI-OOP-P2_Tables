@@ -34,3 +34,8 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 
 	cells[row][col] = newCell;
 }
+
+String Table::getAllCells() const {
+	//TODO
+	return String();
+}

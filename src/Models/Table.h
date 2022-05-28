@@ -12,7 +12,7 @@ public:
 	Table(unsigned rows, unsigned cols);
 
 	void putCell(unsigned row, unsigned col, const char* rawValue);
-	String getAllCells();
+	String getAllCells() const;
 };
 
 #endif

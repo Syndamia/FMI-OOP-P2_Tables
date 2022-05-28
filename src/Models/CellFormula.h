@@ -7,13 +7,12 @@
 
 class CellFormula : public Cell {
 	enum Op {
-		none   = 0b000000,
-		branch = 0b000001,
-		plus   = 0b000010,
-		minus  = 0b000100,
-		mult   = 0b001000,
-		div    = 0b010000,
-		pow    = 0b100000,
+		none   =   0,
+		plus   = '+',
+		minus  = '-',
+		mult   = '*',
+		div    = '/',
+		pow    = '^',
 	};
 
 	const List<List<Cell*>>* tableCells;

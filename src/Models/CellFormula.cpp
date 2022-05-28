@@ -10,8 +10,8 @@ CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) :
 double CellFormula::calculate(unsigned index) {
 	double lval = formula[index].left->getNumeralValue();
 
-	if (formula[index].right & branch) {
-		switch (formula[index++].right & !branch) {
+	if (formula[index].right < 0) {
+		switch (-formula[index++].right) {
 			case plus   : lval += formula[index].left->getNumeralValue(); break;
 			case minus  : lval -= formula[index].left->getNumeralValue(); break;
 			case mult   : lval *= formula[index].left->getNumeralValue(); break;
@@ -42,6 +42,11 @@ void CellFormula::parseAndSetValue(const char* str) {
 	while (*str == ' ') str++;
 	if (*str == 'R') {
 		unsigned row = atoi(++str);
+		while (*str != 'C') str++;
+		unsigned col = atoi(++str);
+		while (*str != ' ') str++;
+
+		formula.add({(*tableCells)[row][col], (Op)*str});
 	}
 }
 

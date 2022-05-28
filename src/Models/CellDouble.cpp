@@ -5,6 +5,10 @@ CellDouble::CellDouble(int val) {
 	value = val;
 }
 
+CellDouble::CellDouble(const String& str) {
+	value = atof(str.get_cstr());
+}
+
 double CellDouble::getValue() {
 	return value;
 }

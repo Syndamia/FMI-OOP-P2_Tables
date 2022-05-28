@@ -1,9 +1,21 @@
 #include "CellFormula.h"
+#include "CellDouble.h"
 #include <cstring>
 
 double CellFormula::calculate(unsigned index) {
+	double lval = CellDouble(formula[index].left->getValue()).getValue();
+
 	switch(formula[index].right) {
-		case none: return formula[index].left;
+		plus: return lval + calculate(index++);
+		minus: return lval - calculate(index++);
+		mult: return lval * calculate(index++);
+		div: return lval / calculate(index++);
+		pow:
+			 double power = calculate(index++);
+			 for (unsigned i = 0; i < power; i++)
+				 lval *= lval;
+		none:
+		default: return lval;
 	}
 }
 

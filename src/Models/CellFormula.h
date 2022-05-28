@@ -6,8 +6,8 @@
 
 class CellFormula : public Cell {
 	List<Cell*> referencedCells;
+	List<Pair<Cell*, char>> formula;
 	String rawFormula;
-	double value;
 
 public:
 	CellFormula() = default;

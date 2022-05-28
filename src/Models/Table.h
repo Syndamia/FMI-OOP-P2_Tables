@@ -5,8 +5,14 @@
 #include "../Generic/List/List.hpp"
 
 class Table {
-	List<List<Cell>> cells;
+	Cell** cells;
 	List<List<Cell>> constantsCells;
+
+public:
+	Table(unsigned rows, unsigned cols);
+
+	void putCell(unsigned row, unsigned col, const char* rawValue);
+	String getAllCells();
 };
 
 #endif

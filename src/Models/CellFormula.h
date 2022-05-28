@@ -21,6 +21,7 @@ class CellFormula : public Cell {
 
 	double calculate(unsigned index = 0);
 
+	double getNumeralValue() override;
 public:
 	CellFormula() = default;
 

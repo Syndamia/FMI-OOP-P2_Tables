@@ -10,6 +10,7 @@ public:
 	CellInt() = default;
 	CellInt(int value);
 
+	double getNumeralValue() override;
 	String getValueForPrint() override;
 	void parseAndSetValue(const char* str) override;
 	void readFromFile(std::ifstream& file) override;

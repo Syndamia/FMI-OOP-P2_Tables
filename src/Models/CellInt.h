@@ -1,13 +1,13 @@
-#ifndef HEADER_CELLSTRING
-#define HEADER_CELLSTRING
+#ifndef HEADER_CELLINT
+#define HEADER_CELLINT
 
 #include "Cell.h"
 
-class CellString : public Cell {
-	String value;
+class CellInt : public Cell {
+	unsigned value;
 
 public:
-	CellString() = default;
+	CellInt() = default;
 
 	String getValueForPrint() override;
 	void parseAndSetValue(const char* str) override;

@@ -32,6 +32,8 @@ protected:
 public:
 	//! Copies all elements in given array
 	List(const T* elements, unsigned elementsCount);
+	//! Allocates memory for the given length
+	List(unsigned length);
 	//! Adds an element
 	void add(const T& element);
 	//! Inserts element at given index
@@ -107,6 +109,15 @@ template <typename T>
 List<T>::List(const T* elements, unsigned elementsCount) {
 	length = 8;
 	count = elementsCount;
+	this->elements = new T[length];
+	for (unsigned i = 0; i < count; i++)
+		this->elements[i] = elements[i];
+}
+
+template <typename T>
+List<T>::List(unsigned length) {
+	this->length = length;
+	count = 0;
 	this->elements = new T[length];
 	for (unsigned i = 0; i < count; i++)
 		this->elements[i] = elements[i];

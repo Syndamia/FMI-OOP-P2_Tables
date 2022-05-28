@@ -5,8 +5,8 @@
 #include "../Generic/List/List.hpp"
 
 class Table {
-	Cell** cells;
-	List<List<Cell>> constantsCells;
+	List<List<Cell*>> cells;
+	List<List<Cell*>> constantsCells;
 
 public:
 	Table(unsigned rows, unsigned cols);

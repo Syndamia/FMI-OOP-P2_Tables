@@ -1,5 +1,9 @@
 #include "CellString.h"
 
+String CellString::getValue() {
+	return value;
+}
+
 String CellString::getValueForPrint() {
 	return value;
 }

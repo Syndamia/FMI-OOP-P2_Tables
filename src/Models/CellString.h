@@ -3,12 +3,13 @@
 
 #include "Cell.h"
 
-class CellString : public Cell {
+class CellString : public Cell<String> {
 	String value;
 
 public:
 	CellString() = default;
 
+	String getValue() override;
 	String getValueForPrint() override;
 	void parseAndSetValue(const char* str) override;
 	void readFromFile(std::ifstream& file) override;

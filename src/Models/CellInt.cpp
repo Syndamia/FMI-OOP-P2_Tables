@@ -1,6 +1,10 @@
 #include "CellInt.h"
 #include <cstring>
 
+int CellInt::getValue() {
+	return value;
+}
+
 String CellInt::getValueForPrint() {
 	return String() += value;
 }

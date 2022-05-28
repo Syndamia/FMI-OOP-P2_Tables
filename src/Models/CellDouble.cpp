@@ -1,6 +1,14 @@
 #include "CellDouble.h"
 #include <cstring>
 
+CellDouble::CellDouble(int val) {
+	value = val;
+}
+
+double CellDouble::getValue() {
+	return value;
+}
+
 String CellDouble::getValueForPrint() {
 	return String() += value;
 }

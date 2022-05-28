@@ -22,8 +22,8 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	Cell* newCell;
 
 	if (containsNumber(rawValue)) {
-		unsigned intParse = atoi(rawValue);
-		unsigned doubleParse = atof(rawValue);
+		double intParse = atoi(rawValue);
+		double doubleParse = atof(rawValue);
 
 		newCell = (doubleParse - intParse > 0.00001 && doubleParse > 0.00001)
 					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intParse);

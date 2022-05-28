@@ -2,7 +2,7 @@
 #include <cstring>
 
 String CellFormula::getValueForPrint() {
-	Cell* a = 3;
+	double result = 0;
 	return String() += value;
 }
 

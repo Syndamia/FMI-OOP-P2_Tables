@@ -3,10 +3,19 @@
 
 #include "Cell.h"
 #include "../Generic/List/List.hpp"
+#include "../Generic/Pair/Pair.hpp"
 
 class CellFormula : public Cell {
+	enum Op {
+		plus,
+		minus,
+		mult,
+		div,
+		pow,
+	};
+
 	List<Cell*> referencedCells;
-	List<Pair<Cell*, char>> formula;
+	List<Pair<Cell*, Op>> formula;
 	String rawFormula;
 
 public:

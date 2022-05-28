@@ -7,13 +7,13 @@
 
 class CellFormula : public Cell {
 	enum Op {
-		none   = 0b0000000,
-		branch = 0b0000001,
-		plus   = 0b0000010,
-		minus  = 0b0,
-		mult   = 0b0,
-		div    = 0b0,
-		pow    = 0b0,
+		none   = 0b000000,
+		branch = 0b000001,
+		plus   = 0b000010,
+		minus  = 0b000100,
+		mult   = 0b001000,
+		div    = 0b010000,
+		pow    = 0b100000,
 	};
 
 	List<Cell*> referencedCells;

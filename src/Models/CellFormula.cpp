@@ -25,7 +25,7 @@ String CellFormula::getValueForPrint() {
 }
 
 void CellFormula::parseAndSetValue(const char* str) {
-	//TODO
+	
 }
 
 void CellFormula::readFromFile(std::ifstream& file) {

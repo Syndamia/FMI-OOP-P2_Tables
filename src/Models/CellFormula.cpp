@@ -12,21 +12,21 @@ double CellFormula::calculate(unsigned index) {
 
 	if (formula[index].right < 0) {
 		switch (-formula[index++].right) {
-			case plus   : lval += formula[index].left->getNumeralValue(); break;
-			case minus  : lval -= formula[index].left->getNumeralValue(); break;
-			case mult   : lval *= formula[index].left->getNumeralValue(); break;
-			case div    : lval /= formula[index].left->getNumeralValue(); break;
+			case '+'   : lval += formula[index].left->getNumeralValue(); break;
+			case '-'  : lval -= formula[index].left->getNumeralValue(); break;
+			case '*': lval *= formula[index].left->getNumeralValue(); break;
+			case '/'    : lval /= formula[index].left->getNumeralValue(); break;
 			// case pow : lval += formula[index].left->getNumeralValue(); break;
 		}
 	}
 
 	switch(formula[index].right) {
-		case plus  : return lval + calculate(index++);
-		case minus : return lval - calculate(index++);
-		case mult  : return lval * calculate(index++);
-		case div   : return lval / calculate(index++);
-		case pow   :
-		case none  :
+		case '+'  : return lval + calculate(index++);
+		case '-' : return lval - calculate(index++);
+		case '*'  : return lval * calculate(index++);
+		case '/'   : return lval / calculate(index++);
+		case '^'   :
+		case '\0':
 		default    : return lval;
 	}
 }
@@ -39,7 +39,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
 	Cell* ptr;
-	Op currOp;
+	char currOp;
 
 	str++;
 	while (*str == ' ') str++;
@@ -50,7 +50,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 		while (*str != ' ') str++;
 
 		ptr = (*tableCells)[row][col];
-		currOp = (Op)*str;
+		currOp = *str;
 	}
 	else {
 		double val = atof(str);
@@ -58,7 +58,11 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 		localCells.add(CellDouble(val));
 		ptr = &localCells[localCells.get_count() - 1];
-		currOp = (Op)*str;
+		currOp = *str;
+	}
+
+	switch (currOp) {
+		case '^': currOp *= -1; break;
 	}
 	formula.add({ptr, currOp});
 

@@ -7,19 +7,10 @@
 #include "../Generic/Pair/Pair.hpp"
 
 class CellFormula : public Cell {
-	enum Op {
-		none   =   0,
-		plus   = '+',
-		minus  = '-',
-		mult   = '*',
-		div    = '/',
-		pow    = '^',
-	};
-
 	const List<List<Cell*>>* tableCells;
 	List<CellDouble> localCells;
 
-	List<Pair<Cell*, Op>> formula;
+	List<Pair<Cell*, char>> formula;
 	String rawFormula;
 
 	double calculate(unsigned index = 0);

@@ -2,6 +2,7 @@
 #define HEADER_CELLFORMULA
 
 #include "Cell.h"
+#include "CellDouble.h"
 #include "../Generic/List/List.hpp"
 #include "../Generic/Pair/Pair.hpp"
 
@@ -16,8 +17,8 @@ class CellFormula : public Cell {
 	};
 
 	const List<List<Cell*>>* tableCells;
+	List<CellDouble> localCells;
 
-	List<Cell*> referencedCells;
 	List<Pair<Cell*, Op>> formula;
 	String rawFormula;
 

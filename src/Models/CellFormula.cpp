@@ -48,6 +48,13 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 		formula.add({(*tableCells)[row][col], (Op)*str});
 	}
+	else {
+		double val = atof(str);
+		while ((*str >= '0' && *str <= '9') || *str == ' ') str++;
+
+		localCells.add(CellDouble(val));
+		formula.add({localCells[localCells.get_count() - 1], (Op)*str});
+	}
 }
 
 void CellFormula::readFromFile(std::ifstream& file) {

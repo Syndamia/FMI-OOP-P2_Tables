@@ -38,6 +38,9 @@ String CellFormula::getValueForPrint() {
 void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
+	Cell* ptr;
+	Op currOp;
+
 	str++;
 	while (*str == ' ') str++;
 	if (*str == 'R') {
@@ -46,15 +49,19 @@ void CellFormula::parseAndSetValue(const char* str) {
 		unsigned col = atoi(++str);
 		while (*str != ' ') str++;
 
-		formula.add({(*tableCells)[row][col], (Op)*str});
+		ptr = (*tableCells)[row][col];
+		currOp = (Op)*str;
 	}
 	else {
 		double val = atof(str);
 		while ((*str >= '0' && *str <= '9') || *str == ' ') str++;
 
 		localCells.add(CellDouble(val));
-		formula.add({localCells[localCells.get_count() - 1], (Op)*str});
+		ptr = &localCells[localCells.get_count() - 1];
+		currOp = (Op)*str;
 	}
+	formula.add({ptr, currOp});
+
 }
 
 void CellFormula::readFromFile(std::ifstream& file) {

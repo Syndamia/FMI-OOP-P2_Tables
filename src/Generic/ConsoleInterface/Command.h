@@ -19,7 +19,7 @@ public:
 	//! Copies contents of nameInMenu and stores exec
 	Command(const char* name, void (*exec)(const char* params));
 	//! Executes the stored function pointer
-	void run() const;
+	void run(const char* params) const;
 
 	const char* get_name() const;
 };

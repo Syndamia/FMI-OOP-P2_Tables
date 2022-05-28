@@ -4,8 +4,7 @@
 
 Menu::Menu() : menuOptions() {}
 
-unsigned indexOfCommandEnd(char*& str) {
-	while (*str == ' ') str++;
+unsigned indexOfCommandEnd(char* str) {
 	unsigned ind = 0;
 	while (str[ind] != ' ') ind++;
 	return ind;
@@ -31,10 +30,11 @@ void Menu::navigate() const {
 
 	char buffer[MAX_LINE_WIDTH];
 
-	while (buffer != 0) {
+	while (strncmp(buffer, "quit", 4) != 0) {
 		clear();
 		inputLineBox("> ", buffer, MAX_LINE_WIDTH);
 
+		while (*buffer == ' ') buffer++;
 		unsigned commandEnd = indexOfCommandEnd(buffer),
 				 index = menuOptions.get_count();
 		for (unsigned i = 0; i < menuOptions.get_count(); i++) {

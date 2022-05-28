@@ -23,6 +23,9 @@ public:
 	//! Copies commands
 	Menu(const Command* commands, unsigned commandCount);
 
+	//! Adds a command to the internal Command list
+	void addCommand(const Command& command);
+
 	//! Lists commands and after user input executes an appropriate command run() function
 	void navigate() const;
 };

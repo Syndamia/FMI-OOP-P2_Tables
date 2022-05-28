@@ -10,6 +10,10 @@ unsigned indexOfCommandEnd(char* str) {
 	return ind;
 }
 
+void Menu::addCommand(const Command& command) {
+	menuOptions.add(command);
+}
+
 /*!
  * Prints the title, then an Error/Warning/Sucess message (if set),
  * prints all command names as an ordered list (starting from 1),
@@ -29,16 +33,19 @@ void Menu::navigate() const {
 	}
 
 	char buffer[MAX_LINE_WIDTH];
+	unsigned startIndex = 0;
 
 	while (strncmp(buffer, "quit", 4) != 0) {
 		clear();
+		startIndex = 0;
 		inputLineBox("> ", buffer, MAX_LINE_WIDTH);
 
-		while (*buffer == ' ') buffer++;
+		while (buffer[startIndex] == ' ') startIndex++;
+
 		unsigned commandEnd = indexOfCommandEnd(buffer),
 				 index = menuOptions.get_count();
 		for (unsigned i = 0; i < menuOptions.get_count(); i++) {
-			if (strncmp(buffer, menuOptions[i].get_name(), commandEnd) == 0) {
+			if (strncmp(buffer + startIndex, menuOptions[i].get_name(), commandEnd) == 0) {
 				index = i;
 				break;
 			}
@@ -49,6 +56,6 @@ void Menu::navigate() const {
 			continue;
 		}
 
-		menuOptions[index].run(buffer + commandEnd);
+		menuOptions[index].run(buffer + startIndex + commandEnd);
 	}
 }

@@ -2,7 +2,8 @@
 #include "CellDouble.h"
 #include <cstring>
 
-CellFormula::CellFormula(const char* str) : referencedCells(), formula(), rawFormula() {
+CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) : referencedCells(), formula(), rawFormula() {
+	this->tableCells = tableCells;
 	parseAndSetValue(str);
 }
 
@@ -35,9 +36,13 @@ String CellFormula::getValueForPrint() {
 }
 
 void CellFormula::parseAndSetValue(const char* str) {
+	rawFormula = String(str);
+
 	str++;
 	while (*str == ' ') str++;
-	double number = atof(str);
+	if (*str == 'R') {
+		unsigned row = atoi(++str);
+	}
 }
 
 void CellFormula::readFromFile(std::ifstream& file) {

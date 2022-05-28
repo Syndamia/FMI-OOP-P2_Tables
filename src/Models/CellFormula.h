@@ -16,6 +16,8 @@ class CellFormula : public Cell {
 		pow    = 0b100000,
 	};
 
+	const List<List<Cell*>>* tableCells;
+
 	List<Cell*> referencedCells;
 	List<Pair<Cell*, Op>> formula;
 	String rawFormula;
@@ -24,7 +26,7 @@ class CellFormula : public Cell {
 
 public:
 	CellFormula() = default;
-	CellFormula(const char* str);
+	CellFormula(const char* str, const List<List<Cell*>>* tableCells);
 
 	double getNumeralValue() override;
 	String getValueForPrint() override;

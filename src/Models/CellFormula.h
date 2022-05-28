@@ -7,6 +7,7 @@
 
 class CellFormula : public Cell {
 	enum Op {
+		none,
 		plus,
 		minus,
 		mult,
@@ -17,6 +18,8 @@ class CellFormula : public Cell {
 	List<Cell*> referencedCells;
 	List<Pair<Cell*, Op>> formula;
 	String rawFormula;
+
+	double calculate(unsigned index = 0);
 
 public:
 	CellFormula() = default;

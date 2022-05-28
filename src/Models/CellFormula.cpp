@@ -1,9 +1,15 @@
 #include "CellFormula.h"
 #include <cstring>
 
+double CellFormula::calculate(unsigned index) {
+	switch(formula[index].right) {
+		case none: return formula[index].left;
+	}
+}
+
 String CellFormula::getValueForPrint() {
-	double result = 0;
-	return String() += value;
+	double result = calculate();
+	return "";
 }
 
 void CellFormula::parseAndSetValue(const char* str) {

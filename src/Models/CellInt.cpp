@@ -1,8 +1,8 @@
 #include "CellInt.h"
 #include <cstring>
 
-int CellInt::getNumeralValue() {
-	return value;
+CellInt::CellInt(int value) {
+	this->value = value;
 }
 
 String CellInt::getValueForPrint() {

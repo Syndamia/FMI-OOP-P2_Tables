@@ -19,12 +19,14 @@ bool containsNumber(const char*& str) {
 }
 
 void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
-	unsigned intParse = atoi(rawValue);
-	unsigned doubleParse = atof(rawValue);
 
 	Cell* newCell;
-	if (doubleParse - intParse > 0.00001 && doublePrase > 0.00001)
-		newCell = new CellDouble(doubleParse);
-	else if (intParse )
-		newCell = 
+	if (containsNumber(rawValue)) {
+		unsigned intParse = atoi(rawValue);
+		unsigned doubleParse = atof(rawValue);
+
+		newCell = (doubleParse - intParse > 0.00001 && doubleParse > 0.00001)
+					? new CellDouble(doubleParse) : new CellInt(intParse);
+	}
+
 }

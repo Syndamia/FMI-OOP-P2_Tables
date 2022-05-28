@@ -5,7 +5,7 @@
 #include "../Generic/List/List.hpp"
 #include "../Generic/Pair/Pair.hpp"
 
-class CellFormula : public Cell<double> {
+class CellFormula : public Cell {
 	enum Op {
 		none,
 		plus,
@@ -20,8 +20,6 @@ class CellFormula : public Cell<double> {
 	String rawFormula;
 
 	double calculate(unsigned index = 0);
-
-	double getValue() override;
 
 public:
 	CellFormula() = default;

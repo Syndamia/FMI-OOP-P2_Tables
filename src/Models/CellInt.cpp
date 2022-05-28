@@ -2,17 +2,17 @@
 #include <cstring>
 
 String CellInt::getValueForPrint() {
-	return value;
+	return String() += value;
 }
 
 void CellInt::parseAndSetValue(const char* str) {
-	value = String(str);
+	value = atoi(str);
 }
 
 void CellInt::readFromFile(std::ifstream& file) {
-	value.read(file);
+	file >> value;
 }
 
 void CellInt::writeToFile(std::ofstream& file) {
-	value.write(file);
+	file << value;
 }

@@ -28,9 +28,20 @@ void Menu::navigate() const {
 		clear();
 		inputLineBox("> ", buffer, MAX_LINE_WIDTH);
 
-		if (buffer > menuOptions.get_count())
-			registerError("Invalid menu option!");
-		else if (buffer > 0)
-			menuOptions[buffer - 1].run();
+		unsigned index = menuOptions.get_count();
+		for (unsigned i = 0; i < menuOptions.get_count(); i++) {
+			if (strncmp(buffer, menuOptions[i].get_nameInMenu(), MAX_LINE_WIDTH) == 0) {
+				index = i;
+				break;
+			}
+		}
+
+		if (index > menuOptions.get_count()) {
+			printline("Invalid menu option!");
+			continue;
+		}
+
+
+		menuOptions[index].run();
 	}
 }

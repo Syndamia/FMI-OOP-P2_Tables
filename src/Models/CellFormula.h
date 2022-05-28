@@ -23,6 +23,7 @@ class CellFormula : public Cell {
 
 public:
 	CellFormula() = default;
+	CellFormula(const char* str);
 
 	double getNumeralValue() override;
 	String getValueForPrint() override;

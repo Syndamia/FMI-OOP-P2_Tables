@@ -8,6 +8,7 @@ class CellString : public Cell {
 
 public:
 	CellString() = default;
+	CellString(const char* str);
 
 	double getNumeralValue() override;
 	String getValueForPrint() override;

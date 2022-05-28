@@ -1,7 +1,12 @@
 #include "CellString.h"
+#include <cstring>
 
-String CellString::getNumeralValue() {
-	return value;
+CellString::CellString(const char* str) {
+	value = String(str);
+}
+
+double CellString::getNumeralValue() {
+	return atof(value.get_cstr());
 }
 
 String CellString::getValueForPrint() {

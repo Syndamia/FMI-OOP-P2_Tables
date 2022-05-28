@@ -2,8 +2,12 @@
 #include "CellDouble.h"
 #include <cstring>
 
+CellFormula::CellFormula(const char* str) : referencedCells(), formula(), rawFormula() {
+	parseAndSetValue(str);
+}
+
 double CellFormula::calculate(unsigned index) {
-	double lval = CellDouble(formula[index].left->getValue()).getNumeralValue();
+	double lval = formula[index].left->getNumeralValue();
 
 	switch(formula[index].right) {
 		case plus:  return lval + calculate(index++);

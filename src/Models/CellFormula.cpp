@@ -9,6 +9,12 @@ CellFormula::CellFormula(const char* str) : referencedCells(), formula(), rawFor
 double CellFormula::calculate(unsigned index) {
 	double lval = formula[index].left->getNumeralValue();
 
+	if (formula[index].right & branch) {
+		switch (formula[index++].right & !branch) {
+			case plus: lval += formula[index].left->getNumeralValue(); break;
+		}
+	}
+
 	switch(formula[index].right) {
 		case plus:  return lval + calculate(index++);
 		case minus: return lval - calculate(index++);

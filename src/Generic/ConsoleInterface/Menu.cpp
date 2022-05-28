@@ -22,26 +22,11 @@ void Menu::navigate() const {
 		return;
 	}
 
-	unsigned buffer = 1; // We immedeately read the value of buffer, so this is fine
+	char buffer[MAX_LINE_WIDTH];
 
 	while (buffer != 0) {
 		clear();
-		print("> ");
-		readLine();
-
-		resetOrderedList(0);
-		if (backExistsApp)
-			printOrderedListElem("Exit");
-		else
-			printOrderedListElem("Go Back");
-
-		for (unsigned i = 0; i < menuOptions.get_count(); i++)
-			printOrderedListElem(menuOptions[i].get_nameInMenu());
-
-		_printInputBoxLabel("Execute No [0-");
-		print(menuOptions.get_count());
-		print("]: ");
-		read(buffer);
+		inputLineBox("> ", buffer, MAX_LINE_WIDTH);
 
 		if (buffer > menuOptions.get_count())
 			registerError("Invalid menu option!");

@@ -20,23 +20,8 @@ void titleBox(const char* title);
 //! Prints a title sub box
 void subTitleBox(const char* title);
 
-//! Prints a success box
-void successBox(const char* message);
-//! Prints a success box as a sub box
-void successSubBox(const char* message);
-//! Prints a warning box
-void warningBox(const char* message);
-//! Prints a warning box as a sub box
-void warningSubBox(const char* message);
-//! Prints an error box
-void errorBox(const char* message);
-//! Prints an error box as a sub box
-void errorSubBox(const char* message);
-
 //! Prints label, gets a whole line of input and stores it to output
 void inputLineBox(const char* label, char* output, unsigned maxWidth, bool ignore = true);
-//! Prints label as a sub box, gets a whole line of input and stores it to output
-void inputLineSubBox(const char* label, char* output, unsigned maxWidth, bool ignore = true);
 //! Waits for user to press enter
 void pressEnterToContinue(bool ignore = true);
 
@@ -87,13 +72,6 @@ void printLine(const T* item) {
 template <typename T>
 void printLine(const T& item) {
 	std::cout << item << std::endl;
-}
-
-//! Prints the element as the latest list item
-template <typename T>
-void printOrderedListElem(const T& elem) {
-	_printOrderedListBeginning();
-	printLine(elem);
 }
 
 //! Prints a label and then reads user input and stores it

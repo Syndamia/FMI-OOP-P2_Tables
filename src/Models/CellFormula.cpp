@@ -2,9 +2,16 @@
 #include "CellDouble.h"
 #include <cstring>
 
-CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) : referencedCells(), formula(), rawFormula() {
+CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) : localCells(), formula(), rawFormula() {
 	this->tableCells = tableCells;
 	parseAndSetValue(str);
+}
+
+double pow(double x, unsigned y) {
+	double res = x;
+	for (unsigned i = 1; i < y; i++)
+		res *= res;
+	return res;
 }
 
 double CellFormula::calculate(unsigned index) {
@@ -12,11 +19,11 @@ double CellFormula::calculate(unsigned index) {
 
 	if (formula[index].right < 0) {
 		switch (-formula[index++].right) {
-			case '+'    : lval += formula[index].left->getNumeralValue(); break;
-			case '-'    : lval -= formula[index].left->getNumeralValue(); break;
-			case '*'    : lval *= formula[index].left->getNumeralValue(); break;
-			case '/'    : lval /= formula[index].left->getNumeralValue(); break;
-			// case pow : lval += formula[index].left->getNumeralValue(); break;
+			case '+' : lval += formula[index].left->getNumeralValue(); break;
+			case '-' : lval -= formula[index].left->getNumeralValue(); break;
+			case '*' : lval *= formula[index].left->getNumeralValue(); break;
+			case '/' : lval /= formula[index].left->getNumeralValue(); break;
+			case '^' : lval  = pow(lval, formula[index].left->getNumeralValue()); break;
 		}
 	}
 

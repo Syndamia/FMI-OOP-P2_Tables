@@ -11,11 +11,10 @@ Table::Table(unsigned rows, unsigned cols) {
 		cells[i] = List<Cell*>(cols);
 }
 
-
 bool containsNumber(const char*& str) {
 	while (*str == ' ') str++;
 	return ((*str == '+' || *str == '-') && (*(str + 1) >= '0' && *(str + 1) <= '9')) ||
-		   (*str >= '0' && *str <= '9');
+		   (*str >= '0' && *str <= '9'); // + or -, followed by digit, or it just a digit
 }
 
 void Table::putCell(unsigned row, unsigned col, const char* rawValue) {

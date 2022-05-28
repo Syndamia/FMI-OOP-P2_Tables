@@ -8,6 +8,7 @@ class CellDouble : public Cell {
 
 public:
 	CellDouble() = default;
+	CellDouble(double value);
 
 	double getNumeralValue() override;
 	String getValueForPrint() override;

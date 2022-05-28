@@ -1,4 +1,8 @@
 #include "Table.h"
+#include "CellDouble.h"
+#include "CellInt.h"
+#include "CellString.h"
+#include "CellFormula.h"
 #include <cstring>
 
 Table::Table(unsigned rows, unsigned cols) {
@@ -13,4 +17,5 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 
 	Cell* newCell;
 	if (doubleParse - intParse > 0.00001)
+		newCell = new CellDouble(doubleParse);
 }

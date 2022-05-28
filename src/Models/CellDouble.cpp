@@ -1,6 +1,10 @@
 #include "CellDouble.h"
 #include <cstring>
 
+CellDouble::CellDouble(double value) {
+	this->value = value;
+}
+
 double CellDouble::getNumeralValue() {
 	return value;
 }

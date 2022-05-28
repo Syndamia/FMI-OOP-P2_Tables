@@ -61,11 +61,13 @@ void CellFormula::parseAndSetValue(const char* str) {
 		currOp = *str;
 	}
 
-	switch (currOp) {
-		case '^': currOp *= -1; break;
+	if (currOp == '^') currOp *= -1;
+	else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {
+		Pair<Cell*, char>& prev = formula[formula.get_count() - 1];
+		if (prev.right == '*' || prev.right == '/') prev.right *= -1;
 	}
-	formula.add({ptr, currOp});
 
+	formula.add({ptr, currOp});
 }
 
 void CellFormula::readFromFile(std::ifstream& file) {

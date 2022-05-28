@@ -10,18 +10,18 @@
  * Menu uses this class for a more generic implementation of it's navigate function.
  */
 class Command {
-	char nameInMenu[256];
-	void (*exec)();
+	char name[256];
+	void (*exec)(const char* params);
 
 public:
 	//! Leaves name empty and exec function pointer to nullptr
 	Command();
 	//! Copies contents of nameInMenu and stores exec
-	Command(const char* nameInMenu, void (*exec)());
+	Command(const char* name, void (*exec)(const char* params));
 	//! Executes the stored function pointer
 	void run() const;
 
-	const char* get_nameInMenu() const;
+	const char* get_name() const;
 };
 
 #endif

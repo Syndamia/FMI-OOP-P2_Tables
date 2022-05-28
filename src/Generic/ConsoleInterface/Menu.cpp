@@ -4,6 +4,13 @@
 
 Menu::Menu() : menuOptions() {}
 
+unsigned indexOfCommandEnd(char*& str) {
+	while (*str == ' ') str++;
+	unsigned ind = 0;
+	while (str[ind] != ' ') ind++;
+	return ind;
+}
+
 /*!
  * Prints the title, then an Error/Warning/Sucess message (if set),
  * prints all command names as an ordered list (starting from 1),
@@ -28,20 +35,20 @@ void Menu::navigate() const {
 		clear();
 		inputLineBox("> ", buffer, MAX_LINE_WIDTH);
 
-		unsigned index = menuOptions.get_count();
+		unsigned commandEnd = indexOfCommandEnd(buffer),
+				 index = menuOptions.get_count();
 		for (unsigned i = 0; i < menuOptions.get_count(); i++) {
-			if (strncmp(buffer, menuOptions[i].get_nameInMenu(), MAX_LINE_WIDTH) == 0) {
+			if (strncmp(buffer, menuOptions[i].get_name(), commandEnd) == 0) {
 				index = i;
 				break;
 			}
 		}
 
 		if (index > menuOptions.get_count()) {
-			printline("Invalid menu option!");
+			printLine("Invalid menu option!");
 			continue;
 		}
 
-
-		menuOptions[index].run();
+		menuOptions[index].run(buffer + commandEnd);
 	}
 }

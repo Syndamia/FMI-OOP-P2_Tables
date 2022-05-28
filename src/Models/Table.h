@@ -6,13 +6,12 @@
 
 class Table {
 	List<List<Cell*>> cells;
-	List<List<Cell*>> constantsCells;
 
 public:
 	Table(unsigned rows, unsigned cols);
 
 	void putCell(unsigned row, unsigned col, const char* rawValue);
-	String getAllCells() const;
+	List<String> getAllCells() const;
 };
 
 #endif

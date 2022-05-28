@@ -12,9 +12,9 @@ double CellFormula::calculate(unsigned index) {
 
 	if (formula[index].right < 0) {
 		switch (-formula[index++].right) {
-			case '+'   : lval += formula[index].left->getNumeralValue(); break;
-			case '-'  : lval -= formula[index].left->getNumeralValue(); break;
-			case '*': lval *= formula[index].left->getNumeralValue(); break;
+			case '+'    : lval += formula[index].left->getNumeralValue(); break;
+			case '-'    : lval -= formula[index].left->getNumeralValue(); break;
+			case '*'    : lval *= formula[index].left->getNumeralValue(); break;
 			case '/'    : lval /= formula[index].left->getNumeralValue(); break;
 			// case pow : lval += formula[index].left->getNumeralValue(); break;
 		}
@@ -22,12 +22,12 @@ double CellFormula::calculate(unsigned index) {
 
 	switch(formula[index].right) {
 		case '+'  : return lval + calculate(index++);
-		case '-' : return lval - calculate(index++);
+		case '-'  : return lval - calculate(index++);
 		case '*'  : return lval * calculate(index++);
-		case '/'   : return lval / calculate(index++);
-		case '^'   :
-		case '\0':
-		default    : return lval;
+		case '/'  : return lval / calculate(index++);
+		case '^'  :
+		case '\0' :
+		default   : return lval;
 	}
 }
 
@@ -38,36 +38,38 @@ String CellFormula::getValueForPrint() {
 void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
-	Cell* ptr;
+	Cell* cellToAdd;
 	char currOp;
 
-	str++;
-	while (*str == ' ') str++;
-	if (*str == 'R') {
-		unsigned row = atoi(++str);
-		while (*str != 'C') str++;
-		unsigned col = atoi(++str);
-		while (*str != ' ') str++;
+	while (*str != '\0') {
+		str++;
+		while (*str == ' ') str++;
+		if (*str == 'R') {
+			unsigned row = atoi(++str);
+			while (*str != 'C') str++;
+			unsigned col = atoi(++str);
+			while (*str != ' ') str++;
 
-		ptr = (*tableCells)[row][col];
-		currOp = *str;
+			cellToAdd = (*tableCells)[row][col];
+			currOp = *str;
+		}
+		else {
+			double val = atof(str);
+			while ((*str >= '0' && *str <= '9') || *str == ' ') str++;
+
+			localCells.add(CellDouble(val));
+			cellToAdd = &localCells[localCells.get_count() - 1];
+			currOp = *str;
+		}
+
+		if (currOp == '^') currOp *= -1;
+		else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {
+			Pair<Cell*, char>& prev = formula[formula.get_count() - 1];
+			if (prev.right == '*' || prev.right == '/') prev.right *= -1;
+		}
+
+		formula.add({cellToAdd, currOp});
 	}
-	else {
-		double val = atof(str);
-		while ((*str >= '0' && *str <= '9') || *str == ' ') str++;
-
-		localCells.add(CellDouble(val));
-		ptr = &localCells[localCells.get_count() - 1];
-		currOp = *str;
-	}
-
-	if (currOp == '^') currOp *= -1;
-	else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {
-		Pair<Cell*, char>& prev = formula[formula.get_count() - 1];
-		if (prev.right == '*' || prev.right == '/') prev.right *= -1;
-	}
-
-	formula.add({ptr, currOp});
 }
 
 void CellFormula::readFromFile(std::ifstream& file) {

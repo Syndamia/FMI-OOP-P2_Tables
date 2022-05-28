@@ -29,13 +29,18 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intParse);
 	}
 	else {
-		newCell = (*rawValue == '=') ? (Cell*)new CellFormula(rawValue) : (Cell*)new CellString(rawValue);
+		newCell = (*rawValue == '=')
+					? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
 	}
 
 	cells[row][col] = newCell;
 }
 
-String Table::getAllCells() const {
-	//TODO
-	return String();
+List<String> Table::getAllCells() const {
+	List<String> toRet;
+	for (unsigned i = 0; i < cells.get_count(); i++) {
+		for (unsigned j = 0; j < cells[i].get_count(); j++)
+			toRet.add(cells[i][j]->getValueForPrint());
+	}
+	return toRet;
 }

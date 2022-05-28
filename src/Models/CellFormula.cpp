@@ -2,6 +2,7 @@
 #include <cstring>
 
 String CellFormula::getValueForPrint() {
+	Cell* a = 3;
 	return String() += value;
 }
 

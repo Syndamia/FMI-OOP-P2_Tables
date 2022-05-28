@@ -9,7 +9,7 @@ CellDouble::CellDouble(const String& str) {
 	value = atof(str.get_cstr());
 }
 
-double CellDouble::getValue() {
+double CellDouble::getNumeralValue() {
 	return value;
 }
 

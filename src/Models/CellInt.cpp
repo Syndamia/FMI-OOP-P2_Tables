@@ -1,7 +1,7 @@
 #include "CellInt.h"
 #include <cstring>
 
-int CellInt::getValue() {
+int CellInt::getNumeralValue() {
 	return value;
 }
 

@@ -1,6 +1,6 @@
 #include "CellString.h"
 
-String CellString::getValue() {
+String CellString::getNumeralValue() {
 	return value;
 }
 

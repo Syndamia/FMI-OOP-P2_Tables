@@ -3,26 +3,23 @@
 #include <cstring>
 
 double CellFormula::calculate(unsigned index) {
-	double lval = CellDouble(formula[index].left->getValue()).getValue();
+	double lval = CellDouble(formula[index].left->getValue()).getNumeralValue();
 
 	switch(formula[index].right) {
 		case plus:  return lval + calculate(index++);
 		case minus: return lval - calculate(index++);
 		case mult:  return lval * calculate(index++);
-		case div:   double rval = calculate(index++);
-			   if (rval == 0) throw std::overflow_error("Divide by zero exception");
-			   return lval / rval;
+		case div:   return lval / calculate(index++);
 		default: return lval;
 	}
 }
 
 String CellFormula::getValueForPrint() {
-	double result = calculate();
-
-	return "";
+	return String() += calculate();
 }
 
 void CellFormula::parseAndSetValue(const char* str) {
+	//TODO
 }
 
 void CellFormula::readFromFile(std::ifstream& file) {

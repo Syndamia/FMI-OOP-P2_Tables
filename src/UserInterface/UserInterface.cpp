@@ -6,16 +6,17 @@
 /* Private (static) */
 
 void UserInterface::com_print(const char* params) {
-	List<String> cells = this->table.getAllCells();
+	List<String> cells = table.getAllCells();
 }
 
 /* Public */
 
 UserInterface::UserInterface(Table& table) : menu() {
-	if (this->table.getCellCount() > 0)
-		throw new std::logic_error("Singleton instance!");
+	if (!instantiated) {
+		this->table = table;
+		instantiated = true;
+	}
 
-	this->table = table;
 	menu.addCommand(Command("print", com_print));
 	menu.addCommand(Command("edit", com_edit));
 }

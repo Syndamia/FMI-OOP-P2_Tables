@@ -7,6 +7,7 @@
 class UserInterface {
 	Menu menu;
 
+	static bool instantiated;
 	static Table& table;
 
 	static void com_open(const char* params);

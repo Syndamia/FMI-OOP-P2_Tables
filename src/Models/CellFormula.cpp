@@ -14,7 +14,7 @@ double pow(double x, unsigned y) {
 double CellFormula::calculate(unsigned index) {
 	double lval = formula[index].left->getNumeralValue();
 
-	if (formula[index].right < 0) {
+	while (formula[index].right < 0) {
 		switch (-formula[index++].right) {
 			case '+' : lval += formula[index].left->getNumeralValue(); break;
 			case '-' : lval -= formula[index].left->getNumeralValue(); break;

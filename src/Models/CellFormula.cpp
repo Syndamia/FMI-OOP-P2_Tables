@@ -45,9 +45,6 @@ double CellFormula::getNumeralValue() {
 }
 
 String CellFormula::getValueForPrint() {
-	for (unsigned i = 0; i < formula.get_count(); i++)
-		std::cout << "[" << formula[i].left->getValueForPrint() << " " << formula[i].right << std::endl;
-	return "";
 	return String() += calculate();
 }
 
@@ -65,6 +62,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 			while (*str != 'C') str++;
 			unsigned col = atoi(++str);
 			while (*str != ' ') str++;
+			while (*str == ' ') str++;
 
 			cellToAdd = (*tableCells)[row][col];
 			currOp = *str;

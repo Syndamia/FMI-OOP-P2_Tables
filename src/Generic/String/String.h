@@ -8,7 +8,7 @@
 #include <istream>
 #include <ostream>
 
-#define DOUBLE_PRECISION 1e10
+#define DOUBLE_PRECISION 1000000
 
 class String {
 	char* str;

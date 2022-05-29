@@ -16,7 +16,7 @@
 #define MAX_LINE_WIDTH 1024
 
 //! Prints label, gets a whole line of input and stores it to output
-void inputLineBox(const char* label, char* output, unsigned maxWidth, bool ignore = true);
+void inputLineBox(char* output, unsigned maxWidth, bool ignore = true);
 
 //! Prints a string list as a table
 void table(const List<String>& items, unsigned columns);
@@ -55,13 +55,6 @@ void printLine(const T* item) {
 template <typename T>
 void printLine(const T& item) {
 	std::cout << item << std::endl;
-}
-
-//! Prints a label and then reads user input and stores it
-template <typename T>
-void inputBox(const char* label, T* output) {
-	print(label);
-	std::cin >> *output;
 }
 
 #endif

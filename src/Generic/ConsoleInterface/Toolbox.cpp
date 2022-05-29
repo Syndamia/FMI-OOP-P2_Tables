@@ -16,8 +16,8 @@ void __inputLineBoxGetInput(char* output, unsigned maxWidth, bool ignore) {
  *
  *  Prints "(+)" before the label.
  */
-void inputLineBox(const char* label, char* output, unsigned maxWidth, bool ignore) {
-	print(label);
+void inputLineBox(char* output, unsigned maxWidth, bool ignore) {
+	print("> ");
 	__inputLineBoxGetInput(output, maxWidth, ignore);
 }
 

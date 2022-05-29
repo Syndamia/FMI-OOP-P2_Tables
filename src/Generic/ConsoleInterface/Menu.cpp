@@ -34,11 +34,12 @@ void Menu::navigate() const {
 	}
 
 	char buffer[MAX_LINE_WIDTH];
-	unsigned startIndex = 0;
 
 	while (strncmp(buffer, "quit", 4) != 0) {
-		startIndex = 0;
-		inputLineBox("> ", buffer, MAX_LINE_WIDTH);
+		unsigned startIndex = 0;
+		inputLineBox(buffer, MAX_LINE_WIDTH, true);
+
+		std::cout << "\"" << buffer << "\"" << std::endl;
 
 		while (buffer[startIndex] == ' ') startIndex++;
 

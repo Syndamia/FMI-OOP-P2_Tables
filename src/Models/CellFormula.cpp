@@ -3,12 +3,12 @@
 #include <cstring>
 #include <iostream>
 double pow(double x, unsigned y) {
-	std::cout << x << " " << y << std::endl;
 	if (y == 0) return 1;
 
+	double res = x;
 	for (unsigned i = 1; i < y; i++)
-		x *= x;
-	return x;
+		res *= x;
+	return res;
 }
 
 double CellFormula::calculate(unsigned index) {

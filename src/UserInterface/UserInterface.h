@@ -6,17 +6,18 @@
 
 class UserInterface {
 	Menu menu;
-	Table& table;
 
-	void com_open(const char* params);
-	void com_close(const char* params);
-	void com_save(const char* params);
-	void com_saveas(const char* params);
-	void com_help(const char* params);
-	void com_exit(const char* params);
+	static Table& table;
 
-	void com_print(const char* params);
-	void com_edit(const char* params);
+	static void com_open(const char* params);
+	static void com_close(const char* params);
+	static void com_save(const char* params);
+	static void com_saveas(const char* params);
+	static void com_help(const char* params);
+	static void com_exit(const char* params);
+
+	static void com_print(const char* params);
+	static void com_edit(const char* params);
 
 public:
 	UserInterface(Table& table);

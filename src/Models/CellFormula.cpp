@@ -17,7 +17,6 @@ double CellFormula::calculate(unsigned index) {
 	while (formula[index].right < 0) {
 		switch (-formula[index++].right) {
 			case '+' : lval += formula[index].left->getNumeralValue(); break;
-			case '-' : lval -= formula[index].left->getNumeralValue(); break;
 			case '*' : lval *= formula[index].left->getNumeralValue(); break;
 			case '/' : lval /= formula[index].left->getNumeralValue(); break;
 			case '^' : lval  = pow(lval, formula[index].left->getNumeralValue()); break;
@@ -26,7 +25,6 @@ double CellFormula::calculate(unsigned index) {
 
 	switch(formula[index].right) {
 		case '+'  : return lval + calculate(++index);
-		case '-'  : return lval - calculate(++index);
 		case '*'  : return lval * calculate(++index);
 		case '/'  : return lval / calculate(++index);
 		case '^'  : return pow(lval, calculate(++index));
@@ -89,7 +87,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 		if (currOp == '-') {
 			formula.add({cellToAdd, '+'});
 			localCells.add(CellDouble(-1.0));
-			formula.add({&localCells[localCells.get_count() - 1], '*'});
+			formula.add({&localCells[localCells.get_count() - 1], '*' * -1});
 		}
 		else formula.add({cellToAdd, currOp});
 	}

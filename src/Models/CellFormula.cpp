@@ -38,11 +38,16 @@ CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) :
 	parseAndSetValue(str);
 }
 
+#include <iostream>
+
 double CellFormula::getNumeralValue() {
 	return calculate();
 }
 
 String CellFormula::getValueForPrint() {
+	for (unsigned i = 0; i < formula.get_count(); i++)
+		std::cout << "[" << formula[i].left->getValueForPrint() << " " << (int)formula[i].right << std::endl;
+	return 90;
 	return String() += calculate();
 }
 

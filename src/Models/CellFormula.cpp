@@ -87,10 +87,11 @@ void CellFormula::parseAndSetValue(const char* str) {
 		}
 
 		if (currOp == '-') {
-			currOp = '+';
-			formula.add({new CellDouble(-1.0), '*'});
+			formula.add({cellToAdd, '+'});
+			localCells.add(CellDouble(-1.0));
+			formula.add({&localCells[localCells.get_count() - 1], '*'});
 		}
-		formula.add({cellToAdd, currOp});
+		else formula.add({cellToAdd, currOp});
 	}
 }
 

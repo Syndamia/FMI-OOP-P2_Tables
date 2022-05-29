@@ -2,6 +2,7 @@
 #include "CellDouble.h"
 #include <cstring>
 #include <iostream>
+#include <stdexcept>
 double pow(double x, unsigned y) {
 	if (y == 0) return 1;
 
@@ -18,7 +19,8 @@ double CellFormula::calculate(unsigned index) {
 		switch (-formula[index++].right) {
 			case '+' : lval += formula[index].left->getNumeralValue(); break;
 			case '*' : lval *= formula[index].left->getNumeralValue(); break;
-			case '/' : lval /= formula[index].left->getNumeralValue(); break;
+			case '/' : if (formula[index].left->getNumeralValue() == 0) throw new std::logic_error("");
+					   lval /= formula[index].left->getNumeralValue(); break;
 			case '^' : lval  = pow(lval, formula[index].left->getNumeralValue()); break;
 		}
 	}
@@ -41,7 +43,12 @@ CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) :
 #include <iostream>
 
 double CellFormula::getNumeralValue() {
-	return calculate();
+	try {
+		return calculate();
+	}
+	catch (std::logic_error) {
+		return 0;
+	}
 }
 
 String CellFormula::getValueForPrint() {

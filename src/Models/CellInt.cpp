@@ -5,6 +5,10 @@ CellInt::CellInt(int value) {
 	this->value = value;
 }
 
+double CellInt::getNumeralValue() {
+	return value;
+}
+
 String CellInt::getValueForPrint() {
 	return String() += value;
 }

@@ -39,7 +39,7 @@ CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) :
 }
 
 double CellFormula::getNumeralValue() {
-	return 0;
+	return calculate();
 }
 
 String CellFormula::getValueForPrint() {

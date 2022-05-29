@@ -11,14 +11,14 @@ void UserInterface::com_print(const char* params) {
 
 /* Public */
 
-UserInterface::UserInterface(Table& table) : menu() {
+UserInterface::UserInterface(Table& inTable) : menu() {
 	if (!instantiated) {
-		this->table = table;
+		table = inTable;
 		instantiated = true;
 	}
 
-	menu.addCommand(Command("print", com_print));
-	menu.addCommand(Command("edit", com_edit));
+	menu.addCommand(Command("print", &UserInterface::com_print));
+	menu.addCommand(Command("edit", &UserInterface::com_edit));
 }
 
 void UserInterface::run() {

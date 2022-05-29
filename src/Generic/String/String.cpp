@@ -96,7 +96,11 @@ String& String::operator+=(double number) {
 		*this += "-";
 		number *= -1;
 	}
-	number += 1.0 / (DOUBLE_PRECISION * 10); // bump up the number, in cases it becomes something like 8.59999999999...
+	const double FRAC_PREC = 1.0 / DOUBLE_PRECISION;
+	number += FRAC_PREC * 0.1; // bump up the number, in cases it becomes something like 8.59999999999...
+	double decimal = number - (unsigned)number;
+	for (unsigned i = 10; i < DOUBLE_PRECISION && (decimal - (unsigned)decimal) > 1.0 / DOUBLE_PRECISION; i += 10)
+		decimal *= 10;
 	return ((*this += (unsigned)number) += ".")
 				   += (unsigned)((number - (unsigned)number) * DOUBLE_PRECISION);
 }

@@ -3,10 +3,11 @@
 #include <cstring>
 
 double pow(double x, unsigned y) {
-	double res = x;
+	if (y == 0) return 1;
+
 	for (unsigned i = 1; i < y; i++)
-		res *= res;
-	return res;
+		x *= x;
+	return x;
 }
 
 double CellFormula::calculate(unsigned index) {
@@ -45,6 +46,8 @@ double CellFormula::getNumeralValue() {
 }
 
 String CellFormula::getValueForPrint() {
+	for (unsigned i = 0; i < formula.get_count(); i++)
+		std::cout << "[" << formula[i].left->getNumeralValue() << " " << -formula[i].right << std::endl;
 	return String() += calculate();
 }
 

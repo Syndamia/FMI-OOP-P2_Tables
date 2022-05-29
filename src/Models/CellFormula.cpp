@@ -64,7 +64,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 			while (*str != ' ') str++;
 			while (*str == ' ') str++;
 
-			cellToAdd = (*tableCells)[row][col];
+			cellToAdd = (CellDouble)((*tableCells)[row][col]);
 			currOp = *str;
 		}
 		else {

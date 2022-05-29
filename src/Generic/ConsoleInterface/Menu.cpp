@@ -6,7 +6,7 @@ Menu::Menu() : menuOptions() {}
 
 unsigned indexOfCommandEnd(char* str) {
 	unsigned ind = 0;
-	while (str[ind] != ' ') ind++;
+	while (str[ind] != ' ' && str[ind] != '\n' && str[ind] != '\0') ind++;
 	return ind;
 }
 
@@ -43,14 +43,15 @@ void Menu::navigate() const {
 
 		unsigned commandEnd = indexOfCommandEnd(buffer),
 				 index = menuOptions.get_count();
+		std::cout << commandEnd;
 		for (unsigned i = 0; i < menuOptions.get_count(); i++) {
-			if (strncmp(buffer + startIndex, menuOptions[i].get_name(), commandEnd) == 0) {
+			if (strncmp(buffer, menuOptions[i].get_name(), commandEnd) == 0) {
 				index = i;
 				break;
 			}
 		}
 
-		if (index > menuOptions.get_count()) {
+		if (index == menuOptions.get_count()) {
 			printLine("Invalid menu option!");
 			continue;
 		}

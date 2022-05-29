@@ -96,6 +96,7 @@ String& String::operator+=(double number) {
 		*this += "-";
 		number *= -1;
 	}
+	number += 1.0 / (DOUBLE_PRECISION * 10); // bump up the number, in cases it becomes something like 8.59999999999...
 	return ((*this += (unsigned)number) += ".")
 				   += (unsigned)((number - (unsigned)number) * DOUBLE_PRECISION);
 }

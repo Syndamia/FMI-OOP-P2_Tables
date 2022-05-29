@@ -31,9 +31,10 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 
 	if (containsNumber(rawValue)) {
 		double doubleParse = atof(rawValue);
+		unsigned intPart = abs(doubleParse);
 
-		newCell = (abs(doubleParse) - (unsigned)(abs(doubleParse)) > 0.00001)
-					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intParse);
+		newCell = (abs(doubleParse) - intPart > 0.00001)
+					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
 	}
 	else {
 		newCell = (*rawValue == '=')

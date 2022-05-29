@@ -62,6 +62,17 @@ String& String::operator+=(const char* str) {
 /*!
  * Converts the number to a C-style string and then uses += to append it.
  */
+String& String::operator+=(int number) {
+	if (number < 0) {
+		*this += "-";
+		number *= -1;
+	}
+	return *this += (unsigned)number;
+}
+
+/*!
+ * Converts the number to a C-style string and then uses += to append it.
+ */
 String& String::operator+=(unsigned number) {
 	unsigned tempLen = 0;
 	for (unsigned tmp = number; tmp > 0 || tempLen == 0; tmp /= 10)
@@ -81,8 +92,12 @@ String& String::operator+=(unsigned number) {
  * Converts the number to a C-style string and then uses += to append it.
  */
 String& String::operator+=(double number) {
-	if (number < 0) *this += "-";
-	return ((*this += (unsigned)number) += ".") += (unsigned)((number - (unsigned)number) * DOUBLE_PRECISION);
+	if (number < 0) {
+		*this += "-";
+		number *= -1;
+	}
+	return ((*this += (unsigned)number) += ".")
+				   += (unsigned)((number - (unsigned)number) * DOUBLE_PRECISION);
 }
 
 String::String() : String("") {}

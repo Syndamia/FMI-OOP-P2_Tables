@@ -32,6 +32,8 @@ public:
 	//! Appends a C-style string
 	String& operator+=(const char* str);
 	//! Appends a number
+	String& operator+=(int number);
+	//! Appends a number
 	String& operator+=(unsigned number);
 	//! Appends a number
 	String& operator+=(double number);

@@ -50,7 +50,7 @@ void __printPadded(const String& str, unsigned width) {
 		width--;
 		print(" ");
 	}
-	std::cout << str.get_cstr();
+	print(str.get_cstr());
 }
 
 /*! \param startNumber The number by which column and row enumeration begins
@@ -64,11 +64,17 @@ void __printPadded(const String& str, unsigned width) {
  * The rows are "calculated" from the columns count and the items length.
  */
 void printTable(const List<String>& items, unsigned columns) {
+	printLine("");
+
 	unsigned *colWidths = new unsigned[columns];
+	for (unsigned i = 0; i < columns; i++)
+		colWidths[i] = 0;
+
 	for (unsigned i = 0; i < items.get_count(); i++) {
 		if (colWidths[i % columns] < items[i].get_length())
 			colWidths[i % columns] = items[i].get_length();
 	}
+	std::cout << colWidths[0] << std::endl;
 
 	// __printTableColumnHeader(columns);
 

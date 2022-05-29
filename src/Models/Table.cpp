@@ -15,7 +15,7 @@ Table::Table(unsigned rows, unsigned cols) {
 }
 
 unsigned Table::get_cols() const {
-	return cells[0].get_count();
+	return cells[0].get_length();
 }
 
 bool containsNumber(const char*& str) {

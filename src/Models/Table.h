@@ -9,6 +9,7 @@ class Table {
 
 public:
 	Table(unsigned rows, unsigned cols);
+	unsigned get_cols() const;
 
 	void putCell(unsigned row, unsigned col, const char* rawValue);
 	List<String> getAllCells() const;

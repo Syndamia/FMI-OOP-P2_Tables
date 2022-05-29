@@ -35,27 +35,25 @@ void Menu::navigate() const {
 
 	char buffer[MAX_LINE_WIDTH];
 
-	while (strncmp(buffer, "quit", 4) != 0) {
-		unsigned startIndex = 0;
-		inputLineBox(buffer, MAX_LINE_WIDTH, true);
-
-		std::cout << "\"" << buffer << "\"" << std::endl;
+	unsigned startIndex, commandEnd, index;
+	while (1) {
+		startIndex = 0;
+		inputLineBox(buffer, MAX_LINE_WIDTH, false);
 
 		while (buffer[startIndex] == ' ') startIndex++;
 
-		unsigned commandEnd = startIndex;
+		if (strncmp(buffer + startIndex, "quit", 4) == 0)
+			break;
+
+		commandEnd = startIndex;
 		while (buffer[commandEnd] != ' ' && buffer[commandEnd] != '\n' && buffer[commandEnd] != '\0')
 			commandEnd++;
 
-		unsigned index = menuOptions.get_count();
-		std::cout << commandEnd << std::endl;
-		for (unsigned i = 0; i < menuOptions.get_count(); i++) {
-			if (strncmp(buffer, menuOptions[i].get_name(), commandEnd) == 0) {
+		index = menuOptions.get_count();
+		for (unsigned i = 0; i < menuOptions.get_count() && index == menuOptions.get_count(); i++) {
+			if (strncmp(buffer, menuOptions[i].get_name(), commandEnd) == 0)
 				index = i;
-				break;
-			}
 		}
-		std::cout << menuOptions.get_count() << " " << index << std::endl;
 
 		if (index == menuOptions.get_count()) {
 			printLine("Invalid menu option!");

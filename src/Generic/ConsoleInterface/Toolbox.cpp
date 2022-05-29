@@ -38,7 +38,7 @@ void __printTableHeaderNumber(unsigned number) {
 	std::cout << ":" << ((number < 100) ? " " : "") << number << ((number < 10) ? " " : "");
 }
 
-void __printTableColumnHeader(unsigned start, unsigned count) {
+void __printTableColumnHeader(unsigned count, unsigned start = 1) {
 	std::cout << ":   ";
 	for (unsigned i = 0; i < count; i++)
 		__printTableHeaderNumber(start++);
@@ -56,7 +56,7 @@ void __printTableLine(unsigned columns) {
 	std::cout << ":" << std::endl;
 }
 
-void __printPadded(const String& str) {
+void __printPadded(const String& str, unsigned width) {
 
 }
 
@@ -70,10 +70,18 @@ void __printPadded(const String& str) {
  * Table is printed until a terminating zero is encountered.
  * The rows are "calculated" from the columns count and the items length.
  */
-void table(const List<String>& items) {
-	unsigned *paddings = new unsigned[items.get_count()];
-	__printTableColumnHeader(startNumber, columns);
+void table(const List<String>& items, unsigned columns) {
+	unsigned *colWidths = new unsigned[columns];
+	for (unsigned i = 0; i < items.get_count(); i++) {
+		if (colWidths[i % columns] < items[i].get_length())
+			colWidths[i % columns] = items[i].get_length();
+	}
 
+	// __printTableColumnHeader(columns);
+
+	for (unsigned i = 0; i < items.get_count(); i++) {
+		__printPadded(items[i], colWidths[i % columns]);
+	}
 	__printTableHeaderNumber(startNumber);
 	for (unsigned i = 0, colInd = 0, rowInd = 0; items[i] != '\0'; i++, (++colInd) %= columns) {
 		if (colInd == 0 && i != 0) {

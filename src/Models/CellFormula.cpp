@@ -48,7 +48,7 @@ double CellFormula::getNumeralValue() {
 
 String CellFormula::getValueForPrint() {
 	for (unsigned i = 0; i < formula.get_count(); i++)
-		std::cout << "[" << formula[i].left->getNumeralValue() << " " << formula[i].right << std::endl;
+		std::cout << "[" << formula[i].left->getNumeralValue() << " " << ((formula[i].right < 0) ? (int)formula[i].right : (char)formula[i].right) << std::endl;
 	return String() += calculate();
 }
 

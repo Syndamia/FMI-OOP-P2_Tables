@@ -25,7 +25,7 @@ bool containsNumber(const char*& str) {
 }
 
 #define abs(a) ((a < 0) ? -a : a)
-
+#include <iostream>
 void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	Cell* newCell;
 

@@ -1,8 +1,9 @@
 #include "CellFormula.h"
 #include "CellDouble.h"
 #include <cstring>
-
+#include <iostream>
 double pow(double x, unsigned y) {
+	std::cout << x << " " << y << std::endl;
 	if (y == 0) return 1;
 
 	for (unsigned i = 1; i < y; i++)
@@ -47,7 +48,7 @@ double CellFormula::getNumeralValue() {
 
 String CellFormula::getValueForPrint() {
 	for (unsigned i = 0; i < formula.get_count(); i++)
-		std::cout << "[" << formula[i].left->getNumeralValue() << " " << -formula[i].right << std::endl;
+		std::cout << "[" << formula[i].left->getNumeralValue() << " " << formula[i].right << std::endl;
 	return String() += calculate();
 }
 

@@ -45,6 +45,9 @@ double CellFormula::getNumeralValue() {
 }
 
 String CellFormula::getValueForPrint() {
+	for (unsigned i = 0; i < formula.get_count(); i++)
+		std::cout << "[" << formula[i].left->getValueForPrint() << " " << formula[i].right << std::endl;
+	return "";
 	return String() += calculate();
 }
 

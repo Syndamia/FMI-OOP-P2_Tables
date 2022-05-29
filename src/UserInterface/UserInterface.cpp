@@ -10,7 +10,7 @@ Table* UserInterface::table = nullptr;
 
 void UserInterface::com_print(const char* params) {
 	List<String> cells = table->getAllCells();
-	table(cells, table.get_cols());
+	printTable(cells, table->get_cols());
 }
 
 void UserInterface::com_edit(const char* params) {

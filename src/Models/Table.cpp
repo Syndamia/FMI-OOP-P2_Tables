@@ -6,9 +6,16 @@
 #include <cstring>
 
 Table::Table(unsigned rows, unsigned cols) {
+	if (rows == 0 || cols == 0)
+		return;
+
 	cells = List<List<Cell*>>(rows);
 	for (unsigned i = 0; i < rows; i++)
 		cells[i] = List<Cell*>(cols);
+}
+
+unsigned Table::get_cols() const {
+	return cells[0].get_count();
 }
 
 bool containsNumber(const char*& str) {

@@ -19,7 +19,7 @@
 void inputLineBox(char* output, unsigned maxWidth, bool ignore = true);
 
 //! Prints a string list as a table
-void table(const List<String>& items, unsigned columns);
+void printTable(const List<String>& items, unsigned columns);
 
 //! Reads user input and stores it
 template <typename T>

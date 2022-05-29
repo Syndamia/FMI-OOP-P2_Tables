@@ -46,11 +46,11 @@ void __printTableLine(unsigned columns) {
 }
 
 void __printPadded(const String& str, unsigned width) {
-	while (str.get_length() - width > 0) {
+	while (width - str.get_length() > 0) {
 		width--;
 		print(" ");
 	}
-	print(str.get_cstr());
+	std::cout << str.get_cstr();
 }
 
 /*! \param startNumber The number by which column and row enumeration begins
@@ -63,7 +63,7 @@ void __printPadded(const String& str, unsigned width) {
  * Table is printed until a terminating zero is encountered.
  * The rows are "calculated" from the columns count and the items length.
  */
-void table(const List<String>& items, unsigned columns) {
+void printTable(const List<String>& items, unsigned columns) {
 	unsigned *colWidths = new unsigned[columns];
 	for (unsigned i = 0; i < items.get_count(); i++) {
 		if (colWidths[i % columns] < items[i].get_length())

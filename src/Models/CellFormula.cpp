@@ -80,7 +80,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 		if (currOp == '^') currOp *= -1;
 		else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {
-			for (unsigned i = formula.get_count() - 1; (formula[i].right == '*' || formula[i].right == '/') && i > 0; i--)
+			for (unsigned i = formula.get_count() - 1; i < formula.get_count() && (formula[i].right == '*' || formula[i].right == '/'); i--)
 				if (formula[i].right > 0) formula[i].right *= -1;
 		}
 

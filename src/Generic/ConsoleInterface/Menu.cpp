@@ -36,7 +36,6 @@ void Menu::navigate() const {
 	unsigned startIndex = 0;
 
 	while (strncmp(buffer, "quit", 4) != 0) {
-		clear();
 		startIndex = 0;
 		inputLineBox("> ", buffer, MAX_LINE_WIDTH);
 

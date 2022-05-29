@@ -7,8 +7,7 @@
 class UserInterface {
 	Menu menu;
 
-	static bool instantiated;
-	static Table& table;
+	static Table* table;
 
 	static void com_open(const char* params);
 	static void com_close(const char* params);
@@ -21,7 +20,7 @@ class UserInterface {
 	static void com_edit(const char* params);
 
 public:
-	UserInterface(Table& table);
+	UserInterface(Table* table);
 	void run();
 };
 

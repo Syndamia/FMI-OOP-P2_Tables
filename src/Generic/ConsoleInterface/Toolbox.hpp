@@ -15,9 +15,6 @@
 
 #define MAX_LINE_WIDTH 1024
 
-//! Clears the console screen
-void clear();
-
 //! Prints label, gets a whole line of input and stores it to output
 void inputLineBox(const char* label, char* output, unsigned maxWidth, bool ignore = true);
 

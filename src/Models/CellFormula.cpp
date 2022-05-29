@@ -64,7 +64,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 			while (*str != ' ') str++;
 			while (*str == ' ') str++;
 
-			cellToAdd = (CellDouble)((*tableCells)[row][col]);
+			cellToAdd = (*tableCells)[row][col];
 			currOp = *str;
 		}
 		else {
@@ -82,6 +82,8 @@ void CellFormula::parseAndSetValue(const char* str) {
 			if (prev.right == '*' || prev.right == '/') prev.right *= -1;
 		}
 
+		std::cout << formula.get_count() << std::endl;
+		std::cout << cellToAdd << " " << currOp << std::endl;
 		formula.add({cellToAdd, currOp});
 	}
 }

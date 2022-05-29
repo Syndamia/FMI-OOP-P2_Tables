@@ -68,24 +68,28 @@ void CellFormula::parseAndSetValue(const char* str) {
 			while (*str != ' ' && *str != '\0') str++;
 			while (*str == ' ') str++;
 
-			cellToAdd = (*tableCells)[row][col];
 			currOp = *str;
+			cellToAdd = (*tableCells)[row][col];
 		}
 		else {
 			double val = atof(str);
 			while ((*str >= '0' && *str <= '9') || *str == ' ') str++;
 
+			currOp = *str;
 			localCells.add(CellDouble(val));
 			cellToAdd = &localCells[localCells.get_count() - 1];
-			currOp = *str;
 		}
 
 		if (currOp == '^') currOp *= -1;
 		else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {
 			Pair<Cell*, char>& prev = formula[formula.get_count() - 1];
-			if (prev.right == '*' || prev.right == '/' || prev.right == '-') prev.right *= -1;
+			if (prev.right == '*' || prev.right == '/') prev.right *= -1;
 		}
 
+		if (currOp == '-') {
+			currOp = '+';
+			formula.add({new CellDouble(-1.0), '*'});
+		}
 		formula.add({cellToAdd, currOp});
 	}
 }

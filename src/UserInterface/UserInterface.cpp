@@ -14,7 +14,7 @@ void UserInterface::com_print(const char* params) {
 }
 
 void UserInterface::com_edit(const char* params) {
-	//TODO
+	while (*params == ' ') params++;
 }
 
 /* Public */

@@ -46,7 +46,6 @@ void __printTableLine(unsigned columns) {
 }
 
 void __printPadded(const String& str, unsigned width) {
-	std::cout << width << " " << str.get_length();
 	while (width - str.get_length() > 0) {
 		width--;
 		print(" ");
@@ -78,12 +77,11 @@ void printTable(const List<String>& items, unsigned columns) {
 
 	for (unsigned i = 0; i < items.get_count(); i++) {
 		__printPadded(items[i], colWidths[i % columns]);
-		if (i > 0 && i % columns == 0)
+		if (i % columns == columns - 1)
 			printLine("");
-		else if (i % columns > 0 && i % columns < columns - 1)
+		else if (i % columns > 0)
 			print("|");
 	}
-	printLine("");
 
 	delete[] colWidths;
 }

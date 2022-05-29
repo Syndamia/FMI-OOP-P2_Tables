@@ -44,9 +44,11 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 
 List<String> Table::getAllCells() const {
 	List<String> toRet;
-	for (unsigned i = 0; i < cells.get_count(); i++) {
-		for (unsigned j = 0; j < cells[i].get_count(); j++)
-			toRet.add(cells[i][j]->getValueForPrint());
+	for (unsigned i = 0; i < cells.get_length(); i++) {
+		for (unsigned j = 0; j < cells[i].get_length(); j++)
+			if (cells[i][j] == nullptr)
+				toRet.add("");
+			else toRet.add(cells[i][j]->getValueForPrint());
 	}
 	return toRet;
 }

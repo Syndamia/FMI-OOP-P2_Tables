@@ -8,6 +8,8 @@
 #include <istream>
 #include <ostream>
 
+#define DOUBLE_PRECISION 1e10
+
 class String {
 	char* str;
 	unsigned length;
@@ -31,6 +33,8 @@ public:
 	String& operator+=(const char* str);
 	//! Appends a number
 	String& operator+=(unsigned number);
+	//! Appends a number
+	String& operator+=(double number);
 
 	String();
 	String(const String& other);

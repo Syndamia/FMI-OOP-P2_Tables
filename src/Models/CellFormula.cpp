@@ -27,7 +27,7 @@ double CellFormula::calculate(unsigned index) {
 		case '-'  : return lval - calculate(++index);
 		case '*'  : return lval * calculate(++index);
 		case '/'  : return lval / calculate(++index);
-		case '^'  :
+		case '^'  : return pow(lval, calculate(++index));
 		case '\0' :
 		default   : return lval;
 	}
@@ -45,7 +45,6 @@ double CellFormula::getNumeralValue() {
 }
 
 String CellFormula::getValueForPrint() {
-		std::cout << formula.get_count() << std::endl;
 	return String() += calculate();
 }
 

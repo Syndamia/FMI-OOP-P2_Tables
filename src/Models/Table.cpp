@@ -24,6 +24,8 @@ bool containsNumber(const char*& str) {
 		   (*str >= '0' && *str <= '9'); // + or -, followed by digit, or it just a digit
 }
 
+#define abs(a) ((a < 0) ? -a : a)
+
 void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	Cell* newCell;
 
@@ -31,7 +33,7 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 		double intParse = atoi(rawValue);
 		double doubleParse = atof(rawValue);
 
-		newCell = (doubleParse - intParse > 0.00001 && doubleParse > 0.00001)
+		newCell = (abs(doubleParse) - abs(intParse) > 0.00001)
 					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intParse);
 	}
 	else {

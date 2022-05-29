@@ -19,7 +19,7 @@ double CellFormula::calculate(unsigned index) {
 		switch (-formula[index++].right) {
 			case '+' : lval += formula[index].left->getNumeralValue(); break;
 			case '*' : lval *= formula[index].left->getNumeralValue(); break;
-			case '/' : if (formula[index].left->getNumeralValue() == 0) throw new std::logic_error("");
+			case '/' : if (formula[index].left->getNumeralValue() == 0) throw std::logic_error("");
 					   lval /= formula[index].left->getNumeralValue(); break;
 			case '^' : lval  = pow(lval, formula[index].left->getNumeralValue()); break;
 		}
@@ -30,7 +30,7 @@ double CellFormula::calculate(unsigned index) {
 		case '+'  : return lval + calculate(++index);
 		case '*'  : return lval * calculate(++index);
 		case '/'  : temp = calculate(++index);
-					if (temp == 0) throw new std::logic_error("");
+					if (temp == 0) throw std::logic_error("");
 					return lval / temp;
 		case '^'  : return pow(lval, calculate(++index));
 		case '\0' :

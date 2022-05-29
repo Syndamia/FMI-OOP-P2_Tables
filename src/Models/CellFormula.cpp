@@ -23,10 +23,10 @@ double CellFormula::calculate(unsigned index) {
 	}
 
 	switch(formula[index].right) {
-		case '+'  : return lval + calculate(index++);
-		case '-'  : return lval - calculate(index++);
-		case '*'  : return lval * calculate(index++);
-		case '/'  : return lval / calculate(index++);
+		case '+'  : return lval + calculate(++index);
+		case '-'  : return lval - calculate(++index);
+		case '*'  : return lval * calculate(++index);
+		case '/'  : return lval / calculate(++index);
 		case '^'  :
 		case '\0' :
 		default   : return lval;
@@ -45,9 +45,6 @@ double CellFormula::getNumeralValue() {
 }
 
 String CellFormula::getValueForPrint() {
-	for (unsigned i = 0; i < formula.get_count(); i++)
-		std::cout << "[" << formula[i].left->getValueForPrint() << " " << (int)formula[i].right << std::endl;
-	return 90;
 	return String() += calculate();
 }
 

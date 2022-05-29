@@ -25,10 +25,13 @@ double CellFormula::calculate(unsigned index) {
 		}
 	}
 
+	double temp;
 	switch(formula[index].right) {
 		case '+'  : return lval + calculate(++index);
 		case '*'  : return lval * calculate(++index);
-		case '/'  : return lval / calculate(++index);
+		case '/'  : temp = calculate(++index);
+					if (temp == 0) throw new std::logic_error("");
+					return lval / temp;
 		case '^'  : return pow(lval, calculate(++index));
 		case '\0' :
 		default   : return lval;
@@ -52,9 +55,12 @@ double CellFormula::getNumeralValue() {
 }
 
 String CellFormula::getValueForPrint() {
-	for (unsigned i = 0; i < formula.get_count(); i++)
-		std::cout << "[" << formula[i].left->getNumeralValue() << " " << ((formula[i].right < 0) ? (int)formula[i].right : (char)formula[i].right) << std::endl;
-	return String() += calculate();
+	try {
+		return String() += calculate();
+	}
+	catch (std::logic_error) {
+		return "Error";
+	}
 }
 
 void CellFormula::parseAndSetValue(const char* str) {

@@ -35,7 +35,7 @@ double CellFormula::calculate(unsigned index) {
 
 CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) : localCells(), formula(), rawFormula() {
 	this->tableCells = tableCells;
-	parseAndSetValue(str);
+	CellFormula::parseAndSetValue(str);
 }
 
 #include <iostream>
@@ -45,6 +45,7 @@ double CellFormula::getNumeralValue() {
 }
 
 String CellFormula::getValueForPrint() {
+		std::cout << formula.get_count() << std::endl;
 	return String() += calculate();
 }
 
@@ -61,7 +62,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 			unsigned row = atoi(++str);
 			while (*str != 'C') str++;
 			unsigned col = atoi(++str);
-			while (*str != ' ') str++;
+			while (*str != ' ' && *str != '\0') str++;
 			while (*str == ' ') str++;
 
 			cellToAdd = (*tableCells)[row][col];
@@ -82,8 +83,6 @@ void CellFormula::parseAndSetValue(const char* str) {
 			if (prev.right == '*' || prev.right == '/') prev.right *= -1;
 		}
 
-		std::cout << formula.get_count() << std::endl;
-		std::cout << cellToAdd << " " << currOp << std::endl;
 		formula.add({cellToAdd, currOp});
 	}
 }

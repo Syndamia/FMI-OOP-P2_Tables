@@ -79,7 +79,7 @@ void printTable(const List<String>& items, unsigned columns) {
 		__printPadded(items[i], colWidths[i % columns]);
 		if (i % columns == columns - 1)
 			printLine("");
-		else if (i % columns > 0)
+		else
 			print("|");
 	}
 

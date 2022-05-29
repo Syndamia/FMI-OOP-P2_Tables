@@ -39,6 +39,8 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 					? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
 	}
 
+	if (cells[row][col] != nullptr)
+		delete cells[row][col];
 	cells[row][col] = newCell;
 }
 

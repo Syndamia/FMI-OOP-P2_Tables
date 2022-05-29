@@ -15,6 +15,13 @@ void UserInterface::com_print(const char* params) {
 
 void UserInterface::com_edit(const char* params) {
 	while (*params == ' ') params++;
+
+	unsigned row = atoi(++params);
+	while (*params != 'C') params++;
+	unsigned col = atoi(++params);
+	while (*params != ' ') params++;
+
+	table->putCell(row, col, params);
 }
 
 /* Public */

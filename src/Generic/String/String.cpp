@@ -81,18 +81,8 @@ String& String::operator+=(unsigned number) {
  * Converts the number to a C-style string and then uses += to append it.
  */
 String& String::operator+=(double number) {
-	unsigned tempLen = 0;
-	for (unsigned tmp = number; tmp > 0 || tempLen == 0; tmp /= 10)
-		tempLen++;
-
-	char* tmp = new char[tempLen + 1];
-	tmp[tempLen] = '\0';
-	for (unsigned i = tempLen - 1; i < tempLen; i--, number /= 10)
-		tmp[i] = number % 10 + '0';
-
-	*this += tmp;
-	delete[] tmp;
-	return *this;
+	if (number < 0) *this += "-";
+	return ((*this += (unsigned)number) += ".") += (unsigned)((number - (unsigned)number) * DOUBLE_PRECISION);
 }
 
 String::String() : String("") {}

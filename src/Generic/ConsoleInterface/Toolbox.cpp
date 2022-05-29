@@ -57,7 +57,11 @@ void __printTableLine(unsigned columns) {
 }
 
 void __printPadded(const String& str, unsigned width) {
-
+	while (str.get_length() - width > 0) {
+		width--;
+		print(" ");
+	}
+	print(str.get_cstr());
 }
 
 /*! \param startNumber The number by which column and row enumeration begins
@@ -81,17 +85,12 @@ void table(const List<String>& items, unsigned columns) {
 
 	for (unsigned i = 0; i < items.get_count(); i++) {
 		__printPadded(items[i], colWidths[i % columns]);
+		if (i > 0 && i % columns == 0)
+			printLine("");
+		else if (i % columns > 0 && i % columns < columns - 1)
+			print("|");
 	}
-	__printTableHeaderNumber(startNumber);
-	for (unsigned i = 0, colInd = 0, rowInd = 0; items[i] != '\0'; i++, (++colInd) %= columns) {
-		if (colInd == 0 && i != 0) {
-			std::cout << ":" << std::endl;
-			__printTableLine(columns);
-			__printTableHeaderNumber((++rowInd) + startNumber);
-		}
 
-		std::cout << ((colInd == 0) ? "║ " : "| ") << items[rowInd * columns + colInd] << " ";
-	}
-	std::cout << ":" << std::endl;
+	delete[] colWidths;
 }
 

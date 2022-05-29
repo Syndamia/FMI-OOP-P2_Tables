@@ -2,11 +2,6 @@
 #include "CellDouble.h"
 #include <cstring>
 
-CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) : localCells(), formula(), rawFormula() {
-	this->tableCells = tableCells;
-	parseAndSetValue(str);
-}
-
 double pow(double x, unsigned y) {
 	double res = x;
 	for (unsigned i = 1; i < y; i++)
@@ -36,6 +31,15 @@ double CellFormula::calculate(unsigned index) {
 		case '\0' :
 		default   : return lval;
 	}
+}
+
+CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) : localCells(), formula(), rawFormula() {
+	this->tableCells = tableCells;
+	parseAndSetValue(str);
+}
+
+double CellFormula::getNumeralValue() {
+	return 0;
 }
 
 String CellFormula::getValueForPrint() {

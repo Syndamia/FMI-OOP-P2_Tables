@@ -83,7 +83,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 		if (currOp == '^') currOp *= -1;
 		else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {
 			Pair<Cell*, char>& prev = formula[formula.get_count() - 1];
-			if (prev.right == '*' || prev.right == '/' || prev.right == '-') prev.right *= -1;
+			if (prev.right == '*' || prev.right == '/') prev.right *= -1;
 		}
 
 		formula.add({cellToAdd, currOp});

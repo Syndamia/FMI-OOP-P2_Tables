@@ -2,6 +2,8 @@
 #define HEADER_CONSOLEINTERFACE_TOOLBOX
 
 #include <iostream>
+#include "../List/List.hpp"
+#include "../String/String.h"
 
 /*! \file Toolbox.hpp
  *  \brief Stores a wide range of functions for simpler/more automated printing.
@@ -19,11 +21,8 @@ void clear();
 //! Prints label, gets a whole line of input and stores it to output
 void inputLineBox(const char* label, char* output, unsigned maxWidth, bool ignore = true);
 
-//! Prints a string as a table
-void table(unsigned startNumber, unsigned columns, const char* items);
-
-//! Semi-internal function that prints the label of an input box
-void _printInputBoxLabel(const char* label);
+//! Prints a string list as a table
+void table(const List<String>& items);
 
 //! Reads user input and stores it
 template <typename T>
@@ -64,7 +63,7 @@ void printLine(const T& item) {
 //! Prints a label and then reads user input and stores it
 template <typename T>
 void inputBox(const char* label, T* output) {
-	_printInputBoxLabel(label);
+	print(label);
 	std::cin >> *output;
 }
 

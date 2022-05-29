@@ -46,6 +46,7 @@ void __printTableLine(unsigned columns) {
 }
 
 void __printPadded(const String& str, unsigned width) {
+	std::cout << width << " " << str.get_length();
 	while (width - str.get_length() > 0) {
 		width--;
 		print(" ");
@@ -64,8 +65,6 @@ void __printPadded(const String& str, unsigned width) {
  * The rows are "calculated" from the columns count and the items length.
  */
 void printTable(const List<String>& items, unsigned columns) {
-	printLine("");
-
 	unsigned *colWidths = new unsigned[columns];
 	for (unsigned i = 0; i < columns; i++)
 		colWidths[i] = 0;
@@ -74,7 +73,6 @@ void printTable(const List<String>& items, unsigned columns) {
 		if (colWidths[i % columns] < items[i].get_length())
 			colWidths[i % columns] = items[i].get_length();
 	}
-	std::cout << colWidths[0] << std::endl;
 
 	// __printTableColumnHeader(columns);
 
@@ -85,6 +83,7 @@ void printTable(const List<String>& items, unsigned columns) {
 		else if (i % columns > 0 && i % columns < columns - 1)
 			print("|");
 	}
+	printLine("");
 
 	delete[] colWidths;
 }

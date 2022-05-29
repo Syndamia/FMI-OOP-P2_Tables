@@ -71,7 +71,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 		}
 		else {
 			double val = atof(str);
-			while ((*str >= '0' && *str <= '9') || *str == ' ') str++;
+			while ((*str >= '0' && *str <= '9') || *str == ' ' || *str == '.') str++;
 
 			currOp = *str;
 			localCells.add(CellDouble(val));
@@ -80,8 +80,12 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 		if (currOp == '^') currOp *= -1;
 		else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {
-			Pair<Cell*, char>& prev = formula[formula.get_count() - 1];
-			if (prev.right == '*' || prev.right == '/') prev.right *= -1;
+			unsigned cntr = 1;
+			Pair<Cell*, char>& prev = formula[formula.get_count() - cntr];
+			while (prev.right == '*' || prev.right == '/') {
+				prev.right *= -1;
+				prev = formula[formula.get_count() - ++cntr];
+			}
 		}
 
 		if (currOp == '-') {

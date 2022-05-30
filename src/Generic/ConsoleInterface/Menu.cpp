@@ -36,14 +36,12 @@ void Menu::navigate() const {
 	char buffer[MAX_LINE_WIDTH];
 
 	unsigned startIndex, commandEnd, paramsStart, index;
-	while (1) {
+	bool hasThrown = false;
+	while (!hasThrown) {
 		startIndex = 0;
 		inputLineBox(buffer, MAX_LINE_WIDTH, false);
 
 		while (buffer[startIndex] == ' ') startIndex++;
-
-		if (strncmp(buffer + startIndex, "quit", 4) == 0)
-			break;
 
 		commandEnd = startIndex;
 		while (buffer[commandEnd] != ' ' && buffer[commandEnd] != '\n' && buffer[commandEnd] != '\0')
@@ -63,6 +61,12 @@ void Menu::navigate() const {
 			continue;
 		}
 
-		menuOptions[index].run(buffer + paramsStart);
+		try {
+			menuOptions[index].run(buffer + paramsStart);
+		}
+		catch (std::logic_error err) {
+			hasThrown = true;
+			printLine(err.what());
+		}
 	}
 }

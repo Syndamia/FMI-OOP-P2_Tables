@@ -35,15 +35,18 @@ void Table::readFromFile(std::ifstream& inFile) {
 	while (!inFile.eof()) {
 		while (inFile.peek() == ' ') inFile.get();
 
+		// Entering a new cell on the current row
 		if (inFile.peek() == ',') {
 			colInd++;
 			inFile.get();
 		}
+		// Entering a new row
 		else if (inFile.peek() == '\n') {
 			cells.add(List<Cell*>(commaCount));
 			colInd = 0;
 			inFile.get();
 		}
+		// Parsing number
 		else if (inFile.peek() == '-' || inFile.peek() == '+' || isDigit(inFile.peek())) {
 			int whole = 0;
 			unsigned exponent = 1;
@@ -56,9 +59,11 @@ void Table::readFromFile(std::ifstream& inFile) {
 			if (isDigit(inFile.peek()))
 				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
 
+			// Parsing digits of whole number/whole part of floating point number
 			while (isDigit(inFile.peek())) {
 				(whole *= 10) += inFile.get() - '0';
 			}
+			// Parsing digits of potential floating point number
 			if (inFile.peek() != '.') {
 				inFile.get();
 				while (isDigit(inFile.peek())) {
@@ -75,6 +80,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			else
 				cells[cells.get_count() - 1].add(new CellDouble((double)whole / exponent));
 		}
+		// Parsing string or formula
 		else if (inFile.peek() == '"') {
 			String res;
 			inFile.get();

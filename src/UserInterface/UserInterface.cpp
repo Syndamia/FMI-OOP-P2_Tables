@@ -69,7 +69,7 @@ void UserInterface::com_exit(const char* params) {
 		return;
 	}
 
-	printLine("Exiting program...");
+	throw std::logic_error("Exiting program..."); // stupid way of making the program stop
 }
 
 void UserInterface::com_print(const char* params) {

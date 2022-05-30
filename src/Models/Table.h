@@ -15,8 +15,9 @@ public:
 	unsigned get_cols() const;
 
 	void putCell(unsigned row, unsigned col, const char* rawValue);
+
 	List<String> getAllCells() const;
-	void saveToFile(const char* filePath);
+	void saveToFile(const char* filePath) const;
 };
 
 #endif

@@ -84,7 +84,14 @@ void Table::readFromFile(std::ifstream& inFile) {
 				}
 				res += inFile.get();
 			}
+			
+			if (*res.get_cstr() == '=')
+				cells[cells.get_count() - 1].add(new CellFormula(res.get_cstr(), &cells));
+			else
+				cells[cells.get_count() - 1].add(new CellString(res.get_cstr()));
 		}
+		else
+			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
 	}
 }
 

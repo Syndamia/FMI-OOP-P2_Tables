@@ -14,15 +14,16 @@ double pow(double x, unsigned y) {
 
 double CellFormula::calculate(unsigned index) {
 	CellLoc& c = formula[index].left;
-	double  lval = (c.firstInd == -1) ? localCells[c.secondInd]->getNumeralValue() : tableCells[c.firstInd][c.secondInd].getNumeralValue();
+	double lval = (c.firstInd == -1) ? localCells[c.secondInd].getNumeralValue() : (*tableCells)[c.firstInd][c.secondInd]->getNumeralValue();
 
 	while (formula[index].right < 0) {
-		switch (-formula[index++].right) {
-			case '+' : lval += formula[index].left->getNumeralValue(); break;
-			case '*' : lval *= formula[index].left->getNumeralValue(); break;
-			case '/' : if (formula[index].left->getNumeralValue() == 0) throw std::logic_error("");
-					   lval /= formula[index].left->getNumeralValue(); break;
-			case '^' : lval  = pow(lval, formula[index].left->getNumeralValue()); break;
+		double secondLval = (c.firstInd == -1) ? localCells[c.secondInd].getNumeralValue() : (*tableCells)[c.firstInd][c.secondInd]->getNumeralValue();
+		switch (-formula[index].right) {
+			case '+' : lval += secondLval; break;
+			case '*' : lval *= secondLval; break;
+			case '/' : if (secondLval == 0) throw std::logic_error("");
+					   lval /= secondLval; break;
+			case '^' : lval  = pow(lval, secondLval); break;
 		}
 	}
 

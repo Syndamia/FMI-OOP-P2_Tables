@@ -38,7 +38,6 @@ void Table::readFromFile(std::ifstream& inFile) {
 	unsigned colInd = 0;
 	cells.add(List<Cell*>(commaCount));
 	while (inFile.peek() != EOF) {
-		std::cout << inFile.peek() << std::endl;
 		while (inFile.peek() == ' ') inFile.get();
 
 		// Entering a new cell on the current row
@@ -63,7 +62,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			}
 
 			if (isDigit(inFile.peek()))
-				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % commaCount));
+				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
 
 			// Parsing digits of whole number/whole part of floating point number
 			while (isDigit(inFile.peek())) {
@@ -79,7 +78,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			}
 
 			if (inFile.peek() != ' ' && inFile.peek() != ',' && inFile.peek() != '\n')
-				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % commaCount));
+				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
 
 			if (exponent == 1)
 				cells[cells.get_count() - 1][colInd++] = new CellInt(whole);
@@ -103,7 +102,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 				cells[cells.get_count() - 1][colInd++] = new CellString(res.get_cstr());
 		}
 		else
-			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
+			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
 	}
 }
 #include <iostream>
@@ -111,6 +110,7 @@ Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
 	if (!inFile.is_open())
 		throw std::logic_error("Could not open file!");
+	std::cout << inFile.peek() << std::endl;
 	cells = List<List<Cell*>>();
 	readFromFile(inFile);
 	inFile.close();

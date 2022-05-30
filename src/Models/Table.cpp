@@ -31,12 +31,10 @@ bool containsNumber(const char*& str) {
 }
 #include <iostream>
 void Table::readFromFile(std::ifstream& inFile) {
-	unsigned commaCount = countOfCommas(inFile);
-	if (commaCount == 0)
-		throw std::logic_error("Expected at least the first line to have data.");
+	unsigned cols = countOfCommas(inFile) + 1;
 
 	unsigned colInd = 0;
-	cells.add(List<Cell*>(commaCount));
+	cells.add(List<Cell*>(cols));
 	while (inFile.peek() != EOF) {
 		while (inFile.peek() == ' ') inFile.get();
 
@@ -47,7 +45,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 		}
 		// Entering a new row
 		else if (inFile.peek() == '\n') {
-			cells.add(List<Cell*>(commaCount));
+			cells.add(List<Cell*>(cols));
 			colInd = 0;
 			inFile.get();
 		}
@@ -62,7 +60,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			}
 
 			if (!isDigit(inFile.peek()))
-				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
+				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % cols + 1));
 
 			// Parsing digits of whole number/whole part of floating point number
 			while (isDigit(inFile.peek())) {
@@ -78,12 +76,14 @@ void Table::readFromFile(std::ifstream& inFile) {
 			}
 
 			if (inFile.peek() != ' ' && inFile.peek() != ',' && inFile.peek() != '\n')
-				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
+				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % cols + 1));
 
+			Cell* toAdd;
 			if (exponent == 1)
-				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellInt(whole);
+				toAdd = (Cell*)new CellInt(whole);
 			else
-				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellDouble((double)whole / exponent);
+				toAdd = (Cell*)new CellDouble((double)whole / exponent);
+			cells[cells.get_count() - 1][colInd++] = toAdd;
 		}
 		// Parsing string or formula
 		else if (inFile.peek() == '"') {
@@ -91,7 +91,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			inFile.get();
 			while (inFile.peek() != '"') {
 				if (inFile.peek() == '\n')
-					throw std::logic_error(fileLocationExceptionMsg("Error: Could not find a matching end quote for string at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
+					throw std::logic_error(fileLocationExceptionMsg("Error: Could not find a matching end quote for string at row ", cells.get_count(), inFile.tellg() % cols + 1));
 				if (inFile.peek() == '\\') {
 					inFile.get();
 				}
@@ -105,7 +105,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellString(res.get_cstr());
 		}
 		else
-			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
+			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % cols + 1));
 	}
 }
 #include <iostream>
@@ -161,10 +161,12 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 List<String> Table::getAllCells() const {
 	List<String> toRet;
 	for (unsigned i = 0; i < cells.get_length(); i++) {
-		for (unsigned j = 0; j < cells[i].get_length(); j++)
+		for (unsigned j = 0; j < cells[i].get_length(); j++) {
+			std::cout << "here" << std::endl;
 			if (cells[i][j] == nullptr)
 				toRet.add("");
 			else toRet.add(cells[i][j]->getValueForPrint());
+		}
 	}
 	return toRet;
 }

@@ -39,6 +39,8 @@ void Table::readFromFile(std::ifstream& inFile) {
 		if (inFile.peek() == ',') {
 			colInd++;
 			inFile.get();
+			if (inFile.peek() == ',' || inFile.peek() == '\n')
+				cells[cells.get_count() + 1].add(nullptr);
 		}
 		// Entering a new row
 		else if (inFile.peek() == '\n') {

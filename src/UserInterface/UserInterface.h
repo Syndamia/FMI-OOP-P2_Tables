@@ -23,7 +23,7 @@ class UserInterface {
 	static void com_edit(const char* params);
 
 public:
-	UserInterface(Table* table);
+	UserInterface();
 	void run();
 };
 

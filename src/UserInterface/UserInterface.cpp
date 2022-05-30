@@ -124,10 +124,7 @@ void UserInterface::com_edit(const char* params) {
 
 /* Public */
 
-UserInterface::UserInterface(Table* inTable) : menu() {
-	if (table == nullptr)
-		table = inTable;
-
+UserInterface::UserInterface() : menu() {
 	menu.addCommand(Command("open", com_open));
 	menu.addCommand(Command("close", com_close));
 	menu.addCommand(Command("save", com_save));

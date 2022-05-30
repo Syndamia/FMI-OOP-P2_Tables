@@ -75,6 +75,16 @@ void Table::readFromFile(std::ifstream& inFile) {
 			else
 				cells[cells.get_count() - 1].add(new CellDouble((double)whole / exponent));
 		}
+		else if (inFile.peek() == '"') {
+			String res;
+			inFile.get();
+			while (inFile.peek() != '"') {
+				if (inFile.peek() == '\\') {
+					inFile.get();
+				}
+				res += inFile.get();
+			}
+		}
 	}
 }
 

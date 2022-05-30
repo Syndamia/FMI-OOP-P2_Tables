@@ -13,7 +13,8 @@ double pow(double x, unsigned y) {
 }
 
 double CellFormula::calculate(unsigned index) {
-	double lval = formula[index].left->getNumeralValue();
+	CellLoc& c = formula[index].left;
+	double  lval = (c.firstInd == -1) ? localCells[c.secondInd]->getNumeralValue() : tableCells[c.firstInd][c.secondInd].getNumeralValue();
 
 	while (formula[index].right < 0) {
 		switch (-formula[index++].right) {
@@ -66,21 +67,21 @@ String CellFormula::getValueForPrint() {
 void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
-	Cell* cellToAdd;
+	CellLoc cellToAdd;
 	char currOp;
 
 	while (*str != '\0') {
 		str++;
 		while (*str == ' ') str++;
 		if (*str == 'R') {
-			unsigned row = atoi(++str);
+			int row = atoi(++str);
 			while (*str != 'C') str++;
-			unsigned col = atoi(++str);
+			int col = atoi(++str);
 			while (*str != ' ' && *str != '\0') str++;
 			while (*str == ' ') str++;
 
 			currOp = *str;
-			cellToAdd = (*tableCells)[row][col];
+			cellToAdd = {row, col};
 		}
 		else {
 			double val = atof(str);
@@ -88,7 +89,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 			currOp = *str;
 			localCells.add(CellDouble(val));
-			cellToAdd = &localCells[localCells.get_count() - 1];
+			cellToAdd = {-1, (int)(localCells.get_count() - 1)};
 		}
 
 		if (currOp == '^') currOp *= -1;
@@ -100,7 +101,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 		if (currOp == '-') {
 			formula.add({cellToAdd, '+'});
 			localCells.add(CellDouble(-1.0));
-			formula.add({&localCells[localCells.get_count() - 1], '*' * -1});
+			formula.add({{-1, (int)(localCells.get_count() - 1)}, '*' * -1});
 		}
 		else formula.add({cellToAdd, currOp});
 	}

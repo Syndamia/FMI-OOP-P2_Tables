@@ -7,10 +7,14 @@
 #include "../Generic/Pair/Pair.hpp"
 
 class CellFormula : public Cell {
+	struct CellLoc {
+		int firstInd;
+		int secondInd;
+	};
 	const List<List<Cell*>>* tableCells;
 	List<CellDouble> localCells;
 
-	List<Pair<Cell*, char>> formula;
+	List<Pair<CellLoc, char>> formula;
 	String rawFormula;
 
 	double calculate(unsigned index = 0);

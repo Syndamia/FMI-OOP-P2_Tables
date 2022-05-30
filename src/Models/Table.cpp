@@ -8,6 +8,8 @@
 #include <exception>
 #include <stdexcept>
 
+#define FLOATING_POINT_PRECISION 0.00001f
+
 unsigned countOfCommas(std::ifstream& file) {
 	unsigned commaCount = 0;
 	while (file.peek() != '\n') {
@@ -24,19 +26,6 @@ bool containsNumber(const char*& str) {
 	while (*str == ' ') str++;
 	return ((*str == '+' || *str == '-') && (*(str + 1) >= '0' && *(str + 1) <= '9')) ||
 		   (*str >= '0' && *str <= '9'); // + or -, followed by digit, or it just a digit
-}
-
-Cell* Table::createCellByParsing(const char* rawValue) {
-	if (containsNumber(rawValue)) {
-		double doubleParse = atof(rawValue);
-		unsigned intPart = abs(doubleParse);
-
-		return (abs(doubleParse) - intPart > 0.00001)
-					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
-	}
-
-	return (*rawValue == '=')
-				? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
 }
 
 void Table::readFromFile(std::ifstream& inFile) {
@@ -56,7 +45,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			inFile.get();
 		}
 		else if (inFile.peek() == '-' || inFile.peek() == '+' || isDigit(inFile.peek())) {
-			unsigned numberStart = inFile.tellg();
+			double number = 0;
 
 			if (inFile.peek() == '-' || inFile.peek() == '+') inFile.get();
 			if (isDigit(inFile.peek()))
@@ -67,6 +56,11 @@ void Table::readFromFile(std::ifstream& inFile) {
 				while (isDigit(inFile.peek())) inFile.get();
 			}
 			if (inFile.peek() != ' ' && inFile.peek() != ',' && inFile.peek() != '\n')
+				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
+			unsigned numberEnd = inFile.tellg();
+
+			inFile.seekg(numberStart, std::ios::beg);
+			cells[cells.get_count() - 1].add();
 		}
 	}
 }
@@ -94,7 +88,20 @@ unsigned Table::get_cols() const {
 }
 
 void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
-	Cell* newCell = createCellByParsing(rawValue);
+	Cell* newCell;
+
+	if (containsNumber(rawValue)) {
+		double doubleParse = atof(rawValue);
+		unsigned intPart = abs(doubleParse);
+
+		newCell = (abs(doubleParse) - intPart > FLOATING_POINT_PRECISION)
+					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
+	}
+	else {
+		newCell = (*rawValue == '=')
+					? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
+	}
+
 	
 	if (cells[row][col] != nullptr)
 		delete cells[row][col];

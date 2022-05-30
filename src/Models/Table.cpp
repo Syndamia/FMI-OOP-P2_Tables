@@ -148,3 +148,17 @@ List<String> Table::getAllCells() const {
 	}
 	return toRet;
 }
+
+void Table::saveToFile(const char* filePath) const {
+	std::ofstream outFile(filePath);
+	if (!outFile.is_open())
+		throw std::logic_error("Could not open file!");
+	for (unsigned i = 0; i < cells.get_count(); i++) {
+		for (unsigned j = 0; j < cells.get_count(); j++) {
+			cells[i][j]->writeToFile(outFile);
+			outFile << ',';
+		}
+		outFile << '\n';
+	}
+	outFile.close();
+}

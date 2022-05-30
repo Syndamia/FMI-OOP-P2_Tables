@@ -116,8 +116,7 @@ List<T>::List(const T* elements, unsigned elementsCount) {
 
 template <typename T>
 List<T>::List(unsigned length) {
-	this->length = length;
-	count = 0;
+	this->length = count = length;
 	this->elements = new T[length];
 	for (unsigned i = 0; i < count; i++)
 		this->elements[i] = elements[i];

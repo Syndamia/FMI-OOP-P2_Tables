@@ -46,6 +46,7 @@ void UserInterface::com_saveas(const char* params) {
 	try {
 		table->saveToFile(params);
 		saved = true;
+		printLine("Successfully saved to file!");
 	}
 	catch (std::logic_error err) {
 		printLine(err.what());

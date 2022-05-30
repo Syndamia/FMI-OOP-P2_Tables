@@ -22,7 +22,7 @@ double CellFormula::calculate(unsigned index) const {
 	double numVal = currCell->getNumeralValue();
 
 	while (formula[index].right < 0) {
-		switch (-formula[index].right) {
+		switch (-formula[index++].right) {
 			case '+' : numVal += ptrByInd(formula[index].left)->getNumeralValue(); break;
 			case '*' : numVal *= ptrByInd(formula[index].left)->getNumeralValue(); break;
 			case '/' : if (ptrByInd(formula[index].left)->getNumeralValue() == 0) throw std::logic_error("");

@@ -4,8 +4,8 @@
 #include <iostream>
 #include <stdexcept>
 
-const Cell* CellFormula::ptrByInd(int firstInd, int secondInd) const {
-	return (firstInd < 0) ? &localCells[secondInd] : (*tableCells)[firstInd][secondInd];
+const Cell* CellFormula::ptrByInd(Pair<int, int> loc) const {
+	return (loc.left < 0) ? &localCells[loc.right] : (*tableCells)[loc.left][loc.right];
 }
 
 double pow(double x, unsigned y) {
@@ -17,31 +17,30 @@ double pow(double x, unsigned y) {
 	return res;
 }
 
-double CellFormula::calculate(unsigned index) {
-	Cell* currCell = ptrByInd(formula[index].left);
-	double lval = (c.firstInd == -1) ? localCells[c.secondInd].getNumeralValue() : (*tableCells)[c.firstInd][c.secondInd]->getNumeralValue();
+double CellFormula::calculate(unsigned index) const {
+	const Cell* currCell = ptrByInd(formula[index].left);
+	double numVal = currCell->getNumeralValue();
 
 	while (formula[index].right < 0) {
-		double secondLval = (c.firstInd == -1) ? localCells[c.secondInd].getNumeralValue() : (*tableCells)[c.firstInd][c.secondInd]->getNumeralValue();
 		switch (-formula[index].right) {
-			case '+' : lval += secondLval; break;
-			case '*' : lval *= secondLval; break;
-			case '/' : if (secondLval == 0) throw std::logic_error("");
-					   lval /= secondLval; break;
-			case '^' : lval  = pow(lval, secondLval); break;
+			case '+' : numVal += ptrByInd(formula[index].left)->getNumeralValue(); break;
+			case '*' : numVal *= ptrByInd(formula[index].left)->getNumeralValue(); break;
+			case '/' : if (ptrByInd(formula[index].left)->getNumeralValue() == 0) throw std::logic_error("");
+					   numVal /= ptrByInd(formula[index].left)->getNumeralValue(); break;
+			case '^' : numVal  = pow(numVal, ptrByInd(formula[index].left)->getNumeralValue()); break;
 		}
 	}
 
 	double temp;
 	switch(formula[index].right) {
-		case '+'  : return lval + calculate(++index);
-		case '*'  : return lval * calculate(++index);
+		case '+'  : return numVal + calculate(++index);
+		case '*'  : return numVal * calculate(++index);
 		case '/'  : temp = calculate(++index);
 					if (temp == 0) throw std::logic_error("");
-					return lval / temp;
-		case '^'  : return pow(lval, calculate(++index));
+					return numVal / temp;
+		case '^'  : return pow(numVal, calculate(++index));
 		case '\0' :
-		default   : return lval;
+		default   : return numVal;
 	}
 }
 

@@ -13,7 +13,7 @@ class CellFormula : public Cell {
 	List<Pair<Pair<int, int>, char>> formula;
 	String rawFormula;
 
-	const Cell* ptrByInd(int firstInd, int secondInd) const;
+	const Cell* ptrByInd(Pair<int, int> loc) const;
 	double calculate(unsigned index = 0) const;
 
 public:

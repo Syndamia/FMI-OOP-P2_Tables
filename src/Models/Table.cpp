@@ -83,9 +83,9 @@ void Table::readFromFile(std::ifstream& inFile) {
 				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % cols + 1));
 
 			if (exponent == 1)
-				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellInt(whole);
+				cells[cells.get_count() - 1][colInd] = (Cell*)new CellInt(whole);
 			else
-				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellDouble((double)whole / exponent);
+				cells[cells.get_count() - 1][colInd] = (Cell*)new CellDouble((double)whole / exponent);
 		}
 		// Parsing string or formula
 		else if (inFile.peek() == '"') {
@@ -102,9 +102,9 @@ void Table::readFromFile(std::ifstream& inFile) {
 			inFile.get();
 			
 			if (*res.get_cstr() == '=')
-				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellFormula(res.get_cstr(), &cells);
+				cells[cells.get_count() - 1][colInd] = (Cell*)new CellFormula(res.get_cstr(), &cells);
 			else
-				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellString(res.get_cstr());
+				cells[cells.get_count() - 1][colInd] = (Cell*)new CellString(res.get_cstr());
 		}
 		else
 			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % cols + 1));
@@ -129,7 +129,7 @@ Table::~Table() {
 }
 
 unsigned Table::get_rows() const {
-	return cells.get_length();
+	return cells.get_count();
 }
 
 unsigned Table::get_cols() const {
@@ -162,7 +162,7 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 
 List<String> Table::getAllCells() const {
 	List<String> toRet;
-	for (unsigned i = 0; i < cells.get_length(); i++) {
+	for (unsigned i = 0; i < cells.get_count(); i++) {
 		for (unsigned j = 0; j < cells[i].get_length(); j++) {
 			std::cout << i << ' ' << j << std::endl;
 			if (cells[i][j] == nullptr) toRet.add("");

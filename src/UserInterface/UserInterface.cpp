@@ -115,6 +115,7 @@ void UserInterface::com_edit(const char* params) {
 	try {
 		table->putCell(row, col, params);
 		saved = false;
+		printLine("Successfully edited cell!");
 	}
 	catch (std::logic_error err) {
 		printLine(err.what());

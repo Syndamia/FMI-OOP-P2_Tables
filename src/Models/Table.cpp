@@ -113,6 +113,10 @@ Table::Table(unsigned rows, unsigned cols) {
 		cells[i] = List<Cell*>(cols);
 }
 
+unsigned Table::get_rows() const {
+	return cells.get_length();
+}
+
 unsigned Table::get_cols() const {
 	return cells[0].get_length();
 }
@@ -128,6 +132,7 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
 	}
 	else if (*rawValue == '"') {
+		rawValue++;
 		newCell = (*rawValue == '=')
 					? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
 	}

@@ -72,7 +72,7 @@ String CellFormula::getValueForPrint() const {
 void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
-	CellLoc cellToAdd;
+	Pair<int, int> loc;
 	char currOp;
 
 	while (*str != '\0') {
@@ -86,7 +86,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 			while (*str == ' ') str++;
 
 			currOp = *str;
-			cellToAdd = {row, col};
+			loc = {row, col};
 		}
 		else {
 			double val = atof(str);
@@ -94,7 +94,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 			currOp = *str;
 			localCells.add(CellDouble(val));
-			cellToAdd = {-1, (int)(localCells.get_count() - 1)};
+			loc = {-1, localCells.get_count() - 1};
 		}
 
 		if (currOp == '^') currOp *= -1;
@@ -104,11 +104,11 @@ void CellFormula::parseAndSetValue(const char* str) {
 		}
 
 		if (currOp == '-') {
-			formula.add({cellToAdd, '+'});
+			formula.add({loc, '+'});
 			localCells.add(CellDouble(-1.0));
-			formula.add({{-1, (int)(localCells.get_count() - 1)}, '*' * -1});
+			formula.add({{-1, localCells.get_count() - 1}, '*' * -1});
 		}
-		else formula.add({cellToAdd, currOp});
+		else formula.add({loc, currOp});
 	}
 }
 

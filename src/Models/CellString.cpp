@@ -5,11 +5,11 @@ CellString::CellString(const char* str) {
 	value = String(str);
 }
 
-double CellString::getNumeralValue() {
+double CellString::getNumeralValue() const {
 	return atof(value.get_cstr());
 }
 
-String CellString::getValueForPrint() {
+String CellString::getValueForPrint() const {
 	return value;
 }
 

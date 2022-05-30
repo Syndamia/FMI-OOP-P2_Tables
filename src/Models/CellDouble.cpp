@@ -5,11 +5,11 @@ CellDouble::CellDouble(double value) {
 	this->value = value;
 }
 
-double CellDouble::getNumeralValue() {
+double CellDouble::getNumeralValue() const {
 	return value;
 }
 
-String CellDouble::getValueForPrint() {
+String CellDouble::getValueForPrint() const {
 	return String() += value;
 }
 

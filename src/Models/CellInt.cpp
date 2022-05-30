@@ -5,11 +5,11 @@ CellInt::CellInt(int value) {
 	this->value = value;
 }
 
-double CellInt::getNumeralValue() {
+double CellInt::getNumeralValue() const {
 	return value;
 }
 
-String CellInt::getValueForPrint() {
+String CellInt::getValueForPrint() const {
 	return String() += value;
 }
 

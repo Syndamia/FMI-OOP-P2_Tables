@@ -39,7 +39,19 @@ Cell* Table::createCellByParsing(const char* rawValue) {
 
 void Table::readFromFile(std::ifstream& inFile) {
 	unsigned commaCount = countOfCommas(inFile);
+	unsigned colInd = 0;
 	while (!inFile.eof()) {
+		while (inFile.peek() == ' ') inFile.get();
+
+		if (inFile.peek() == ',') {
+			colInd++;
+		}
+		else if (inFile.peek() == '\n') {
+			cells.add(List<Cell*>(commaCount));
+			colInd = 0;
+			inFile.get();
+		}
+		else if (inFile.peek() )
 	}
 }
 
@@ -47,7 +59,7 @@ Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
 	if (inFile.is_open())
 		throw std::logic_error("Could now open file!");
-	cells = List<List<Cell*>>();
+	cells = List<List<Cell*>>(1);
 	readFromFile(inFile);
 	inFile.close();
 }

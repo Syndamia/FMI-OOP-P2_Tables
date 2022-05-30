@@ -17,7 +17,7 @@ unsigned countOfCommas(std::ifstream& file) {
 }
 
 #define abs(a) ((a < 0) ? -a : a)
-#define isNumeric(a) (a >= '0' && a <= '9')
+#define isDigit(a) (a >= '0' && a <= '9')
 
 bool containsNumber(const char*& str) {
 	while (*str == ' ') str++;
@@ -53,11 +53,11 @@ void Table::readFromFile(std::ifstream& inFile) {
 			colInd = 0;
 			inFile.get();
 		}
-		else if (inFile.peek() == '-' || inFile.peek() == '+' || isNumeric(inFile.peek())) {
+		else if (inFile.peek() == '-' || inFile.peek() == '+' || isDigit(inFile.peek())) {
 			unsigned numberStart = inFile.tellg();
 			if (inFile.peek() == '-' || inFile.peek() == '+') inFile.get();
-			if (!isNumeric(inFile.peek()))
-				throw std::logic_error("");
+			if (!isDigit(inFile.peek()))
+				throw std::logic_error((((String("Error: Expected digit but got something else at row ") += cells.get_count()) += " and col ") += (unsigned)(inFile.tellg() % cells.get_count())).get_cstr());
 		}
 	}
 }
@@ -66,7 +66,7 @@ Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
 	if (inFile.is_open())
 		throw std::logic_error("Could now open file!");
-	cells = List<List<Cell*>>(1);
+	cells = List<List<Cell*>>();
 	readFromFile(inFile);
 	inFile.close();
 }

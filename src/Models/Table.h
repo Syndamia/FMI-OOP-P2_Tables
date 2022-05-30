@@ -7,7 +7,7 @@
 
 class Table {
 	List<List<Cell*>> cells;
-	void readFromFile(std::ifstream);
+	void readFromFile(std::ifstream inFile);
 
 public:
 	Table(const char* filePath);

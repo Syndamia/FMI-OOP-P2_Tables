@@ -7,6 +7,10 @@
 #include <fstream>
 #include <exception>
 
+void Table::readFromFile(std::ifstream inFile) {
+	
+}
+
 Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
 	if (inFile.is_open())

@@ -94,7 +94,12 @@ UserInterface::UserInterface(Table* inTable) : menu() {
 	if (table == nullptr)
 		table = inTable;
 
+	menu.addCommand(Command("open", com_open));
+	menu.addCommand(Command("close", com_close));
+	menu.addCommand(Command("save", com_save));
+	menu.addCommand(Command("saveas", com_saveas));
 	menu.addCommand(Command("help", com_help));
+	menu.addCommand(Command("exit", com_exit));
 	menu.addCommand(Command("print", com_print));
 	menu.addCommand(Command("edit", com_edit));
 }

@@ -3,9 +3,11 @@
 
 #include "Cell.h"
 #include "../Generic/List/List.hpp"
+#include <fstream>
 
 class Table {
 	List<List<Cell*>> cells;
+	void readFromFile(std::ifstream);
 
 public:
 	Table(const char* filePath);

@@ -4,6 +4,15 @@
 #include "CellString.h"
 #include "CellFormula.h"
 #include <cstring>
+#include <fstream>
+#include <exception>
+
+Table::Table(const char* filePath) {
+	std::ifstream inFile(filePath);
+	if (inFile.is_open())
+		throw new std::logic_error("Could now open file!");
+	cells = List<List<Cell*>>();
+}
 
 Table::Table(unsigned rows, unsigned cols) {
 	if (rows == 0 || cols == 0)

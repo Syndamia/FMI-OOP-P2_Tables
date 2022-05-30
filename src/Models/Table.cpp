@@ -100,23 +100,23 @@ void Table::readFromFile(std::ifstream& inFile) {
 			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
 	}
 }
-
+#include <iostream>
 Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
+	std::cout << filePath << std::endl;
 	if (inFile.is_open())
-		throw std::logic_error("Could now open file!");
+		throw std::logic_error("Could not open file!");
 	cells = List<List<Cell*>>();
 	readFromFile(inFile);
 	inFile.close();
 }
 
-Table::Table(unsigned rows, unsigned cols) {
-	if (rows == 0 || cols == 0)
-		return;
-
-	cells = List<List<Cell*>>(rows);
-	for (unsigned i = 0; i < rows; i++)
-		cells[i] = List<Cell*>(cols);
+Table::~Table() {
+	for (unsigned i = 0; i < cells.get_length(); i++) {
+		for (unsigned j = 0; j < cells.get_length(); j++) {
+			delete cells[i][j];
+		}
+	}
 }
 
 unsigned Table::get_rows() const {

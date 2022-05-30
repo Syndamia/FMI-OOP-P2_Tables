@@ -11,7 +11,7 @@ class Table {
 
 public:
 	Table(const char* filePath);
-	Table(unsigned rows, unsigned cols);
+	~Table();
 
 	unsigned get_rows() const;
 	unsigned get_cols() const;

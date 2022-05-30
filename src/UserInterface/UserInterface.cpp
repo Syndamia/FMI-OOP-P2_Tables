@@ -73,6 +73,11 @@ void UserInterface::com_exit(const char* params) {
 }
 
 void UserInterface::com_print(const char* params) {
+	if (table == nullptr) {
+		printLine("You need to open a file!");
+		return;
+	}
+
 	List<String> cells = table->getAllCells();
 	printTable(cells, table->get_cols());
 }

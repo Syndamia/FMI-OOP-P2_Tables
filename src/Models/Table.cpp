@@ -17,6 +17,7 @@ unsigned countOfCommas(std::ifstream& file) {
 }
 
 #define abs(a) ((a < 0) ? -a : a)
+#define isNumeric(a) (a >= '0' && a <= '9')
 
 bool containsNumber(const char*& str) {
 	while (*str == ' ') str++;
@@ -45,13 +46,19 @@ void Table::readFromFile(std::ifstream& inFile) {
 
 		if (inFile.peek() == ',') {
 			colInd++;
+			inFile.get();
 		}
 		else if (inFile.peek() == '\n') {
 			cells.add(List<Cell*>(commaCount));
 			colInd = 0;
 			inFile.get();
 		}
-		else if (inFile.peek() )
+		else if (inFile.peek() == '-' || inFile.peek() == '+' || isNumeric(inFile.peek())) {
+			unsigned numberStart = inFile.tellg();
+			if (inFile.peek() == '-' || inFile.peek() == '+') inFile.get();
+			if (!isNumeric(inFile.peek()))
+				throw std::logic_error("");
+		}
 	}
 }
 

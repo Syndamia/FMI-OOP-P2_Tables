@@ -91,13 +91,15 @@ void Table::readFromFile(std::ifstream& inFile) {
 		else if (inFile.peek() == '"') {
 			String res;
 			inFile.get();
+			char buffer;
 			while (inFile.peek() != '"') {
 				if (inFile.peek() == '\n')
 					throw std::logic_error(fileLocationExceptionMsg("Error: Could not find a matching end quote for string at row ", cells.get_count(), inFile.tellg() % cols + 1));
 				if (inFile.peek() == '\\') {
 					inFile.get();
 				}
-				res += inFile.get();
+				buffer = inFile.get();
+				res += (const char*)&buffer;
 			}
 			inFile.get();
 			

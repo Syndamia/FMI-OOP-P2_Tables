@@ -35,6 +35,8 @@ void Table::readFromFile(std::ifstream& inFile) {
 
 	unsigned colInd = 0;
 	cells.add(List<Cell*>(cols));
+	for (unsigned i = 0; i < cols; i++)
+		cells[cells.get_count() - 1][i] = nullptr;
 	while (inFile.peek() != EOF) {
 		while (inFile.peek() == ' ') inFile.get();
 
@@ -46,6 +48,8 @@ void Table::readFromFile(std::ifstream& inFile) {
 		// Entering a new row
 		else if (inFile.peek() == '\n') {
 			cells.add(List<Cell*>(cols));
+			for (unsigned i = 0; i < cols; i++)
+				cells[cells.get_count() - 1][i] = nullptr;
 			colInd = 0;
 			inFile.get();
 		}

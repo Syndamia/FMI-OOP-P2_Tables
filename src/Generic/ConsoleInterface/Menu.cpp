@@ -51,7 +51,7 @@ void Menu::navigate() const {
 
 		index = menuOptions.get_count();
 		for (unsigned i = 0; i < menuOptions.get_count() && index == menuOptions.get_count(); i++) {
-			if (strncmp(buffer + startIndex, menuOptions[i].get_name(), commandEnd) == 0)
+			if (strncmp(buffer + startIndex, menuOptions[i].get_name(), commandEnd - startIndex) == 0)
 				index = i;
 		}
 

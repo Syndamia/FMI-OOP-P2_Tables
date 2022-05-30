@@ -78,7 +78,10 @@ void UserInterface::com_print(const char* params) {
 }
 
 void UserInterface::com_edit(const char* params) {
-	while (*params == ' ') params++;
+	if (*params != 'R') {
+		printLine("Error: Invalid cell position format! Expected R<number>C<number>");
+		return;
+	}
 
 	unsigned row = atoi(++params);
 	while (*params != 'C') params++;

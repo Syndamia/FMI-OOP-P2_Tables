@@ -7,7 +7,9 @@
 /* Private (static) */
 
 Table* UserInterface::table = nullptr;
-String fileName = String();
+String UserInterface::fileName = String();
+bool UserInterface::saved = false;
+
 
 void UserInterface::com_open(const char* params) {
 	if (table != nullptr) {
@@ -18,6 +20,7 @@ void UserInterface::com_open(const char* params) {
 	try {
 		table = new Table(params);
 		fileName = params;
+		saved = true;
 	}
 	catch (std::logic_error err) {
 		printLine(err.what());
@@ -39,6 +42,14 @@ void UserInterface::com_saveas(const char* params) {
 		printLine("No file has been opened!");
 		return;
 	}
+
+	try {
+		table->saveToFile(params);
+		saved = true;
+	}
+	catch (std::logic_error err) {
+		printLine(err.what());
+	}
 }
 
 void UserInterface::com_help(const char* params) {
@@ -52,6 +63,12 @@ void UserInterface::com_help(const char* params) {
 }
 
 void UserInterface::com_exit(const char* params) {
+	if (!saved && table != nullptr) {
+		printLine("You have an open file with unsaved changes, please select close or save first.");
+		return;
+	}
+
+	printLine("Exiting program...");
 }
 
 void UserInterface::com_print(const char* params) {
@@ -68,6 +85,7 @@ void UserInterface::com_edit(const char* params) {
 	while (*params != ' ') params++;
 
 	table->putCell(row, col, params);
+	saved = false;
 }
 
 /* Public */

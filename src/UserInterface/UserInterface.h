@@ -10,6 +10,7 @@ class UserInterface {
 
 	static Table* table;
 	static String fileName;
+	static bool saved;
 
 	static void com_open(const char* params);
 	static void com_close(const char* params);

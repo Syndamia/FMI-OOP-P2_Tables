@@ -14,6 +14,7 @@ public:
 
 	void putCell(unsigned row, unsigned col, const char* rawValue);
 	List<String> getAllCells() const;
+	void saveToFile(const char* filePath);
 };
 
 #endif

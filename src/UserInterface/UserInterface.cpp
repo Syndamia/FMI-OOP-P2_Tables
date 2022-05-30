@@ -7,6 +7,7 @@
 /* Private (static) */
 
 Table* UserInterface::table = nullptr;
+String fileName = String();
 
 void UserInterface::com_open(const char* params) {
 	if (table != nullptr) {
@@ -16,16 +17,28 @@ void UserInterface::com_open(const char* params) {
 
 	try {
 		table = new Table(params);
+		fileName = params;
 	}
 	catch (std::logic_error err) {
 		printLine(err.what());
 	}
 }
 void UserInterface::com_close(const char* params) {
+	if (table == nullptr) {
+		printLine("No file has been opened!");
+		return;
+	}
+
+	delete table;
 }
 void UserInterface::com_save(const char* params) {
+	com_saveas(fileName.get_cstr());
 }
 void UserInterface::com_saveas(const char* params) {
+	if (table == nullptr) {
+		printLine("No file has been opened!");
+		return;
+	}
 }
 
 void UserInterface::com_help(const char* params) {

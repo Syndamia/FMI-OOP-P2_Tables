@@ -2,12 +2,14 @@
 #define HEADER_USERINTERFACE
 
 #include "../Generic/ConsoleInterface/Menu.h"
+#include "../Generic/String/String.h"
 #include "../Models/Table.h"
 
 class UserInterface {
 	Menu menu;
 
 	static Table* table;
+	static String fileName;
 
 	static void com_open(const char* params);
 	static void com_close(const char* params);

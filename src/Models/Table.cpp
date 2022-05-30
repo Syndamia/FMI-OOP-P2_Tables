@@ -32,6 +32,9 @@ bool containsNumber(const char*& str) {
 #include <iostream>
 void Table::readFromFile(std::ifstream& inFile) {
 	unsigned commaCount = countOfCommas(inFile);
+	if (commaCount == 0)
+		throw std::logic_error("Expected at least the first line to have data.");
+
 	unsigned colInd = 0;
 	cells.add(List<Cell*>(commaCount));
 	while (inFile.peek() != EOF) {
@@ -60,7 +63,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			}
 
 			if (isDigit(inFile.peek()))
-				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
+				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % commaCount));
 
 			// Parsing digits of whole number/whole part of floating point number
 			while (isDigit(inFile.peek())) {
@@ -76,7 +79,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			}
 
 			if (inFile.peek() != ' ' && inFile.peek() != ',' && inFile.peek() != '\n')
-				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
+				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % commaCount));
 
 			if (exponent == 1)
 				cells[cells.get_count() - 1][colInd++] = new CellInt(whole);

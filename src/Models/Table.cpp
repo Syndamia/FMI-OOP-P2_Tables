@@ -31,7 +31,7 @@ bool containsNumber(const char*& str) {
 void Table::readFromFile(std::ifstream& inFile) {
 	unsigned commaCount = countOfCommas(inFile);
 	unsigned colInd = 0;
-	cells.add(List<Cell*>());
+	cells.add(List<Cell*>(commaCount));
 	while (inFile.peek() != EOF) {
 		while (inFile.peek() == ' ') inFile.get();
 

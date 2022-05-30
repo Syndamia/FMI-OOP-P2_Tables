@@ -6,16 +6,27 @@
 #include <cstring>
 #include <fstream>
 #include <exception>
+#include <stdexcept>
 
-void Table::readFromFile(std::ifstream inFile) {
-	
+unsigned countOfCommas(std::ifstream& file) {
+	unsigned commaCount = 0;
+	while (file.peek() != '\n') {
+		if (file.get() == ',') commaCount++;
+	}
+	return commaCount;
+}
+
+void Table::readFromFile(std::ifstream& inFile) {
+	unsigned commaCount = countOfCommas(inFile);
+	cells = List<List<Cell*>>(commaCount + 1);
 }
 
 Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
 	if (inFile.is_open())
-		throw new std::logic_error("Could now open file!");
-	cells = List<List<Cell*>>();
+		throw std::logic_error("Could now open file!");
+	readFromFile(inFile);
+	inFile.close();
 }
 
 Table::Table(unsigned rows, unsigned cols) {

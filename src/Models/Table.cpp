@@ -13,7 +13,7 @@
 unsigned countOfCommas(std::ifstream& file) {
 	unsigned currPos = file.tellg();
 	unsigned commaCount = 0;
-	while (file.peek() != '\n') {
+	while (file.peek() != '\n' && file.peek() != EOF) {
 		if (file.get() == ',') commaCount++;
 	}
 	file.seekg(currPos, std::ios::beg);
@@ -37,9 +37,10 @@ void Table::readFromFile(std::ifstream& inFile) {
 
 	unsigned colInd = 0;
 	cells.add(List<Cell*>(commaCount));
-	while (inFile.peek() != EOF) {
+	while (!inFile.eof()) {
 		while (inFile.peek() == ' ') inFile.get();
 
+		std::cout << (char)inFile.peek() << std::endl;
 		// Entering a new cell on the current row
 		if (inFile.peek() == ',') {
 			colInd++;

@@ -32,7 +32,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 	unsigned commaCount = countOfCommas(inFile);
 	unsigned colInd = 0;
 	cells.add(List<Cell*>());
-	while (!inFile.eof()) {
+	while (inFile.peek() != EOF) {
 		while (inFile.peek() == ' ') inFile.get();
 
 		// Entering a new cell on the current row
@@ -103,8 +103,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 #include <iostream>
 Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
-	std::cout << filePath << std::endl;
-	if (inFile.is_open())
+	if (!inFile.is_open())
 		throw std::logic_error("Could not open file!");
 	cells = List<List<Cell*>>();
 	readFromFile(inFile);

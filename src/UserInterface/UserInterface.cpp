@@ -21,6 +21,7 @@ void UserInterface::com_open(const char* params) {
 		table = new Table(params);
 		fileName = params;
 		saved = true;
+		printLine("Successfully opened file!");
 	}
 	catch (std::logic_error err) {
 		printLine(err.what());

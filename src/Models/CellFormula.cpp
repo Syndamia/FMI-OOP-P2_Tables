@@ -3,6 +3,11 @@
 #include <cstring>
 #include <iostream>
 #include <stdexcept>
+
+const Cell* CellFormula::ptrByInd(int firstInd, int secondInd) const {
+	return (firstInd < 0) ? &localCells[secondInd] : (*tableCells)[firstInd][secondInd];
+}
+
 double pow(double x, unsigned y) {
 	if (y == 0) return 1;
 
@@ -13,7 +18,7 @@ double pow(double x, unsigned y) {
 }
 
 double CellFormula::calculate(unsigned index) {
-	CellLoc& c = formula[index].left;
+	Cell* currCell = ptrByInd(formula[index].left);
 	double lval = (c.firstInd == -1) ? localCells[c.secondInd].getNumeralValue() : (*tableCells)[c.firstInd][c.secondInd]->getNumeralValue();
 
 	while (formula[index].right < 0) {
@@ -47,7 +52,7 @@ CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) :
 
 #include <iostream>
 
-double CellFormula::getNumeralValue() {
+double CellFormula::getNumeralValue() const {
 	try {
 		return calculate();
 	}
@@ -56,7 +61,7 @@ double CellFormula::getNumeralValue() {
 	}
 }
 
-String CellFormula::getValueForPrint() {
+String CellFormula::getValueForPrint() const {
 	try {
 		return String() += calculate();
 	}

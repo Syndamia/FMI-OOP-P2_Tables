@@ -35,7 +35,7 @@ void Menu::navigate() const {
 
 	char buffer[MAX_LINE_WIDTH];
 
-	unsigned startIndex, commandEnd, index;
+	unsigned startIndex, commandEnd, paramsStart, index;
 	while (1) {
 		startIndex = 0;
 		inputLineBox(buffer, MAX_LINE_WIDTH, false);
@@ -51,15 +51,18 @@ void Menu::navigate() const {
 
 		index = menuOptions.get_count();
 		for (unsigned i = 0; i < menuOptions.get_count() && index == menuOptions.get_count(); i++) {
-			if (strncmp(buffer, menuOptions[i].get_name(), commandEnd) == 0)
+			if (strncmp(buffer + startIndex, menuOptions[i].get_name(), commandEnd) == 0)
 				index = i;
 		}
+
+		paramsStart = startIndex + commandEnd;
+		while (buffer[paramsStart] == ' ') paramsStart++;
 
 		if (index == menuOptions.get_count()) {
 			printLine("Invalid menu option!");
 			continue;
 		}
 
-		menuOptions[index].run(buffer + startIndex + commandEnd);
+		menuOptions[index].run(buffer + paramsStart);
 	}
 }

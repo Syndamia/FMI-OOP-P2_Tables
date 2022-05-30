@@ -8,6 +8,15 @@
 
 Table* UserInterface::table = nullptr;
 
+void UserInterface::com_open(const char* params) {
+}
+void UserInterface::com_close(const char* params) {
+}
+void UserInterface::com_save(const char* params) {
+}
+void UserInterface::com_saveas(const char* params) {
+}
+
 void UserInterface::com_help(const char* params) {
 	std::cout << "The following commands are supported:" << std::endl
 			  << "open <file>      opens <file>" << std::endl
@@ -16,6 +25,9 @@ void UserInterface::com_help(const char* params) {
 			  << "saveas <file>    saves the currently open file in <file>" << std::endl
 			  << "help             prints this information" << std::endl
 			  << "exit             exists the program" << std::endl;
+}
+
+void UserInterface::com_exit(const char* params) {
 }
 
 void UserInterface::com_print(const char* params) {

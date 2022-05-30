@@ -103,7 +103,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			}
 			inFile.get();
 			
-			if (*res.get_cstr() == '=')
+			if (res.get_cstr()[0] == '=')
 				cells[cells.get_count() - 1][colInd] = (Cell*)new CellFormula(res.get_cstr(), &cells);
 			else
 				cells[cells.get_count() - 1][colInd] = (Cell*)new CellString(res.get_cstr());

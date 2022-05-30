@@ -94,7 +94,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 			currOp = *str;
 			localCells.add(CellDouble(val));
-			loc = {-1, localCells.get_count() - 1};
+			loc = {-1, (int)(localCells.get_count() - 1)};
 		}
 
 		if (currOp == '^') currOp *= -1;
@@ -106,7 +106,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 		if (currOp == '-') {
 			formula.add({loc, '+'});
 			localCells.add(CellDouble(-1.0));
-			formula.add({{-1, localCells.get_count() - 1}, '*' * -1});
+			formula.add({{-1, (int)(localCells.get_count() - 1)}, '*' * -1});
 		}
 		else formula.add({loc, currOp});
 	}

@@ -78,12 +78,10 @@ void Table::readFromFile(std::ifstream& inFile) {
 			if (inFile.peek() != ' ' && inFile.peek() != ',' && inFile.peek() != '\n')
 				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % cols + 1));
 
-			Cell* toAdd;
 			if (exponent == 1)
-				toAdd = (Cell*)new CellInt(whole);
+				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellInt(whole);
 			else
-				toAdd = (Cell*)new CellDouble((double)whole / exponent);
-			cells[cells.get_count() - 1][colInd++] = toAdd;
+				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellDouble((double)whole / exponent);
 		}
 		// Parsing string or formula
 		else if (inFile.peek() == '"') {
@@ -162,9 +160,8 @@ List<String> Table::getAllCells() const {
 	List<String> toRet;
 	for (unsigned i = 0; i < cells.get_length(); i++) {
 		for (unsigned j = 0; j < cells[i].get_length(); j++) {
-			std::cout << "here" << std::endl;
-			if (cells[i][j] == nullptr)
-				toRet.add("");
+			std::cout << i << ' ' << j << std::endl;
+			if (cells[i][j] == nullptr) toRet.add("");
 			else toRet.add(cells[i][j]->getValueForPrint());
 		}
 	}

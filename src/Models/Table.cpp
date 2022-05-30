@@ -37,10 +37,9 @@ void Table::readFromFile(std::ifstream& inFile) {
 
 	unsigned colInd = 0;
 	cells.add(List<Cell*>(commaCount));
-	while (!inFile.eof()) {
+	while (inFile.peek() != EOF) {
 		while (inFile.peek() == ' ') inFile.get();
 
-		std::cout << (char)inFile.peek() << std::endl;
 		// Entering a new cell on the current row
 		if (inFile.peek() == ',') {
 			colInd++;
@@ -91,11 +90,14 @@ void Table::readFromFile(std::ifstream& inFile) {
 			String res;
 			inFile.get();
 			while (inFile.peek() != '"') {
+				if (inFile.peek() == '\n')
+					throw std::logic_error(fileLocationExceptionMsg("Error: Could not find a matching end quote for string at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
 				if (inFile.peek() == '\\') {
 					inFile.get();
 				}
 				res += inFile.get();
 			}
+			inFile.get();
 			
 			if (*res.get_cstr() == '=')
 				cells[cells.get_count() - 1][colInd++] = new CellFormula(res.get_cstr(), &cells);

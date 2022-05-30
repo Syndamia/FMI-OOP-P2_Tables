@@ -81,9 +81,9 @@ void Table::readFromFile(std::ifstream& inFile) {
 				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
 
 			if (exponent == 1)
-				cells[cells.get_count() - 1][colInd++] = new CellInt(whole);
+				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellInt(whole);
 			else
-				cells[cells.get_count() - 1][colInd++] = new CellDouble((double)whole / exponent);
+				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellDouble((double)whole / exponent);
 		}
 		// Parsing string or formula
 		else if (inFile.peek() == '"') {
@@ -100,9 +100,9 @@ void Table::readFromFile(std::ifstream& inFile) {
 			inFile.get();
 			
 			if (*res.get_cstr() == '=')
-				cells[cells.get_count() - 1][colInd++] = new CellFormula(res.get_cstr(), &cells);
+				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellFormula(res.get_cstr(), &cells);
 			else
-				cells[cells.get_count() - 1][colInd++] = new CellString(res.get_cstr());
+				cells[cells.get_count() - 1][colInd++] = (Cell*)new CellString(res.get_cstr());
 		}
 		else
 			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % commaCount + 1));

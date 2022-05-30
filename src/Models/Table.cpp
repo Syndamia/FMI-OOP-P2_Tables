@@ -127,10 +127,12 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 		newCell = (abs(doubleParse) - intPart > FLOATING_POINT_PRECISION)
 					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
 	}
-	else {
+	else if (*rawValue == '"') {
 		newCell = (*rawValue == '=')
 					? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
 	}
+	else
+		throw std::logic_error("Error: Could not determine data type.");
 
 	
 	if (cells[row][col] != nullptr)

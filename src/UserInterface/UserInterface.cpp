@@ -77,6 +77,8 @@ void UserInterface::com_print(const char* params) {
 	printTable(cells, table->get_cols());
 }
 
+#define isDigit(a) (a >= '0' && a <= '9')
+
 void UserInterface::com_edit(const char* params) {
 	if (*params != 'R') {
 		printLine("Error: Invalid cell position format! Expected R<number>C<number>");
@@ -84,12 +86,39 @@ void UserInterface::com_edit(const char* params) {
 	}
 
 	unsigned row = atoi(++params);
-	while (*params != 'C') params++;
-	unsigned col = atoi(++params);
-	while (*params != ' ') params++;
+	while (*params != 'C') {
+		if (*params == '\0') {
+			printLine("Error: End of line reached. Expected row number.");
+			return;
+		}
+		if (!isDigit(*params)) {
+			printLine("Error: Found a non-digit character. Exptected row number.");
+			return;
+		}
 
-	table->putCell(row, col, params);
-	saved = false;
+		params++;
+	}
+	unsigned col = atoi(++params);
+	while (*params != ' ') {
+		if (*params == '\0') {
+			printLine("Error: End of line reached. Expected columns number.");
+			return;
+		}
+		if (!isDigit(*params)) {
+			printLine("Error: Found a non-digit character. Exptected column number.");
+			return;
+		}
+
+		params++;
+	}
+
+	try {
+		table->putCell(row, col, params);
+		saved = false;
+	}
+	catch (std::logic_error err) {
+		printLine(err.what());
+	}
 }
 
 /* Public */

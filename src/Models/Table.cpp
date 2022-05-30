@@ -18,7 +18,7 @@ unsigned countOfCommas(std::ifstream& file) {
 
 #define abs(a) ((a < 0) ? -a : a)
 #define isDigit(a) (a >= '0' && a <= '9')
-#define fileLocationExceptionMsg(mainMessage, columns, lines) (((String(mainMessage) += (unsigned)(lines)) += " and col ") += (unsigned)(columns)).get_cstr()
+#define fileLocationExceptionMsg(mainMessage, lines, columns) (((String(mainMessage) += (unsigned)(lines)) += " and col ") += (unsigned)(columns)).get_cstr()
 
 bool containsNumber(const char*& str) {
 	while (*str == ' ') str++;
@@ -57,11 +57,16 @@ void Table::readFromFile(std::ifstream& inFile) {
 		}
 		else if (inFile.peek() == '-' || inFile.peek() == '+' || isDigit(inFile.peek())) {
 			unsigned numberStart = inFile.tellg();
+
 			if (inFile.peek() == '-' || inFile.peek() == '+') inFile.get();
 			if (isDigit(inFile.peek()))
-				throw std::logic_error();
+				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
 			while (isDigit(inFile.peek())) inFile.get();
-			if (inFile.peek() != '.' && inFile.peek() != ' ' && inFile.peek() != ',')
+			if (inFile.peek() != '.') {
+				inFile.get();
+				while (isDigit(inFile.peek())) inFile.get();
+			}
+			if (inFile.peek() != ' ' && inFile.peek() != ',' && inFile.peek() != '\n')
 		}
 	}
 }

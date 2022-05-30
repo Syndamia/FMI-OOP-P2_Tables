@@ -16,15 +16,38 @@ unsigned countOfCommas(std::ifstream& file) {
 	return commaCount;
 }
 
+#define abs(a) ((a < 0) ? -a : a)
+
+bool containsNumber(const char*& str) {
+	while (*str == ' ') str++;
+	return ((*str == '+' || *str == '-') && (*(str + 1) >= '0' && *(str + 1) <= '9')) ||
+		   (*str >= '0' && *str <= '9'); // + or -, followed by digit, or it just a digit
+}
+
+Cell* Table::createCellByParsing(const char* rawValue) {
+	if (containsNumber(rawValue)) {
+		double doubleParse = atof(rawValue);
+		unsigned intPart = abs(doubleParse);
+
+		return (abs(doubleParse) - intPart > 0.00001)
+					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
+	}
+
+	return (*rawValue == '=')
+				? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
+}
+
 void Table::readFromFile(std::ifstream& inFile) {
 	unsigned commaCount = countOfCommas(inFile);
-	cells = List<List<Cell*>>(commaCount + 1);
+	while (!inFile.eof()) {
+	}
 }
 
 Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
 	if (inFile.is_open())
 		throw std::logic_error("Could now open file!");
+	cells = List<List<Cell*>>();
 	readFromFile(inFile);
 	inFile.close();
 }
@@ -42,29 +65,9 @@ unsigned Table::get_cols() const {
 	return cells[0].get_length();
 }
 
-bool containsNumber(const char*& str) {
-	while (*str == ' ') str++;
-	return ((*str == '+' || *str == '-') && (*(str + 1) >= '0' && *(str + 1) <= '9')) ||
-		   (*str >= '0' && *str <= '9'); // + or -, followed by digit, or it just a digit
-}
-
-#define abs(a) ((a < 0) ? -a : a)
-#include <iostream>
 void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
-	Cell* newCell;
-
-	if (containsNumber(rawValue)) {
-		double doubleParse = atof(rawValue);
-		unsigned intPart = abs(doubleParse);
-
-		newCell = (abs(doubleParse) - intPart > 0.00001)
-					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
-	}
-	else {
-		newCell = (*rawValue == '=')
-					? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
-	}
-
+	Cell* newCell = createCellByParsing(rawValue);
+	
 	if (cells[row][col] != nullptr)
 		delete cells[row][col];
 	cells[row][col] = newCell;

@@ -7,6 +7,7 @@
 
 class Table {
 	List<List<Cell*>> cells;
+	Cell* createCellByParsing(const char* rawValue);
 	void readFromFile(std::ifstream& inFile);
 
 public:

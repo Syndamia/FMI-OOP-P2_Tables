@@ -13,7 +13,6 @@ public:
 	double getNumeralValue() const override;
 	String getValueForPrint() const override;
 	void parseAndSetValue(const char* str) override;
-	void readFromFile(std::ifstream& file) override;
 	void writeToFile(std::ofstream& file) override;
 };
 

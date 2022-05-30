@@ -61,7 +61,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 				if (inFile.peek() == '-') whole *= -1;
 			}
 
-			if (isDigit(inFile.peek()))
+			if (!isDigit(inFile.peek()))
 				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % commaCount + 1));
 
 			// Parsing digits of whole number/whole part of floating point number
@@ -69,10 +69,10 @@ void Table::readFromFile(std::ifstream& inFile) {
 				(whole *= 10) += inFile.get() - '0';
 			}
 			// Parsing digits of potential floating point number
-			if (inFile.peek() != '.') {
+			if (inFile.peek() == '.') {
 				inFile.get();
 				while (isDigit(inFile.peek())) {
-					inFile.get();
+					(whole *= 10) += inFile.get() - '0';
 					exponent *= 10;
 				}
 			}
@@ -110,7 +110,6 @@ Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);
 	if (!inFile.is_open())
 		throw std::logic_error("Could not open file!");
-	std::cout << inFile.peek() << std::endl;
 	cells = List<List<Cell*>>();
 	readFromFile(inFile);
 	inFile.close();

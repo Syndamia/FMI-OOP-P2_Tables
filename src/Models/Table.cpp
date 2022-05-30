@@ -45,22 +45,35 @@ void Table::readFromFile(std::ifstream& inFile) {
 			inFile.get();
 		}
 		else if (inFile.peek() == '-' || inFile.peek() == '+' || isDigit(inFile.peek())) {
-			double number = 0;
+			int whole = 0;
+			unsigned exponent = 1;
 
-			if (inFile.peek() == '-' || inFile.peek() == '+') inFile.get();
+			if (inFile.peek() == '-' || inFile.peek() == '+') {
+				inFile.get();
+				if (inFile.peek() == '-') whole *= -1;
+			}
+
 			if (isDigit(inFile.peek()))
 				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
-			while (isDigit(inFile.peek())) inFile.get();
+
+			while (isDigit(inFile.peek())) {
+				(whole *= 10) += inFile.get() - '0';
+			}
 			if (inFile.peek() != '.') {
 				inFile.get();
-				while (isDigit(inFile.peek())) inFile.get();
+				while (isDigit(inFile.peek())) {
+					inFile.get();
+					exponent *= 10;
+				}
 			}
+
 			if (inFile.peek() != ' ' && inFile.peek() != ',' && inFile.peek() != '\n')
 				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % cells.get_count() + 1));
-			unsigned numberEnd = inFile.tellg();
 
-			inFile.seekg(numberStart, std::ios::beg);
-			cells[cells.get_count() - 1].add();
+			if (exponent == 1)
+				cells[cells.get_count() - 1].add(new CellInt(whole));
+			else
+				cells[cells.get_count() - 1].add(new CellDouble((double)whole / exponent));
 		}
 	}
 }

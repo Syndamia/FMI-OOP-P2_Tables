@@ -9,6 +9,17 @@
 Table* UserInterface::table = nullptr;
 
 void UserInterface::com_open(const char* params) {
+	if (table != nullptr) {
+		printLine("A file has already been opened!");
+		return;
+	}
+
+	try {
+		table = new Table(params);
+	}
+	catch (std::logic_error err) {
+		printLine(err.what());
+	}
 }
 void UserInterface::com_close(const char* params) {
 }

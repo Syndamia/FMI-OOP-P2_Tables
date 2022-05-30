@@ -8,6 +8,7 @@ class Table {
 	List<List<Cell*>> cells;
 
 public:
+	Table(const char* filePath);
 	Table(unsigned rows, unsigned cols);
 	unsigned get_cols() const;
 

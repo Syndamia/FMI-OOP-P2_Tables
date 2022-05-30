@@ -11,10 +11,12 @@
 #define FLOATING_POINT_PRECISION 0.00001f
 
 unsigned countOfCommas(std::ifstream& file) {
+	unsigned currPos = file.tellg();
 	unsigned commaCount = 0;
 	while (file.peek() != '\n') {
 		if (file.get() == ',') commaCount++;
 	}
+	file.seekg(currPos, std::ios::beg);
 	return commaCount;
 }
 
@@ -27,12 +29,13 @@ bool containsNumber(const char*& str) {
 	return ((*str == '+' || *str == '-') && (*(str + 1) >= '0' && *(str + 1) <= '9')) ||
 		   (*str >= '0' && *str <= '9'); // + or -, followed by digit, or it just a digit
 }
-
+#include <iostream>
 void Table::readFromFile(std::ifstream& inFile) {
 	unsigned commaCount = countOfCommas(inFile);
 	unsigned colInd = 0;
 	cells.add(List<Cell*>(commaCount));
 	while (inFile.peek() != EOF) {
+		std::cout << inFile.peek() << std::endl;
 		while (inFile.peek() == ' ') inFile.get();
 
 		// Entering a new cell on the current row

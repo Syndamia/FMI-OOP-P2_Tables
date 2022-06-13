@@ -42,6 +42,7 @@ void A(std::ifstream& in, List<char>& buffer) {
 void Table::readFromFile(std::ifstream& inFile) {
 	while (inFile.peek() != EOF) {
 		List<char> buffer;
+
 		W(inFile);
 		if (inFile.peek() == '"') {
 			inFile.get();
@@ -53,7 +54,14 @@ void Table::readFromFile(std::ifstream& inFile) {
 				: (Cell*)new CellString(buffer.raw_data());
 		}
 		else {
-			
+			P(inFile, buffer);
+			D(inFile, buffer);
+			if (inFile.peek() == '.') {
+				inFile.get();
+				D(inFile, buffer);
+			}
+			else
+				cells[0][0] = (Cell*)new CellInt(buffer.raw_data());
 		}
 	}
 }

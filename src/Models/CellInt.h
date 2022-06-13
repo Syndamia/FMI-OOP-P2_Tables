@@ -9,6 +9,7 @@ class CellInt : public Cell {
 public:
 	CellInt() = default;
 	CellInt(int value);
+	CellInt(const char* str);
 
 	double getNumeralValue() const override;
 	String getValueForPrint() const override;

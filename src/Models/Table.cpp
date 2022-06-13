@@ -8,110 +8,16 @@
 #include <exception>
 #include <stdexcept>
 
-#define FLOATING_POINT_PRECISION 0.00001f
+#include <iostream> // TODO: remove
 
-unsigned countOfCommas(std::ifstream& file) {
-	unsigned currPos = file.tellg();
-	unsigned commaCount = 0;
-	while (file.peek() != '\n' && file.peek() != EOF) {
-		if (file.get() == ',') commaCount++;
-	}
-	file.seekg(currPos, std::ios::beg);
-	return commaCount;
-}
-
-#define abs(a) ((a < 0) ? -a : a)
-#define isDigit(a) (a >= '0' && a <= '9')
-#define fileLocationExceptionMsg(mainMessage, lines, columns) (((String(mainMessage) += (unsigned)(lines)) += " and col ") += (unsigned)(columns)).get_cstr()
-
-bool containsNumber(const char*& str) {
-	while (*str == ' ') str++;
-	return ((*str == '+' || *str == '-') && (*(str + 1) >= '0' && *(str + 1) <= '9')) ||
-		   (*str >= '0' && *str <= '9'); // + or -, followed by digit, or it just a digit
-}
-#include <iostream>
+// Rough implementation of the grammar
+// S -> W"=A"W | W"=A"W | WDW | WD.DW
+// A -> Aa | Ab | ... | AZ | A* | ... | a | b | ...
+// D -> D0 | D1 | ... | D9 | 0 | 1 | ... | 9
+// W -> W  | epsilon
 void Table::readFromFile(std::ifstream& inFile) {
-	unsigned cols = countOfCommas(inFile) + 1;
-
-	unsigned colInd = 0;
-	cells.add(List<Cell*>(cols));
-	for (unsigned i = 0; i < cols; i++)
-		cells[cells.get_count() - 1][i] = nullptr;
-	while (inFile.peek() != EOF) {
-		while (inFile.peek() == ' ') inFile.get();
-
-		// Entering a new cell on the current row
-		if (inFile.peek() == ',') {
-			colInd++;
-			inFile.get();
-		}
-		// Entering a new row
-		else if (inFile.peek() == '\n') {
-			cells.add(List<Cell*>(cols));
-			for (unsigned i = 0; i < cols; i++)
-				cells[cells.get_count() - 1][i] = nullptr;
-			colInd = 0;
-			inFile.get();
-		}
-		// Parsing number
-		else if (inFile.peek() == '-' || inFile.peek() == '+' || isDigit(inFile.peek())) {
-			int whole = 0;
-			unsigned exponent = 1;
-
-			if (inFile.peek() == '-' || inFile.peek() == '+') {
-				inFile.get();
-				if (inFile.peek() == '-') whole *= -1;
-			}
-
-			if (!isDigit(inFile.peek()))
-				throw std::logic_error(fileLocationExceptionMsg("Error: Expected digit but got something else at row ", cells.get_count(), inFile.tellg() % cols + 1));
-
-			// Parsing digits of whole number/whole part of floating point number
-			while (isDigit(inFile.peek())) {
-				(whole *= 10) += inFile.get() - '0';
-			}
-			// Parsing digits of potential floating point number
-			if (inFile.peek() == '.') {
-				inFile.get();
-				while (isDigit(inFile.peek())) {
-					(whole *= 10) += inFile.get() - '0';
-					exponent *= 10;
-				}
-			}
-
-			if (inFile.peek() != ' ' && inFile.peek() != ',' && inFile.peek() != '\n')
-				throw std::logic_error(fileLocationExceptionMsg("Error: Expected space, comma or newline but got something else at row ", cells.get_count(), inFile.tellg() % cols + 1));
-
-			if (exponent == 1)
-				cells[cells.get_count() - 1][colInd] = (Cell*)new CellInt(whole);
-			else
-				cells[cells.get_count() - 1][colInd] = (Cell*)new CellDouble((double)whole / exponent);
-		}
-		// Parsing string or formula
-		else if (inFile.peek() == '"') {
-			String res;
-			inFile.get();
-			char buffer;
-			while (inFile.peek() != '"') {
-				if (inFile.peek() == '\n')
-					throw std::logic_error(fileLocationExceptionMsg("Error: Could not find a matching end quote for string at row ", cells.get_count(), inFile.tellg() % cols + 1));
-				if (inFile.peek() == '\\') {
-					inFile.get();
-				}
-				buffer = inFile.get();
-				res += (const char*)&buffer;
-			}
-			inFile.get();
-			
-			if (res.get_cstr()[0] == '=')
-				cells[cells.get_count() - 1][colInd] = (Cell*)new CellFormula(res.get_cstr(), &cells);
-			else
-				cells[cells.get_count() - 1][colInd] = (Cell*)new CellString(res.get_cstr());
-		}
-		else
-			throw std::logic_error(fileLocationExceptionMsg("Error: Could not determine type of value at row ", cells.get_count(), inFile.tellg() % cols + 1));
-	}
 }
+
 #include <iostream>
 Table::Table(const char* filePath) {
 	std::ifstream inFile(filePath);

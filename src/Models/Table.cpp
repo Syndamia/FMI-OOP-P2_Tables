@@ -79,10 +79,18 @@ void Table::readFromFile(std::ifstream& inFile) {
 			if (inFile.peek() == '.') {
 				buffer.add(inFile.get());
 				D(inFile, buffer);
+				W(inFile);
+
+				if (inFile.peek() != ',') throwException(inFile, row);
+
 				cells[row].add((Cell*)new CellDouble(buffer.raw_data()));
 			}
-			else
+			else {
+				W(inFile);
+				if (inFile.peek() != ',') throwException(inFile, row);
+
 				cells[row].add((Cell*)new CellInt(buffer.raw_data()));
+			}
 		}
 	}
 }

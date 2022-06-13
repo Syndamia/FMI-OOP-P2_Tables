@@ -67,7 +67,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			P(inFile, buffer);
 			D(inFile, buffer);
 			if (inFile.peek() == '.') {
-				inFile.get();
+				buffer.add(inFile.get());
 				D(inFile, buffer);
 				cells[row].add((Cell*)new CellDouble(buffer.raw_data()));
 			}

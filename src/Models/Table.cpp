@@ -11,10 +11,26 @@
 #include <iostream> // TODO: remove
 
 // Rough implementation of the grammar
+//
 // S -> W"=A"W | W"=A"W | WDW | WD.DW
-// A -> Aa | Ab | ... | AZ | A* | ... | a | b | ...
+// A -> Aa | Ab | ... | AZ | AD | A* | ... | a | b | ...
 // D -> D0 | D1 | ... | D9 | 0 | 1 | ... | 9
 // W -> W  | epsilon
+//
+// over the input file stream
+
+void W(std::ifstream& in) {
+	while (in.peek() == ' ') in.get();
+}
+
+void D(std::ifstream& in) {
+	while (in.peek() >= '0' && in.peek() <= '9') in.get();
+}
+
+void A(std::ifstream& in) {
+	while ((in.peek() >= '#' && in.peek() <= '~') || in.peek() == '!') in.get();
+}
+
 void Table::readFromFile(std::ifstream& inFile) {
 }
 

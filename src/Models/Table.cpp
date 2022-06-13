@@ -24,12 +24,14 @@ void W(std::ifstream& in) {
 	while (in.peek() == ' ') in.get();
 }
 
-void D(std::ifstream& in) {
-	while (in.peek() >= '0' && in.peek() <= '9') in.get();
+void D(std::ifstream& in, List<char>& buffer) {
+	while (in.peek() >= '0' && in.peek() <= '9')
+		buffer.add(in.get());
 }
 
-void A(std::ifstream& in) {
-	while ((in.peek() >= '#' && in.peek() <= '~') || in.peek() == '!') in.get();
+void A(std::ifstream& in, List<char>& buffer) {
+	while ((in.peek() >= '#' && in.peek() <= '~') || in.peek() == '!')
+		buffer.add(in.get());
 }
 
 void Table::readFromFile(std::ifstream& inFile) {
@@ -38,7 +40,8 @@ void Table::readFromFile(std::ifstream& inFile) {
 		if (inFile.peek() == '"') inFile.get();
 
 		if (inFile.peek() == '=') {
-
+			List<char> buffer;
+			A(inFile, buffer);
 		}
 	}
 }

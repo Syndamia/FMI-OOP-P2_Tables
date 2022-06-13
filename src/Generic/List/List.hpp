@@ -47,6 +47,8 @@ public:
 	T& operator[](unsigned index);
 	//! Returns constant reference to element at index
 	const T& operator[](unsigned index) const;
+	//! Returns raw array of data
+	const T* raw_data() const;
 
 	//! Appends elements from other list
 	List<T>& operator+=(const List<T> other);

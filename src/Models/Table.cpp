@@ -40,7 +40,17 @@ void A(std::ifstream& in, List<char>& buffer) {
 }
 
 void Table::readFromFile(std::ifstream& inFile) {
+	unsigned row = 0;
+	cells.add(List<Cell*>());
+
 	while (inFile.peek() != EOF) {
+		if (inFile.peek() == '\0') {
+			row++;
+			inFile.get();
+			cells.add(List<Cell*>());
+			continue;
+		}
+
 		List<char> buffer;
 
 		W(inFile);
@@ -49,9 +59,9 @@ void Table::readFromFile(std::ifstream& inFile) {
 			A(inFile, buffer);
 			buffer.add('\0');
 
-			cells[0][0] = (buffer[0] == '=')
+			cells[row].add((buffer[0] == '=')
 				? (Cell*)new CellFormula(buffer.raw_data(), &cells)
-				: (Cell*)new CellString(buffer.raw_data());
+				: (Cell*)new CellString(buffer.raw_data()));
 		}
 		else {
 			P(inFile, buffer);
@@ -59,10 +69,10 @@ void Table::readFromFile(std::ifstream& inFile) {
 			if (inFile.peek() == '.') {
 				inFile.get();
 				D(inFile, buffer);
-				cells[0][0] = (Cell*)new CellDouble(buffer.raw_data());
+				cells[row].add((Cell*)new CellDouble(buffer.raw_data()));
 			}
 			else
-				cells[0][0] = (Cell*)new CellInt(buffer.raw_data());
+				cells[row].add((Cell*)new CellInt(buffer.raw_data()));
 		}
 	}
 }

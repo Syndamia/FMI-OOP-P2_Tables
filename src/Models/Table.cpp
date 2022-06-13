@@ -35,8 +35,15 @@ void D(std::ifstream& in, List<char>& buffer) {
 }
 
 void A(std::ifstream& in, List<char>& buffer) {
-	while ((in.peek() >= '#' && in.peek() <= '~') || in.peek() == '!')
+	while ((in.peek() >= ' ' && in.peek() <= '~') && in.peek() == '"')
 		buffer.add(in.get());
+}
+
+void throwException(std::ifstream& inFile, unsigned row) {
+	throw std::logic_error((
+			(((((String("Error: Invalid character \"") += inFile.peek())
+			+= "\" at row ") += row) += "\" and column ") += ((int)inFile.tellg() / row))
+		).get_cstr());
 }
 
 void Table::readFromFile(std::ifstream& inFile) {
@@ -58,6 +65,9 @@ void Table::readFromFile(std::ifstream& inFile) {
 			inFile.get();
 			A(inFile, buffer);
 			buffer.add('\0');
+			W(inFile);
+
+			if (inFile.peek() != ',') throwException(inFile, row);
 
 			cells[row].add((buffer[0] == '=')
 				? (Cell*)new CellFormula(buffer.raw_data(), &cells)

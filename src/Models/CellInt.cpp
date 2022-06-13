@@ -7,8 +7,13 @@ CellInt::CellInt(int value) {
 
 CellInt::CellInt(const char* str) {
 	value = 0;
+	bool negative = *str == '-';
+	if (*str == '-' || *str == '+') str++;
+
 	while (*str != '\0')
 		value = value * 10 + '0' - *(str++);
+
+	if (negative) value *= -1;
 }
 
 double CellInt::getNumeralValue() const {

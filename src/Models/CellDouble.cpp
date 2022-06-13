@@ -5,6 +5,11 @@ CellDouble::CellDouble(double value) {
 	this->value = value;
 }
 
+CellDouble::CellDouble(const char* str) {
+	value = 0;
+
+}
+
 double CellDouble::getNumeralValue() const {
 	return value;
 }

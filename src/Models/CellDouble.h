@@ -9,6 +9,7 @@ class CellDouble : public Cell {
 public:
 	CellDouble() = default;
 	CellDouble(double value);
+	CellDouble(const char* str);
 
 	double getNumeralValue() const override;
 	String getValueForPrint() const override;

@@ -24,6 +24,11 @@ void W(std::ifstream& in) {
 	while (in.peek() == ' ') in.get();
 }
 
+void P(std::ifstream& in, List<char>& buffer) {
+	if (in.peek() == '-' || in.peek() == '+')
+		buffer.add(in.get());
+}
+
 void D(std::ifstream& in, List<char>& buffer) {
 	while (in.peek() >= '0' && in.peek() <= '9')
 		buffer.add(in.get());
@@ -36,12 +41,19 @@ void A(std::ifstream& in, List<char>& buffer) {
 
 void Table::readFromFile(std::ifstream& inFile) {
 	while (inFile.peek() != EOF) {
+		List<char> buffer;
 		W(inFile);
-		if (inFile.peek() == '"') inFile.get();
-
-		if (inFile.peek() == '=') {
-			List<char> buffer;
+		if (inFile.peek() == '"') {
+			inFile.get();
 			A(inFile, buffer);
+			buffer.add('\0');
+
+			cells[0][0] = (buffer[0] == '=')
+				? (Cell*)new CellFormula(buffer.raw_data(), &cells)
+				: (Cell*)new CellString(buffer.raw_data());
+		}
+		else {
+			
 		}
 	}
 }

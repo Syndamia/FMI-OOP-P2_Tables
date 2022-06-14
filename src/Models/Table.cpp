@@ -169,7 +169,7 @@ List<String> Table::getAllCells() const {
 	List<String> toRet;
 	for (unsigned i = 0; i < cells.get_count(); i++) {
 		for (unsigned j = 0; j < cells[i].get_count(); j++) {
-			std::cout << i << ' ' << j << std::endl;
+			std::cout <<cells[i][j]->getValueForPrint() << std::endl;
 			toRet.add(cells[i][j]->getValueForPrint());
 		}
 	}

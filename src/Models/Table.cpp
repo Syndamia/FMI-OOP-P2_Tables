@@ -35,8 +35,10 @@ void D(std::ifstream& in, List<char>& buffer) {
 }
 
 void A(std::ifstream& in, List<char>& buffer) {
-	while ((in.peek() >= ' ' && in.peek() <= '~') && in.peek() != '"')
+	while ((in.peek() >= ' ' && in.peek() <= '~') && in.peek() != '"') {
+		if (in.peek() == '\\') in.get();
 		buffer.add(in.get());
+	}
 }
 
 void throwException(std::ifstream& inFile, unsigned row) {

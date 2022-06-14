@@ -1,6 +1,6 @@
 # Custom project files
 *.txt
-*.fmita
+*.table
 
 # Prerequisites
 *.d

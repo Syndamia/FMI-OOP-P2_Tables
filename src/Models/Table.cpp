@@ -151,14 +151,20 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	while (*rawValue == ' ') rawValue++;
 
 	if (*rawValue == '"') {
-		String temp(++rawValue);
-		if (temp[temp.get_length() - 1] != '"')
+		List<char> buffer;
+		rawValue++;
+		while (*rawValue != '"' && *rawValue != '\0') {
+			if (*rawValue == '\\') rawValue++;
+			buffer.add(*rawValue);
+		}
+		if (*rawValue == '"' && *(rawValue + 1) != '\0')
+			throw std::logic_error("Error: Text after closing (inescaped) brace!");
+		else if (*rawValue != '"')
 			throw std::logic_error("Error: No closing brace found!");
-		temp[temp.get_length() - 1] = '\0';
 
-		newCell = (temp[0] == '=')
-					? (Cell*)new CellFormula(temp.get_cstr(), &cells)
-					: (Cell*)new CellString(temp.get_cstr());
+		newCell = (buffer[0] == '=')
+					? (Cell*)new CellFormula(buffer.raw_data(), &cells)
+					: (Cell*)new CellString(buffer.raw_data());
 	}
 	else if ((*rawValue == '+' || *rawValue == '-') || (*rawValue >= '0' && *rawValue <= '9')) {
 		double doubleParse = atof(rawValue);

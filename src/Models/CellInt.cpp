@@ -5,7 +5,9 @@ CellInt::CellInt(int value) {
 	this->value = value;
 }
 
+#include <iostream>
 CellInt::CellInt(const char* str) {
+	std::cout << "Int: " << str << std::endl;
 	value = 0;
 	bool negative = *str == '-';
 	if (*str == '-' || *str == '+') str++;

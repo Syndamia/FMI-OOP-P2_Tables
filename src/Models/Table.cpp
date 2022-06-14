@@ -166,7 +166,7 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 List<String> Table::getAllCells() const {
 	List<String> toRet;
 	for (unsigned i = 0; i < cells.get_count(); i++) {
-		for (unsigned j = 0; j < cells[i].get_length(); j++) {
+		for (unsigned j = 0; j < cells[i].get_count(); j++) {
 			std::cout << i << ' ' << j << std::endl;
 			toRet.add(cells[i][j]->getValueForPrint());
 		}

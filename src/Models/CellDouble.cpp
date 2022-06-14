@@ -5,7 +5,9 @@ CellDouble::CellDouble(double value) {
 	this->value = value;
 }
 
+#include <iostream>
 CellDouble::CellDouble(const char* str) {
+	std::cout << "Double: " << str << std::endl;
 	value = 0;
 	bool negative = *str == '-';
 	if (*str == '-' || *str == '+') str++;

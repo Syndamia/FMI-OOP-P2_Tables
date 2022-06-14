@@ -103,7 +103,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 		List<char> buffer;
 		W(str);
 		if (*str == 'R') {
-			D(str, buffer);
+			D(++str, buffer);
 			loc.left = atoi(buffer.raw_data());
 			if (*str != 'C') throw std::logic_error("Error: Invalid character!");
 			str++;

@@ -51,7 +51,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 	unsigned row = 0;
 	cells.add(List<Cell*>());
 
-	while (!inFile.eof()) {
+	while (inFile.peek() != EOF) {
 		if (inFile.peek() == '\n') {
 			row++;
 			inFile.get();
@@ -168,8 +168,7 @@ List<String> Table::getAllCells() const {
 	for (unsigned i = 0; i < cells.get_count(); i++) {
 		for (unsigned j = 0; j < cells[i].get_length(); j++) {
 			std::cout << i << ' ' << j << std::endl;
-			if (cells[i][j] == nullptr) toRet.add("");
-			else toRet.add(cells[i][j]->getValueForPrint());
+			toRet.add(cells[i][j]->getValueForPrint());
 		}
 	}
 	return toRet;

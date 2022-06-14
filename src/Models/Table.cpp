@@ -40,9 +40,10 @@ void A(std::ifstream& in, List<char>& buffer) {
 }
 
 void throwException(std::ifstream& inFile, unsigned row) {
+	row++;
 	throw std::logic_error((
-			(((((String("Error: Invalid character \"") += inFile.peek())
-			+= "\" at row ") += row) += "\" and column ") += ((int)inFile.tellg() / (row + 1)))
+			(((((String("Error: Invalid character \"") += (char)inFile.peek())
+			+= "\" at row ") += row) += "\" and column ") += ((int)inFile.tellg() / row))
 		).get_cstr());
 }
 

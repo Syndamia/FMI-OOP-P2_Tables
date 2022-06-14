@@ -7,6 +7,7 @@
 
 class Table {
 	List<List<Cell*>> cells;
+	unsigned longestRow;
 	void readFromFile(std::ifstream& inFile);
 
 public:

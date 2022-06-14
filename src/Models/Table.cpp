@@ -104,11 +104,15 @@ void Table::readFromFile(std::ifstream& inFile) {
 				cells[row].add((Cell*)new CellInt(buffer.raw_data()));
 			}
 		}
+
+		if (cells[row].get_count() > longestRow)
+			longestRow = cells[row].get_count();
 	}
 }
 
 #include <iostream>
 Table::Table(const char* filePath) {
+	longestRow = 0;
 	std::ifstream inFile(filePath);
 	if (!inFile.is_open())
 		throw std::logic_error("Could not open file!");
@@ -130,7 +134,7 @@ unsigned Table::get_rows() const {
 }
 
 unsigned Table::get_cols() const {
-	return cells[0].get_length();
+	return longestRow;
 }
 
 #define abs(a) ((a < 0) ? -a : a)

@@ -29,8 +29,9 @@ double CellFormula::calculate(unsigned index) const {
 	const Cell* currCell = ptrByInd(formula[index].left);
 	double numVal = (currCell == nullptr) ? 0 : currCell->getNumeralValue();
 
+	// Handle prioritised operation
 	while (formula[index].right < 0) {
-		switch (-formula[index++].right) {
+		switch (-formula[index++].right) { // Prioritized operations are stored as negative characters
 			case '+' : numVal += ptrByInd(formula[index].left)->getNumeralValue(); break;
 			case '*' : numVal *= ptrByInd(formula[index].left)->getNumeralValue(); break;
 			case '/' : if (ptrByInd(formula[index].left)->getNumeralValue() == 0) throw std::logic_error("Error: Divion by zero!");
@@ -59,6 +60,12 @@ CellFormula::CellFormula(const char* str, const List<List<Cell*>>* tableCells) :
 
 #include <iostream>
 
+/*!
+ * Value is recalculated every time this function is called (in case a referenced cell is changed).
+ *
+ * \return 0 \if Calculation failed
+ * \return Calculated value \otherwise
+ */
 double CellFormula::getNumeralValue() const {
 	try {
 		return calculate();
@@ -68,6 +75,12 @@ double CellFormula::getNumeralValue() const {
 	}
 }
 
+/*!
+ * Value is recalculated every time this function is called (in case a referenced cell is changed).
+ *
+ * \return "Error" \if Calculation failed
+ * \return Calculated value as a String \otherwise
+ */
 String CellFormula::getValueForPrint() const {
 	try {
 		return String() += calculate();

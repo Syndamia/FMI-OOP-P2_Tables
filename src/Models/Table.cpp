@@ -48,7 +48,7 @@ void throwException(std::ifstream& inFile, unsigned row) {
 }
 
 void Table::readFromFile(std::ifstream& inFile) {
-	unsigned row = 0;
+	unsigned row = longestRow = 0;
 	cells.add(List<Cell*>());
 
 	while (inFile.peek() != EOF) {
@@ -62,7 +62,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 		List<char> buffer;
 
 		W(inFile);
-		if (inFile.peek() == '"') {
+		if (inFile.peek() == '"') { // W"=A"S | W"A"S
 			inFile.get();
 			A(inFile, buffer);
 			buffer.add('\0');
@@ -77,11 +77,11 @@ void Table::readFromFile(std::ifstream& inFile) {
 				? (Cell*)new CellFormula(buffer.raw_data(), &cells)
 				: (Cell*)new CellString(buffer.raw_data()));
 		}
-		else if (inFile.peek() == ',') {
+		else if (inFile.peek() == ',') { // epsilon
 			inFile.get();
 			cells[row].add((Cell*)new CellString(""));
 		}
-		else {
+		else { // WPDS | WPD.DS
 			P(inFile, buffer);
 			D(inFile, buffer);
 			if (inFile.peek() == '.') {
@@ -123,9 +123,8 @@ Table::Table(const char* filePath) {
 
 Table::~Table() {
 	for (unsigned i = 0; i < cells.get_count(); i++) {
-		for (unsigned j = 0; j < cells[i].get_count(); j++) {
+		for (unsigned j = 0; j < cells[i].get_count(); j++)
 			delete cells[i][j];
-		}
 	}
 }
 
@@ -159,7 +158,6 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 					? (Cell*)new CellDouble(doubleParse)
 					: (Cell*)new CellInt(intPart);
 	}
-
 	else
 		throw std::logic_error("Error: Could not determine data type.");
 
@@ -177,10 +175,8 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 List<String> Table::getAllCells() const {
 	List<String> toRet;
 	for (unsigned i = 0; i < cells.get_count(); i++) {
-		for (unsigned j = 0; j < cells[i].get_count(); j++) {
-			std::cout <<cells[i][j]->getValueForPrint() << std::endl;
+		for (unsigned j = 0; j < cells[i].get_count(); j++)
 			toRet.add(cells[i][j]->getValueForPrint());
-		}
 	}
 	return toRet;
 }
@@ -191,9 +187,8 @@ void Table::saveToFile(const char* filePath) const {
 		throw std::logic_error("Could not open file!");
 
 	for (unsigned i = 0; i < cells.get_count(); i++) {
-		for (unsigned j = 0; j < cells.get_count(); j++) {
-			if (cells[i][j] != nullptr)
-				cells[i][j]->writeToFile(outFile);
+		for (unsigned j = 0; j < cells[i].get_count(); j++) {
+			cells[i][j]->writeToFile(outFile);
 			outFile << ',';
 		}
 		outFile << '\n';

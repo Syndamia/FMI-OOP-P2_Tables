@@ -122,8 +122,8 @@ Table::Table(const char* filePath) {
 }
 
 Table::~Table() {
-	for (unsigned i = 0; i < cells.get_length(); i++) {
-		for (unsigned j = 0; j < cells.get_length(); j++) {
+	for (unsigned i = 0; i < cells.get_count(); i++) {
+		for (unsigned j = 0; j < cells[i].get_count(); j++) {
 			delete cells[i][j];
 		}
 	}
@@ -163,10 +163,15 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	else
 		throw std::logic_error("Error: Could not determine data type.");
 
-	
-	if (cells[row][col] != nullptr)
+	if (cells[row].get_count() - 1 < col) {
+		while (cells[row].get_count() < col)
+			cells[row].add((Cell*)new CellString());
+		cells[row].add(newCell);
+	}
+	else {
 		delete cells[row][col];
-	cells[row][col] = newCell;
+		cells[row][col] = newCell;
+	}
 }
 
 List<String> Table::getAllCells() const {

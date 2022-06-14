@@ -146,10 +146,14 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	while (*rawValue == ' ') rawValue++;
 
 	if (*rawValue == '"') {
-		String temp(rawValue);
-		newCell = (*rawValue == '=')
-					? (Cell*)new CellFormula(rawValue, &cells)
-					: (Cell*)new CellString(rawValue);
+		String temp(++rawValue);
+		if (temp[temp.get_length() - 1] != '"')
+			throw std::logic_error("Error: No closing brace found!");
+		temp[temp.get_length() - 1] = '\0';
+
+		newCell = (temp[0] == '=')
+					? (Cell*)new CellFormula(temp.get_cstr(), &cells)
+					: (Cell*)new CellString(temp.get_cstr());
 	}
 	else if ((*rawValue == '+' || *rawValue == '-') || (*rawValue >= '0' && *rawValue <= '9')) {
 		double doubleParse = atof(rawValue);

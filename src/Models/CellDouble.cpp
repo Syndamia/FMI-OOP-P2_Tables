@@ -5,6 +5,9 @@ CellDouble::CellDouble(double value) {
 	this->value = value;
 }
 
+/*!
+ * Accepts a C-style string in the form "<+/-><digits>.<digits>"
+ */
 CellDouble::CellDouble(const char* str) {
 	value = 0;
 	bool negative = *str == '-';

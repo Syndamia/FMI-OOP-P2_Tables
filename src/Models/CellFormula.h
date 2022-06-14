@@ -1,11 +1,19 @@
 #ifndef HEADER_CELLFORMULA
 #define HEADER_CELLFORMULA
 
+/*! \file CellFormula.h
+ *  \brief Stores the declaration of class CellFormula
+ */
+
 #include "Cell.h"
 #include "CellDouble.h"
 #include "../Generic/List/List.hpp"
 #include "../Generic/Pair/Pair.hpp"
 
+/*! \brief A table cell which contains a formula
+ *
+ * Implements the Cell class by storing a formula as a String and in a dynamic List
+ */
 class CellFormula : public Cell {
 	const List<List<Cell*>>* tableCells;
 	List<CellDouble> localCells;

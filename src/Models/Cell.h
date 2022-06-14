@@ -8,7 +8,7 @@
 #include <fstream>
 #include "../Generic/String/String.h"
 
-/*! \brief Generic class for each cell in a table
+/*! \brief Fully abstract class that represents a cell in the table
  */
 class Cell {
 public:

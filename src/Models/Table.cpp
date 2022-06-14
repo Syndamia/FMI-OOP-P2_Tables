@@ -49,13 +49,14 @@ void throwException(std::ifstream& inFile, unsigned row) {
 
 void Table::readFromFile(std::ifstream& inFile) {
 	unsigned row = longestRow = 0;
-	cells.add(List<Cell*>());
 
 	while (inFile.peek() != EOF) {
+		if (cells.get_count() < row + 1)
+			cells.add(List<Cell*>());
+
 		if (inFile.peek() == '\n') {
 			row++;
 			inFile.get();
-			cells.add(List<Cell*>());
 			continue;
 		}
 
@@ -79,7 +80,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 		}
 		else if (inFile.peek() == ',') { // epsilon
 			inFile.get();
-			cells[row].add((Cell*)new CellString(""));
+			cells[row].add(nullptr);
 		}
 		else { // WPDS | WPD.DS
 			P(inFile, buffer);
@@ -175,8 +176,12 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 List<String> Table::getAllCells() const {
 	List<String> toRet;
 	for (unsigned i = 0; i < cells.get_count(); i++) {
-		for (unsigned j = 0; j < cells[i].get_count(); j++)
-			toRet.add(cells[i][j]->getValueForPrint());
+		for (unsigned j = 0; j < cells[i].get_count(); j++) {
+			if (cells[i][j] != nullptr)
+				toRet.add(cells[i][j]->getValueForPrint());
+			else
+				toRet.add("");
+		}
 	}
 	return toRet;
 }
@@ -188,7 +193,8 @@ void Table::saveToFile(const char* filePath) const {
 
 	for (unsigned i = 0; i < cells.get_count(); i++) {
 		for (unsigned j = 0; j < cells[i].get_count(); j++) {
-			cells[i][j]->writeToFile(outFile);
+			if (cells[i][j] != nullptr)
+				cells[i][j]->writeToFile(outFile);
 			outFile << ',';
 		}
 		outFile << '\n';

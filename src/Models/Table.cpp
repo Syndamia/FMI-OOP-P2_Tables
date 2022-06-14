@@ -146,7 +146,7 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	while (*rawValue == ' ') rawValue++;
 
 	if (*rawValue == '"') {
-		rawValue++;
+		String temp(rawValue);
 		newCell = (*rawValue == '=')
 					? (Cell*)new CellFormula(rawValue, &cells)
 					: (Cell*)new CellString(rawValue);

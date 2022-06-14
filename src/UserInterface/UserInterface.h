@@ -1,10 +1,16 @@
 #ifndef HEADER_USERINTERFACE
 #define HEADER_USERINTERFACE
 
+/*! \file UserInterface.h
+ *  \brief Stores the declaration of class UserInterface
+ */
+
 #include "../Generic/ConsoleInterface/Menu.h"
 #include "../Generic/String/String.h"
 #include "../Models/Table.h"
 
+/*! \brief The class that contains and via which the user controls the application's user interface
+ */
 class UserInterface {
 	Menu menu;
 
@@ -24,6 +30,7 @@ class UserInterface {
 
 public:
 	UserInterface();
+	//! Starts the user interface
 	void run();
 };
 

@@ -35,15 +35,15 @@ void D(std::ifstream& in, List<char>& buffer) {
 }
 
 void A(std::ifstream& in, List<char>& buffer) {
-	while ((in.peek() >= ' ' && in.peek() <= '~') && in.peek() == '"')
+	while ((in.peek() >= ' ' && in.peek() <= '~') && in.peek() != '"')
 		buffer.add(in.get());
 }
 
 void throwException(std::ifstream& inFile, unsigned row) {
 	row++;
 	throw std::logic_error((
-			(((((String("Error: Invalid character \"") += (char)inFile.peek())
-			+= "\" at row ") += row) += "\" and column ") += ((int)inFile.tellg() / row))
+			(((((String("Error: Invalid character '") += (char)inFile.peek())
+			+= "' at row ") += row) += "\" and column ") += ((int)inFile.tellg() / row + 1))
 		).get_cstr());
 }
 
@@ -66,6 +66,8 @@ void Table::readFromFile(std::ifstream& inFile) {
 			inFile.get();
 			A(inFile, buffer);
 			buffer.add('\0');
+			if (inFile.peek() != '"') throwException(inFile, row);
+			inFile.get();
 			W(inFile);
 
 			if (inFile.peek() != ',') throwException(inFile, row);
@@ -74,6 +76,10 @@ void Table::readFromFile(std::ifstream& inFile) {
 			cells[row].add((buffer[0] == '=')
 				? (Cell*)new CellFormula(buffer.raw_data(), &cells)
 				: (Cell*)new CellString(buffer.raw_data()));
+		}
+		else if (inFile.peek() == ',') {
+			inFile.get();
+			cells[row].add((Cell*)new CellString(""));
 		}
 		else {
 			P(inFile, buffer);

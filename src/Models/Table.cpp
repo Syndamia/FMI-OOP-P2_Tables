@@ -42,7 +42,7 @@ void A(std::ifstream& in, List<char>& buffer) {
 void throwException(std::ifstream& inFile, unsigned row) {
 	throw std::logic_error((
 			(((((String("Error: Invalid character \"") += inFile.peek())
-			+= "\" at row ") += row) += "\" and column ") += ((int)inFile.tellg() / row))
+			+= "\" at row ") += row) += "\" and column ") += ((int)inFile.tellg() / (row + 1)))
 		).get_cstr());
 }
 
@@ -50,7 +50,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 	unsigned row = 0;
 	cells.add(List<Cell*>());
 
-	while (inFile.peek() != EOF) {
+	while (!inFile.eof()) {
 		if (inFile.peek() == '\n') {
 			row++;
 			inFile.get();
@@ -68,6 +68,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 			W(inFile);
 
 			if (inFile.peek() != ',') throwException(inFile, row);
+			inFile.get();
 
 			cells[row].add((buffer[0] == '=')
 				? (Cell*)new CellFormula(buffer.raw_data(), &cells)
@@ -82,12 +83,14 @@ void Table::readFromFile(std::ifstream& inFile) {
 				W(inFile);
 
 				if (inFile.peek() != ',') throwException(inFile, row);
+				inFile.get();
 
 				cells[row].add((Cell*)new CellDouble(buffer.raw_data()));
 			}
 			else {
 				W(inFile);
 				if (inFile.peek() != ',') throwException(inFile, row);
+				inFile.get();
 
 				cells[row].add((Cell*)new CellInt(buffer.raw_data()));
 			}

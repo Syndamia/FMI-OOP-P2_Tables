@@ -1,0 +1,144 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}FMI Tables}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}About}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Structure overview}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Building the project}{2}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Linux/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BSD/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}OS}{2}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Windows (\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Power\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Shell)}{2}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Figures}{2}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Class Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Cell Class Reference}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{9}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Member Function Documentation}{9}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}getNumeralValue()}{10}{subsubsection.5.1.2.1}%
+\contentsline {subsubsection}{\numberline {5.1.2.2}getValueForPrint()}{10}{subsubsection.5.1.2.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.3}parseAndSetValue()}{10}{subsubsection.5.1.2.3}%
+\contentsline {subsubsection}{\numberline {5.1.2.4}writeToFile()}{10}{subsubsection.5.1.2.4}%
+\contentsline {section}{\numberline {5.2}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Double Class Reference}{11}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Detailed Description}{11}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Constructor \& Destructor Documentation}{11}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}CellDouble()}{11}{subsubsection.5.2.2.1}%
+\contentsline {subsection}{\numberline {5.2.3}Member Function Documentation}{11}{subsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.1}getNumeralValue()}{12}{subsubsection.5.2.3.1}%
+\contentsline {subsubsection}{\numberline {5.2.3.2}getValueForPrint()}{12}{subsubsection.5.2.3.2}%
+\contentsline {subsubsection}{\numberline {5.2.3.3}parseAndSetValue()}{12}{subsubsection.5.2.3.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.4}writeToFile()}{12}{subsubsection.5.2.3.4}%
+\contentsline {section}{\numberline {5.3}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Formula Class Reference}{13}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{13}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Member Function Documentation}{13}{subsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.1}getNumeralValue()}{13}{subsubsection.5.3.2.1}%
+\contentsline {subsubsection}{\numberline {5.3.2.2}getValueForPrint()}{14}{subsubsection.5.3.2.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.3}parseAndSetValue()}{14}{subsubsection.5.3.2.3}%
+\contentsline {subsubsection}{\numberline {5.3.2.4}writeToFile()}{14}{subsubsection.5.3.2.4}%
+\contentsline {section}{\numberline {5.4}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Int Class Reference}{15}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Detailed Description}{15}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Member Function Documentation}{15}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}getNumeralValue()}{15}{subsubsection.5.4.2.1}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}getValueForPrint()}{16}{subsubsection.5.4.2.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.3}parseAndSetValue()}{16}{subsubsection.5.4.2.3}%
+\contentsline {subsubsection}{\numberline {5.4.2.4}writeToFile()}{16}{subsubsection.5.4.2.4}%
+\contentsline {section}{\numberline {5.5}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}String Class Reference}{16}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{17}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Member Function Documentation}{17}{subsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.1}getNumeralValue()}{17}{subsubsection.5.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.5.2.2}getValueForPrint()}{17}{subsubsection.5.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.3}parseAndSetValue()}{17}{subsubsection.5.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.5.2.4}writeToFile()}{18}{subsubsection.5.5.2.4}%
+\contentsline {section}{\numberline {5.6}Command Class Reference}{18}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{18}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Constructor \& Destructor Documentation}{18}{subsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.1}Command()}{18}{subsubsection.5.6.2.1}%
+\contentsline {subsection}{\numberline {5.6.3}Member Function Documentation}{19}{subsection.5.6.3}%
+\contentsline {subsubsection}{\numberline {5.6.3.1}run()}{19}{subsubsection.5.6.3.1}%
+\contentsline {section}{\numberline {5.7}List$<$ T $>$ Class Template Reference}{19}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{20}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Member Function Documentation}{21}{subsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.1}add()}{21}{subsubsection.5.7.2.1}%
+\contentsline {subsubsection}{\numberline {5.7.2.2}contain()}{21}{subsubsection.5.7.2.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.3}findIndex()}{21}{subsubsection.5.7.2.3}%
+\contentsline {subsubsection}{\numberline {5.7.2.4}get\_count()}{22}{subsubsection.5.7.2.4}%
+\contentsline {subsubsection}{\numberline {5.7.2.5}get\_length()}{22}{subsubsection.5.7.2.5}%
+\contentsline {subsubsection}{\numberline {5.7.2.6}insertAt()}{22}{subsubsection.5.7.2.6}%
+\contentsline {subsubsection}{\numberline {5.7.2.7}read()}{22}{subsubsection.5.7.2.7}%
+\contentsline {subsubsection}{\numberline {5.7.2.8}removeAt()}{23}{subsubsection.5.7.2.8}%
+\contentsline {subsubsection}{\numberline {5.7.2.9}write()}{23}{subsubsection.5.7.2.9}%
+\contentsline {section}{\numberline {5.8}Menu Class Reference}{24}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Detailed Description}{24}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Member Function Documentation}{24}{subsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.2.1}navigate()}{24}{subsubsection.5.8.2.1}%
+\contentsline {section}{\numberline {5.9}Pair$<$ T, U $>$ Struct Template Reference}{25}{section.5.9}%
+\contentsline {subsection}{\numberline {5.9.1}Detailed Description}{25}{subsection.5.9.1}%
+\contentsline {section}{\numberline {5.10}String Class Reference}{25}{section.5.10}%
+\contentsline {subsection}{\numberline {5.10.1}Detailed Description}{26}{subsection.5.10.1}%
+\contentsline {subsection}{\numberline {5.10.2}Constructor \& Destructor Documentation}{26}{subsection.5.10.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.1}String()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{27}{subsubsection.5.10.2.1}%
+\contentsline {subsubsection}{\numberline {5.10.2.2}String()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{27}{subsubsection.5.10.2.2}%
+\contentsline {subsection}{\numberline {5.10.3}Member Function Documentation}{27}{subsection.5.10.3}%
+\contentsline {subsubsection}{\numberline {5.10.3.1}compare()}{27}{subsubsection.5.10.3.1}%
+\contentsline {subsubsection}{\numberline {5.10.3.2}operator+=()\hspace {0.1cm}{\footnotesize \ttfamily [1/4]}}{27}{subsubsection.5.10.3.2}%
+\contentsline {subsubsection}{\numberline {5.10.3.3}operator+=()\hspace {0.1cm}{\footnotesize \ttfamily [2/4]}}{28}{subsubsection.5.10.3.3}%
+\contentsline {subsubsection}{\numberline {5.10.3.4}operator+=()\hspace {0.1cm}{\footnotesize \ttfamily [3/4]}}{28}{subsubsection.5.10.3.4}%
+\contentsline {subsubsection}{\numberline {5.10.3.5}operator+=()\hspace {0.1cm}{\footnotesize \ttfamily [4/4]}}{28}{subsubsection.5.10.3.5}%
+\contentsline {subsubsection}{\numberline {5.10.3.6}read()}{28}{subsubsection.5.10.3.6}%
+\contentsline {subsubsection}{\numberline {5.10.3.7}write()}{29}{subsubsection.5.10.3.7}%
+\contentsline {subsection}{\numberline {5.10.4}Friends And Related Function Documentation}{29}{subsection.5.10.4}%
+\contentsline {subsubsection}{\numberline {5.10.4.1}operator$<$$<$}{29}{subsubsection.5.10.4.1}%
+\contentsline {subsubsection}{\numberline {5.10.4.2}operator$>$$>$}{30}{subsubsection.5.10.4.2}%
+\contentsline {section}{\numberline {5.11}Table Class Reference}{30}{section.5.11}%
+\contentsline {subsection}{\numberline {5.11.1}Detailed Description}{30}{subsection.5.11.1}%
+\contentsline {section}{\numberline {5.12}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interface Class Reference}{31}{section.5.12}%
+\contentsline {subsection}{\numberline {5.12.1}Detailed Description}{31}{subsection.5.12.1}%
+\contentsline {chapter}{\numberline {6}File Documentation}{33}{chapter.6}%
+\contentsline {section}{\numberline {6.1}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Generic/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interface/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Command.h File Reference}{33}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{33}{subsection.6.1.1}%
+\contentsline {section}{\numberline {6.2}Command.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{33}{section.6.2}%
+\contentsline {section}{\numberline {6.3}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Generic/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interface/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu.h File Reference}{33}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{34}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.4}Menu.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{34}{section.6.4}%
+\contentsline {section}{\numberline {6.5}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Generic/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Console\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interface/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Toolbox.hpp File Reference}{34}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{35}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Function Documentation}{35}{subsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.2.1}inputLineBox()}{35}{subsubsection.6.5.2.1}%
+\contentsline {subsubsection}{\numberline {6.5.2.2}printTable()}{36}{subsubsection.6.5.2.2}%
+\contentsline {section}{\numberline {6.6}Toolbox.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{36}{section.6.6}%
+\contentsline {section}{\numberline {6.7}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Generic/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List.hpp File Reference}{37}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{37}{subsection.6.7.1}%
+\contentsline {subsection}{\numberline {6.7.2}Function Documentation}{37}{subsection.6.7.2}%
+\contentsline {subsubsection}{\numberline {6.7.2.1}operator$<$$<$()}{38}{subsubsection.6.7.2.1}%
+\contentsline {subsubsection}{\numberline {6.7.2.2}operator$>$$>$()}{38}{subsubsection.6.7.2.2}%
+\contentsline {section}{\numberline {6.8}List.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{39}{section.6.8}%
+\contentsline {section}{\numberline {6.9}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Generic/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pair/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pair.hpp File Reference}{42}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{42}{subsection.6.9.1}%
+\contentsline {section}{\numberline {6.10}Pair.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{42}{section.6.10}%
+\contentsline {section}{\numberline {6.11}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Generic/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}String/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}String.h File Reference}{43}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{43}{subsection.6.11.1}%
+\contentsline {section}{\numberline {6.12}String.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{43}{section.6.12}%
+\contentsline {section}{\numberline {6.13}src/main.cpp File Reference}{44}{section.6.13}%
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{44}{subsection.6.13.1}%
+\contentsline {section}{\numberline {6.14}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Models/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cell.h File Reference}{44}{section.6.14}%
+\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{44}{subsection.6.14.1}%
+\contentsline {section}{\numberline {6.15}Cell.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{44}{section.6.15}%
+\contentsline {section}{\numberline {6.16}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Models/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Double.h File Reference}{45}{section.6.16}%
+\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{45}{subsection.6.16.1}%
+\contentsline {section}{\numberline {6.17}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Double.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{45}{section.6.17}%
+\contentsline {section}{\numberline {6.18}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Models/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Formula.h File Reference}{45}{section.6.18}%
+\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{46}{subsection.6.18.1}%
+\contentsline {section}{\numberline {6.19}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Formula.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{46}{section.6.19}%
+\contentsline {section}{\numberline {6.20}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Models/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Int.h File Reference}{46}{section.6.20}%
+\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{46}{subsection.6.20.1}%
+\contentsline {section}{\numberline {6.21}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Int.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{47}{section.6.21}%
+\contentsline {section}{\numberline {6.22}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Models/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}String.h File Reference}{47}{section.6.22}%
+\contentsline {subsection}{\numberline {6.22.1}Detailed Description}{47}{subsection.6.22.1}%
+\contentsline {section}{\numberline {6.23}Cell\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}String.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{47}{section.6.23}%
+\contentsline {section}{\numberline {6.24}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Models/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Table.h File Reference}{48}{section.6.24}%
+\contentsline {subsection}{\numberline {6.24.1}Detailed Description}{48}{subsection.6.24.1}%
+\contentsline {section}{\numberline {6.25}Table.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{48}{section.6.25}%
+\contentsline {section}{\numberline {6.26}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interface/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interface.h File Reference}{48}{section.6.26}%
+\contentsline {subsection}{\numberline {6.26.1}Detailed Description}{49}{subsection.6.26.1}%
+\contentsline {section}{\numberline {6.27}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interface.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{49}{section.6.27}%

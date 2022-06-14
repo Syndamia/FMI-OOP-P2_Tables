@@ -1,0 +1,135 @@
+\indexentry{Cell@{Cell}|hyperpage}{9}
+\indexentry{Cell@{Cell}!getNumeralValue@{getNumeralValue}|hyperpage}{9}
+\indexentry{getNumeralValue@{getNumeralValue}!Cell@{Cell}|hyperpage}{9}
+\indexentry{Cell@{Cell}!getValueForPrint@{getValueForPrint}|hyperpage}{10}
+\indexentry{getValueForPrint@{getValueForPrint}!Cell@{Cell}|hyperpage}{10}
+\indexentry{Cell@{Cell}!parseAndSetValue@{parseAndSetValue}|hyperpage}{10}
+\indexentry{parseAndSetValue@{parseAndSetValue}!Cell@{Cell}|hyperpage}{10}
+\indexentry{Cell@{Cell}!writeToFile@{writeToFile}|hyperpage}{10}
+\indexentry{writeToFile@{writeToFile}!Cell@{Cell}|hyperpage}{10}
+\indexentry{CellDouble@{CellDouble}|hyperpage}{11}
+\indexentry{CellDouble@{CellDouble}!CellDouble@{CellDouble}|hyperpage}{11}
+\indexentry{CellDouble@{CellDouble}!CellDouble@{CellDouble}|hyperpage}{11}
+\indexentry{CellDouble@{CellDouble}!getNumeralValue@{getNumeralValue}|hyperpage}{11}
+\indexentry{getNumeralValue@{getNumeralValue}!CellDouble@{CellDouble}|hyperpage}{11}
+\indexentry{CellDouble@{CellDouble}!getValueForPrint@{getValueForPrint}|hyperpage}{12}
+\indexentry{getValueForPrint@{getValueForPrint}!CellDouble@{CellDouble}|hyperpage}{12}
+\indexentry{CellDouble@{CellDouble}!parseAndSetValue@{parseAndSetValue}|hyperpage}{12}
+\indexentry{parseAndSetValue@{parseAndSetValue}!CellDouble@{CellDouble}|hyperpage}{12}
+\indexentry{CellDouble@{CellDouble}!writeToFile@{writeToFile}|hyperpage}{12}
+\indexentry{writeToFile@{writeToFile}!CellDouble@{CellDouble}|hyperpage}{12}
+\indexentry{CellFormula@{CellFormula}|hyperpage}{13}
+\indexentry{CellFormula@{CellFormula}!getNumeralValue@{getNumeralValue}|hyperpage}{13}
+\indexentry{getNumeralValue@{getNumeralValue}!CellFormula@{CellFormula}|hyperpage}{13}
+\indexentry{CellFormula@{CellFormula}!getValueForPrint@{getValueForPrint}|hyperpage}{13}
+\indexentry{getValueForPrint@{getValueForPrint}!CellFormula@{CellFormula}|hyperpage}{13}
+\indexentry{CellFormula@{CellFormula}!parseAndSetValue@{parseAndSetValue}|hyperpage}{14}
+\indexentry{parseAndSetValue@{parseAndSetValue}!CellFormula@{CellFormula}|hyperpage}{14}
+\indexentry{CellFormula@{CellFormula}!writeToFile@{writeToFile}|hyperpage}{14}
+\indexentry{writeToFile@{writeToFile}!CellFormula@{CellFormula}|hyperpage}{14}
+\indexentry{CellInt@{CellInt}|hyperpage}{15}
+\indexentry{CellInt@{CellInt}!getNumeralValue@{getNumeralValue}|hyperpage}{15}
+\indexentry{getNumeralValue@{getNumeralValue}!CellInt@{CellInt}|hyperpage}{15}
+\indexentry{CellInt@{CellInt}!getValueForPrint@{getValueForPrint}|hyperpage}{15}
+\indexentry{getValueForPrint@{getValueForPrint}!CellInt@{CellInt}|hyperpage}{15}
+\indexentry{CellInt@{CellInt}!parseAndSetValue@{parseAndSetValue}|hyperpage}{16}
+\indexentry{parseAndSetValue@{parseAndSetValue}!CellInt@{CellInt}|hyperpage}{16}
+\indexentry{CellInt@{CellInt}!writeToFile@{writeToFile}|hyperpage}{16}
+\indexentry{writeToFile@{writeToFile}!CellInt@{CellInt}|hyperpage}{16}
+\indexentry{CellString@{CellString}|hyperpage}{16}
+\indexentry{CellString@{CellString}!getNumeralValue@{getNumeralValue}|hyperpage}{17}
+\indexentry{getNumeralValue@{getNumeralValue}!CellString@{CellString}|hyperpage}{17}
+\indexentry{CellString@{CellString}!getValueForPrint@{getValueForPrint}|hyperpage}{17}
+\indexentry{getValueForPrint@{getValueForPrint}!CellString@{CellString}|hyperpage}{17}
+\indexentry{CellString@{CellString}!parseAndSetValue@{parseAndSetValue}|hyperpage}{17}
+\indexentry{parseAndSetValue@{parseAndSetValue}!CellString@{CellString}|hyperpage}{17}
+\indexentry{CellString@{CellString}!writeToFile@{writeToFile}|hyperpage}{17}
+\indexentry{writeToFile@{writeToFile}!CellString@{CellString}|hyperpage}{17}
+\indexentry{Command@{Command}|hyperpage}{18}
+\indexentry{Command@{Command}!Command@{Command}|hyperpage}{18}
+\indexentry{Command@{Command}!Command@{Command}|hyperpage}{18}
+\indexentry{Command@{Command}!run@{run}|hyperpage}{19}
+\indexentry{run@{run}!Command@{Command}|hyperpage}{19}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}|hyperpage}{19}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!add@{add}|hyperpage}{21}
+\indexentry{add@{add}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{21}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!contain@{contain}|hyperpage}{21}
+\indexentry{contain@{contain}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{21}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!findIndex@{findIndex}|hyperpage}{21}
+\indexentry{findIndex@{findIndex}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{21}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!get\_count@{get\_count}|hyperpage}{21}
+\indexentry{get\_count@{get\_count}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{21}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!get\_length@{get\_length}|hyperpage}{22}
+\indexentry{get\_length@{get\_length}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{22}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!insertAt@{insertAt}|hyperpage}{22}
+\indexentry{insertAt@{insertAt}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{22}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!read@{read}|hyperpage}{22}
+\indexentry{read@{read}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{22}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!removeAt@{removeAt}|hyperpage}{23}
+\indexentry{removeAt@{removeAt}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{23}
+\indexentry{List$<$ T $>$@{List$<$ T $>$}!write@{write}|hyperpage}{23}
+\indexentry{write@{write}!List$<$ T $>$@{List$<$ T $>$}|hyperpage}{23}
+\indexentry{Menu@{Menu}|hyperpage}{24}
+\indexentry{Menu@{Menu}!navigate@{navigate}|hyperpage}{24}
+\indexentry{navigate@{navigate}!Menu@{Menu}|hyperpage}{24}
+\indexentry{Pair$<$ T, U $>$@{Pair$<$ T, U $>$}|hyperpage}{25}
+\indexentry{String@{String}|hyperpage}{25}
+\indexentry{String@{String}!String@{String}|hyperpage}{26}
+\indexentry{String@{String}!String@{String}|hyperpage}{26}
+\indexentry{String@{String}!String@{String}|hyperpage}{27}
+\indexentry{String@{String}!String@{String}|hyperpage}{27}
+\indexentry{String@{String}!compare@{compare}|hyperpage}{27}
+\indexentry{compare@{compare}!String@{String}|hyperpage}{27}
+\indexentry{String@{String}!operator+=@{operator+=}|hyperpage}{27}
+\indexentry{operator+=@{operator+=}!String@{String}|hyperpage}{27}
+\indexentry{String@{String}!operator+=@{operator+=}|hyperpage}{27}
+\indexentry{operator+=@{operator+=}!String@{String}|hyperpage}{27}
+\indexentry{String@{String}!operator+=@{operator+=}|hyperpage}{28}
+\indexentry{operator+=@{operator+=}!String@{String}|hyperpage}{28}
+\indexentry{String@{String}!operator+=@{operator+=}|hyperpage}{28}
+\indexentry{operator+=@{operator+=}!String@{String}|hyperpage}{28}
+\indexentry{String@{String}!read@{read}|hyperpage}{28}
+\indexentry{read@{read}!String@{String}|hyperpage}{28}
+\indexentry{String@{String}!write@{write}|hyperpage}{28}
+\indexentry{write@{write}!String@{String}|hyperpage}{28}
+\indexentry{String@{String}!operator$<$$<$@{operator$<$$<$}|hyperpage}{29}
+\indexentry{operator$<$$<$@{operator$<$$<$}!String@{String}|hyperpage}{29}
+\indexentry{String@{String}!operator$>$$>$@{operator$>$$>$}|hyperpage}{29}
+\indexentry{operator$>$$>$@{operator$>$$>$}!String@{String}|hyperpage}{29}
+\indexentry{Table@{Table}|hyperpage}{30}
+\indexentry{UserInterface@{UserInterface}|hyperpage}{31}
+\indexentry{src/Generic/ConsoleInterface/Command.h@{src/Generic/ConsoleInterface/Command.h}|hyperpage}{33}
+\indexentry{src/Generic/ConsoleInterface/Command.h@{src/Generic/ConsoleInterface/Command.h}|hyperpage}{33}
+\indexentry{src/Generic/ConsoleInterface/Menu.h@{src/Generic/ConsoleInterface/Menu.h}|hyperpage}{33}
+\indexentry{src/Generic/ConsoleInterface/Menu.h@{src/Generic/ConsoleInterface/Menu.h}|hyperpage}{34}
+\indexentry{src/Generic/ConsoleInterface/Toolbox.hpp@{src/Generic/ConsoleInterface/Toolbox.hpp}|hyperpage}{34}
+\indexentry{Toolbox.hpp@{Toolbox.hpp}!inputLineBox@{inputLineBox}|hyperpage}{35}
+\indexentry{inputLineBox@{inputLineBox}!Toolbox.hpp@{Toolbox.hpp}|hyperpage}{35}
+\indexentry{Toolbox.hpp@{Toolbox.hpp}!printTable@{printTable}|hyperpage}{36}
+\indexentry{printTable@{printTable}!Toolbox.hpp@{Toolbox.hpp}|hyperpage}{36}
+\indexentry{src/Generic/ConsoleInterface/Toolbox.hpp@{src/Generic/ConsoleInterface/Toolbox.hpp}|hyperpage}{36}
+\indexentry{src/Generic/List/List.hpp@{src/Generic/List/List.hpp}|hyperpage}{37}
+\indexentry{List.hpp@{List.hpp}!operator$<$$<$@{operator$<$$<$}|hyperpage}{37}
+\indexentry{operator$<$$<$@{operator$<$$<$}!List.hpp@{List.hpp}|hyperpage}{37}
+\indexentry{List.hpp@{List.hpp}!operator$>$$>$@{operator$>$$>$}|hyperpage}{38}
+\indexentry{operator$>$$>$@{operator$>$$>$}!List.hpp@{List.hpp}|hyperpage}{38}
+\indexentry{src/Generic/List/List.hpp@{src/Generic/List/List.hpp}|hyperpage}{39}
+\indexentry{src/Generic/Pair/Pair.hpp@{src/Generic/Pair/Pair.hpp}|hyperpage}{42}
+\indexentry{src/Generic/Pair/Pair.hpp@{src/Generic/Pair/Pair.hpp}|hyperpage}{42}
+\indexentry{src/Generic/String/String.h@{src/Generic/String/String.h}|hyperpage}{43}
+\indexentry{src/Generic/String/String.h@{src/Generic/String/String.h}|hyperpage}{43}
+\indexentry{src/main.cpp@{src/main.cpp}|hyperpage}{44}
+\indexentry{src/Models/Cell.h@{src/Models/Cell.h}|hyperpage}{44}
+\indexentry{src/Models/Cell.h@{src/Models/Cell.h}|hyperpage}{44}
+\indexentry{src/Models/CellDouble.h@{src/Models/CellDouble.h}|hyperpage}{45}
+\indexentry{src/Models/CellDouble.h@{src/Models/CellDouble.h}|hyperpage}{45}
+\indexentry{src/Models/CellFormula.h@{src/Models/CellFormula.h}|hyperpage}{45}
+\indexentry{src/Models/CellFormula.h@{src/Models/CellFormula.h}|hyperpage}{46}
+\indexentry{src/Models/CellInt.h@{src/Models/CellInt.h}|hyperpage}{46}
+\indexentry{src/Models/CellInt.h@{src/Models/CellInt.h}|hyperpage}{47}
+\indexentry{src/Models/CellString.h@{src/Models/CellString.h}|hyperpage}{47}
+\indexentry{src/Models/CellString.h@{src/Models/CellString.h}|hyperpage}{47}
+\indexentry{src/Models/Table.h@{src/Models/Table.h}|hyperpage}{48}
+\indexentry{src/Models/Table.h@{src/Models/Table.h}|hyperpage}{48}
+\indexentry{src/UserInterface/UserInterface.h@{src/UserInterface/UserInterface.h}|hyperpage}{48}
+\indexentry{src/UserInterface/UserInterface.h@{src/UserInterface/UserInterface.h}|hyperpage}{49}

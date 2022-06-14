@@ -6,12 +6,14 @@
 
 const Cell* CellFormula::ptrByInd(Pair<int, int> loc) const {
 	if (loc.left < 0) {
-		if (loc.right < 0 || &localCells.get_count() - 1 < loc.right) return nullptr;
+		if (loc.right < 0 || localCells.get_count() - 1 < loc.right) return nullptr;
 		return &localCells[loc.right];
 	}
+	
 	if (loc.right < 0
-		|| )
-	return (loc.left < 0) ? &localCells[loc.right] : (*tableCells)[loc.left][loc.right];
+		|| (*tableCells).get_count() - 1 < loc.left || (*tableCells)[loc.left].get_count() - 1 < loc.right)
+		return nullptr;
+	return (*tableCells)[loc.left][loc.right];
 }
 
 double pow(double x, int y) {
@@ -25,7 +27,7 @@ double pow(double x, int y) {
 
 double CellFormula::calculate(unsigned index) const {
 	const Cell* currCell = ptrByInd(formula[index].left);
-	double numVal = currCell->getNumeralValue();
+	double numVal = (currCell == nullptr) ? 0 : currCell->getNumeralValue();
 
 	while (formula[index].right < 0) {
 		switch (-formula[index++].right) {

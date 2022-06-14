@@ -184,7 +184,7 @@ List<String> Table::getAllCells() const {
 	List<String> toRet;
 	for (unsigned i = 0; i < cells.get_count(); i++) {
 		for (unsigned j = 0; j < get_cols(); j++) {
-			if (cells[i].get_count() - 1 >= j && cells[i][j] != nullptr)
+			if (cells[i].get_count() > j && cells[i][j] != nullptr)
 				toRet.add(cells[i][j]->getValueForPrint());
 			else
 				toRet.add("");

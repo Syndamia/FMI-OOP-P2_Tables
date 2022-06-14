@@ -25,7 +25,7 @@ double CellFormula::calculate(unsigned index) const {
 		switch (-formula[index++].right) {
 			case '+' : numVal += ptrByInd(formula[index].left)->getNumeralValue(); break;
 			case '*' : numVal *= ptrByInd(formula[index].left)->getNumeralValue(); break;
-			case '/' : if (ptrByInd(formula[index].left)->getNumeralValue() == 0) throw std::logic_error("");
+			case '/' : if (ptrByInd(formula[index].left)->getNumeralValue() == 0) throw std::logic_error("Error: Divion by zero!");
 					   numVal /= ptrByInd(formula[index].left)->getNumeralValue(); break;
 			case '^' : numVal  = pow(numVal, ptrByInd(formula[index].left)->getNumeralValue()); break;
 		}
@@ -36,7 +36,7 @@ double CellFormula::calculate(unsigned index) const {
 		case '+'  : return numVal + calculate(++index);
 		case '*'  : return numVal * calculate(++index);
 		case '/'  : temp = calculate(++index);
-					if (temp == 0) throw std::logic_error("");
+					if (temp == 0) throw std::logic_error("Error: Division by zero!");
 					return numVal / temp;
 		case '^'  : return pow(numVal, calculate(++index));
 		case '\0' :

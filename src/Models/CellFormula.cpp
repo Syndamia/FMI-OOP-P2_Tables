@@ -87,9 +87,9 @@ void D(const char*& str, List<char>& buffer) {
 		buffer.add(*(str++));
 }
 
-void O(const char*& str, List<char>& buffer) {
+void O(const char*& str, char& buffer) {
 	if (*str == '+' || *str == '-' || *str == '*' || *str == '/' || *str == '^')
-		buffer.add(*(str++));
+		buffer = *(str++);
 }
 
 void CellFormula::parseAndSetValue(const char* str) {
@@ -108,11 +108,11 @@ void CellFormula::parseAndSetValue(const char* str) {
 			str++;
 			buffer.clear();
 			D(str, buffer);
-			int col = atoi(++str);
-			while (*str != ' ' && *str != '\0') str++;
-			while (*str == ' ') str++;
+			int col = atoi(buffer.raw_data());
+			W(str);
 
-			currOp = *str;
+			O(str, currOp);
+			W(str);
 			loc = {row, col};
 		}
 		else {

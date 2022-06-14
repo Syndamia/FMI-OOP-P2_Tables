@@ -1,4 +1,5 @@
 #include "CellFormula.h"
+#include "CellInt.h"
 #include "CellDouble.h"
 #include <cstring>
 #include <iostream>
@@ -110,14 +111,17 @@ void CellFormula::parseAndSetValue(const char* str) {
 			D(str, buffer);
 			loc.right = atoi(buffer.raw_data());
 			W(str);
-
-			O(str, currOp);
-			if (currOp == 0) throw std::logic_error("Error: Could not find operand!");
-			W(str);
 		}
 		else if (*str >= '0' && *str <= '9') {
-			double val = atof(str);
-			while ((*str >= '0' && *str <= '9') || *str == ' ' || *str == '.') str++;
+			D(str, buffer);
+			if (*str == '.') {
+				buffer.add(*str);
+				D(++str, buffer);
+				localCells.add(CellDouble(atof(buffer.raw_data())));
+			}
+			else
+				localCells.add(CellInt(atoi(buffer.raw_data())));
+			W(str);
 
 			currOp = *str;
 			localCells.add(CellDouble(val));
@@ -125,6 +129,11 @@ void CellFormula::parseAndSetValue(const char* str) {
 		}
 		else
 			throw std::logic_error("Error: Invalid value!");
+
+		O(str, currOp);
+		if (currOp == 0) throw std::logic_error("Error: Could not find operand!");
+		W(str);
+
 
 		if (currOp == '^') currOp *= -1;
 		else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {

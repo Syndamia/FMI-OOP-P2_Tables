@@ -101,6 +101,17 @@ void O(const char*& str, char& buffer) {
 	else buffer = -2;
 }
 
+/*!
+ * Each math operation is represented with a Pair that holds indecies of cell reference
+ * and a character for the operation.
+ *
+ * Negatve value for the operation character means it's with priority and the result get's calculated
+ * immediately (rather than recursively, taking into account other values).
+ *
+ * \exception std::logic_error("Error: Invalid column character!") Thrown when there is something between Rx and C in cell references
+ * \exception std::logic_error("Error: Invalid value!") Thrown when met value isn't a cell reference or number
+ * \exception throw std::logic_error("Error: Could not find operand!") Thrown when there isn't an operator character between two values
+ */
 void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
@@ -116,7 +127,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 		if (*str == 'R') {
 			D(++str, buffer);
 			loc.left = atoi(buffer.raw_data()) - 1;
-			if (*str != 'C') throw std::logic_error("Error: Invalid character!");
+			if (*str != 'C') throw std::logic_error("Error: Invalid column character!");
 			str++;
 			buffer.clear();
 			D(str, buffer);

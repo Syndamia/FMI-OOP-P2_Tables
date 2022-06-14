@@ -71,7 +71,7 @@ String CellFormula::getValueForPrint() const {
 
 // Rough implementation of the grammar
 //
-// S -> WDS | WD.DS | WRDRDS | WOS | W
+// S -> WDS | WD.DS | WRDCDS | WOS | W
 // O -> + | - | * | / | ^
 // D -> D0 | D1 | ... | D9 | 0 | 1 | ... | 9
 // W -> W | epsilon
@@ -87,6 +87,11 @@ void D(const char*& str, List<char>& buffer) {
 		buffer.add(*(str++));
 }
 
+void O(const char*& str, List<char>& buffer) {
+	if (*str == '+' || *str == '-' || *str == '*' || *str == '/' || *str == '^')
+		buffer.add(*(str++));
+}
+
 void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
@@ -94,11 +99,15 @@ void CellFormula::parseAndSetValue(const char* str) {
 	char currOp;
 
 	while (*str != '\0') {
-		str++;
-		while (*str == ' ') str++;
+		List<char> buffer;
+		W(str);
 		if (*str == 'R') {
-			int row = atoi(++str);
-			while (*str != 'C') str++;
+			D(str, buffer);
+			int row = atoi(buffer.raw_data());
+			if (*str != 'C') throw std::logic_error("Error: Invalid character!");
+			str++;
+			buffer.clear();
+			D(str, buffer);
 			int col = atoi(++str);
 			while (*str != ' ' && *str != '\0') str++;
 			while (*str == ' ') str++;

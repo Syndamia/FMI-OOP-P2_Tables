@@ -12,7 +12,7 @@
 
 // Rough implementation of the grammar
 //
-// S -> W"=A"W | W"A"W | WPDW | WPD.DW
+// S -> W"=A"S | W"A"S | WPDS | WPD.DS | epsilon
 // A -> Aa | Ab | ... | AZ | A0 | A1 | ... | A* | ... | a | b | ... | epsilon
 // D -> D0 | D1 | ... | D9 | 0 | 1 | ... | 9
 // P -> + | - | epsilon

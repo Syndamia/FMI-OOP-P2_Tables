@@ -69,6 +69,24 @@ String CellFormula::getValueForPrint() const {
 	}
 }
 
+// Rough implementation of the grammar
+//
+// S -> WDS | WD.DS | WRDRDS | WOS | W
+// O -> + | - | * | / | ^
+// D -> D0 | D1 | ... | D9 | 0 | 1 | ... | 9
+// W -> W | epsilon
+//
+// over the string
+
+void W(const char*& str) {
+	while (*str == ' ') str++;
+}
+
+void D(const char*& str, List<char>& buffer) {
+	while (*str >= '0' && *str <= '9')
+		buffer.add(*(str++));
+}
+
 void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 

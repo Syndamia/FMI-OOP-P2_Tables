@@ -20,4 +20,9 @@ void CellString::parseAndSetValue(const char* str) {
 void CellString::writeToFile(std::ofstream& file) {
 	file << '"';
 	const char* strCpy = value.get_cstr();
+	while (*strCpy != '\0') {
+		if (*strCpy == '\\' || *strCpy == '"') file << '\\';
+		file << *(strCpy++);
+	}
+	file << '"';
 }

@@ -91,7 +91,7 @@ void UserInterface::com_edit(const char* params) {
 		return;
 	}
 
-	unsigned row = atoi(++params);
+	unsigned row = atoi(++params) - 1;
 	while (*params != 'C') {
 		if (*params == '\0') {
 			printLine("Error: End of line reached. Expected row number.");
@@ -104,7 +104,7 @@ void UserInterface::com_edit(const char* params) {
 
 		params++;
 	}
-	unsigned col = atoi(++params);
+	unsigned col = atoi(++params) - 1;
 	while (*params != ' ') {
 		if (*params == '\0') {
 			printLine("Error: End of line reached. Expected columns number.");

@@ -95,6 +95,7 @@ void O(const char*& str, char& buffer) {
 void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
+	formula.clear();
 	Pair<int, int> loc;
 	char currOp = 0;
 

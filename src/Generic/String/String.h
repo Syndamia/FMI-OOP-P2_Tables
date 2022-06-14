@@ -10,6 +10,10 @@
 
 #define DOUBLE_PRECISION 100
 
+/*! \brief A dynamically-allocated C-style string with extra features
+ *
+ * \remark There is no buffer allocation, meaning each String takes only the amount of memory it needs and every append operation juggles around memory.
+ */
 class String {
 	char* str;
 	unsigned length;
@@ -54,9 +58,9 @@ public:
 	int compare(const String& other) const;
 
 	//! Reads String from stream with >> operator
-	friend std::istream& operator>>(std::istream& istr, String& event);
+	friend std::istream& operator>>(std::istream& istr, String& str);
 	//! Writes String to stream with << operator
-	friend std::ostream& operator<<(std::ostream& ostr, const String& event);
+	friend std::ostream& operator<<(std::ostream& ostr, const String& str);
 };
 
 #endif

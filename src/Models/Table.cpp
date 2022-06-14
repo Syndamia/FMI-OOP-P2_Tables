@@ -43,7 +43,7 @@ void throwException(std::ifstream& inFile, unsigned row) {
 	row++;
 	throw std::logic_error((
 			(((((String("Error: Invalid character '") += (char)inFile.peek())
-			+= "' at row ") += row) += "\" and column ") += ((int)inFile.tellg() / row + 1))
+			+= "' at row ") += row) += " and column ") += ((int)inFile.tellg() / row + 1))
 		).get_cstr());
 }
 

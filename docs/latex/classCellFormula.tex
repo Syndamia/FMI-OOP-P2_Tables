@@ -1,0 +1,108 @@
+\hypertarget{classCellFormula}{}\doxysection{Cell\+Formula Class Reference}
+\label{classCellFormula}\index{CellFormula@{CellFormula}}
+
+
+A table cell which contains a formula.  
+
+
+
+
+{\ttfamily \#include $<$Cell\+Formula.\+h$>$}
+
+Inheritance diagram for Cell\+Formula\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCellFormula}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCellFormula_a4fb02122d6eec83fb4fa80fea56d5094}\label{classCellFormula_a4fb02122d6eec83fb4fa80fea56d5094}} 
+{\bfseries Cell\+Formula} (const char $\ast$str, const \mbox{\hyperlink{classList}{List}}$<$ \mbox{\hyperlink{classList}{List}}$<$ \mbox{\hyperlink{classCell}{Cell}} $\ast$ $>$ $>$ $\ast$table\+Cells)
+\item 
+double \mbox{\hyperlink{classCellFormula_aea7ea04991b4ef15aa80ff3182bf1e74}{get\+Numeral\+Value}} () const override
+\item 
+\mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCellFormula_a2f55209057eb939f3688a1f02f9fcb3d}{get\+Value\+For\+Print}} () const override
+\item 
+void \mbox{\hyperlink{classCellFormula_afecaac674bfb6bc2bbe1796c74643e31}{parse\+And\+Set\+Value}} (const char $\ast$str) override
+\item 
+void \mbox{\hyperlink{classCellFormula_a2883e300abc5153ce84f660f03050fdf}{write\+To\+File}} (std\+::ofstream \&file) override
+\begin{DoxyCompactList}\small\item\em Writes value to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A table cell which contains a formula. 
+
+Implements the \mbox{\hyperlink{classCell}{Cell}} class by storing a formula as a \mbox{\hyperlink{classString}{String}} and in a dynamic \mbox{\hyperlink{classList}{List}} 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCellFormula_aea7ea04991b4ef15aa80ff3182bf1e74}\label{classCellFormula_aea7ea04991b4ef15aa80ff3182bf1e74}} 
+\index{CellFormula@{CellFormula}!getNumeralValue@{getNumeralValue}}
+\index{getNumeralValue@{getNumeralValue}!CellFormula@{CellFormula}}
+\doxysubsubsection{\texorpdfstring{getNumeralValue()}{getNumeralValue()}}
+{\footnotesize\ttfamily double Cell\+Formula\+::get\+Numeral\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Value is recalculated every time this function is called (in case a referenced cell is changed).
+
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCell_a10bf7a5e3486908f5e6b8b24c5a2e968}{Cell}}.
+
+\mbox{\Hypertarget{classCellFormula_a2f55209057eb939f3688a1f02f9fcb3d}\label{classCellFormula_a2f55209057eb939f3688a1f02f9fcb3d}} 
+\index{CellFormula@{CellFormula}!getValueForPrint@{getValueForPrint}}
+\index{getValueForPrint@{getValueForPrint}!CellFormula@{CellFormula}}
+\doxysubsubsection{\texorpdfstring{getValueForPrint()}{getValueForPrint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classString}{String}} Cell\+Formula\+::get\+Value\+For\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Value is recalculated every time this function is called (in case a referenced cell is changed).
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Error\char`\"{} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCell_aebc1f8f5965802b7a44ef3da7aa2ce75}{Cell}}.
+
+\mbox{\Hypertarget{classCellFormula_afecaac674bfb6bc2bbe1796c74643e31}\label{classCellFormula_afecaac674bfb6bc2bbe1796c74643e31}} 
+\index{CellFormula@{CellFormula}!parseAndSetValue@{parseAndSetValue}}
+\index{parseAndSetValue@{parseAndSetValue}!CellFormula@{CellFormula}}
+\doxysubsubsection{\texorpdfstring{parseAndSetValue()}{parseAndSetValue()}}
+{\footnotesize\ttfamily void Cell\+Formula\+::parse\+And\+Set\+Value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Each math operation is represented with a \mbox{\hyperlink{structPair}{Pair}} that holds indecies of cell reference and a character for the operation.
+
+Negatve value for the operation character means it\textquotesingle{}s with priority and the result get\textquotesingle{}s calculated immediately (rather than recursively, taking into account other values).
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::logic\+\_\+error(\char`\"{}\+Error} & Invalid column character!\char`\"{}) Thrown when there is something between Rx and C in cell references \textbackslash{}exception std\+::logic\+\_\+error(\char`\"{}Error\+: Invalid value!\char`\"{}) Thrown when met value isn\textquotesingle{}t a cell reference or number \textbackslash{}exception throw std\+::logic\+\_\+error(\char`\"{}Error\+: Could not find operand!"{}) Thrown when there isn\textquotesingle{}t an operator character between two values \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \mbox{\hyperlink{classCell_a732fcaeea7050f4afb3bcd6377432b95}{Cell}}.
+
+\mbox{\Hypertarget{classCellFormula_a2883e300abc5153ce84f660f03050fdf}\label{classCellFormula_a2883e300abc5153ce84f660f03050fdf}} 
+\index{CellFormula@{CellFormula}!writeToFile@{writeToFile}}
+\index{writeToFile@{writeToFile}!CellFormula@{CellFormula}}
+\doxysubsubsection{\texorpdfstring{writeToFile()}{writeToFile()}}
+{\footnotesize\ttfamily void Cell\+Formula\+::write\+To\+File (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Writes value to a text file. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a126ab727ef443f5fd8ef62832614f56b}{Cell}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Models/\mbox{\hyperlink{CellFormula_8h}{Cell\+Formula.\+h}}\item 
+src/\+Models/Cell\+Formula.\+cpp\end{DoxyCompactItemize}

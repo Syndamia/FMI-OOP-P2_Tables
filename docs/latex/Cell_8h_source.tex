@@ -1,0 +1,23 @@
+\hypertarget{Cell_8h_source}{}\doxysection{Cell.\+h}
+\label{Cell_8h_source}\index{src/Models/Cell.h@{src/Models/Cell.h}}
+\mbox{\hyperlink{Cell_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef HEADER\_CELL}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define HEADER\_CELL}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}../Generic/String/String.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classCell}{Cell}} \{}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{classCell_a10bf7a5e3486908f5e6b8b24c5a2e968}{getNumeralValue}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{18     \textcolor{keyword}{virtual} \mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCell_aebc1f8f5965802b7a44ef3da7aa2ce75}{getValueForPrint}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{20     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCell_a732fcaeea7050f4afb3bcd6377432b95}{parseAndSetValue}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str) = 0;}
+\DoxyCodeLine{22     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCell_a126ab727ef443f5fd8ef62832614f56b}{writeToFile}}(std::ofstream\& file) = 0;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keyword}{virtual} \mbox{\hyperlink{classCell}{\string~Cell}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

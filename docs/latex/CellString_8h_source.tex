@@ -1,0 +1,25 @@
+\hypertarget{CellString_8h_source}{}\doxysection{Cell\+String.\+h}
+\label{CellString_8h_source}\index{src/Models/CellString.h@{src/Models/CellString.h}}
+\mbox{\hyperlink{CellString_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef HEADER\_CELLSTRING}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define HEADER\_CELLSTRING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Cell_8h}{Cell.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classCellString}{CellString}} : \textcolor{keyword}{public} \mbox{\hyperlink{classCell}{Cell}} \{}
+\DoxyCodeLine{13     \mbox{\hyperlink{classString}{String}} value;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{classCellString}{CellString}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{17     \mbox{\hyperlink{classCellString}{CellString}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{double} \mbox{\hyperlink{classCellString_ad1f27d1929c2cc8a7a657f72c6640803}{getNumeralValue}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{20     \mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCellString_a2d88b600e72b4eeca9c933a540343a8b}{getValueForPrint}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellString_a8152beac5329e170bf2c225ac189fba4}{parseAndSetValue}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str) \textcolor{keyword}{override};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellString_ac9f11804de3e600c4a86b253fac9edcf}{writeToFile}}(std::ofstream\& file) \textcolor{keyword}{override};}
+\DoxyCodeLine{23 \};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

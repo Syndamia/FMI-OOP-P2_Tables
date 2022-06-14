@@ -1,0 +1,8 @@
+INPUT           = ../src/ ./
+IMAGE_PATH      = images
+FILE_PATTERNS   = *.h *.hpp *.cpp *.md
+STRIP_FROM_PATH = /home/kamen/Programming/GitHub-repos/FMI-OOP-P2_Tables
+RECURSIVE       = YES
+
+PROJECT_NAME  = "FMI Table"
+PROJECT_BRIEF = "| Kamen Mladenov | FMI Computer Science Year 1 Group 6 | Project 2 | Project Topic 7 |"

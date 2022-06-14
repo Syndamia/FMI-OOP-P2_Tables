@@ -1,0 +1,25 @@
+\hypertarget{Menu_8h_source}{}\doxysection{Menu.\+h}
+\label{Menu_8h_source}\index{src/Generic/ConsoleInterface/Menu.h@{src/Generic/ConsoleInterface/Menu.h}}
+\mbox{\hyperlink{Menu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef HEADER\_CONSOLEINTERFACE\_MENU}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define HEADER\_CONSOLEINTERFACE\_MENU}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Command_8h}{Command.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}../List/List.hpp"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classMenu}{Menu}} \{}
+\DoxyCodeLine{18     \mbox{\hyperlink{classList}{List<Command>}} menuOptions;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{classMenu_ad466dd83355124a6ed958430450bfe94}{Menu}}();}
+\DoxyCodeLine{24     \mbox{\hyperlink{classMenu_a429338a549cf1cb86c4b6a55488ea8e0}{Menu}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCommand}{Command}}* commands, \textcolor{keywordtype}{unsigned} commandCount);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{classMenu_a1f022cc8b705369073f8fd7b90b30c8d}{addCommand}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCommand}{Command}}\& command);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{classMenu_a0400751da7f8583029b7a12d3003c36d}{navigate}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{31 \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

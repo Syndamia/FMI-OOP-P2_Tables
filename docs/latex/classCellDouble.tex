@@ -1,0 +1,112 @@
+\hypertarget{classCellDouble}{}\doxysection{Cell\+Double Class Reference}
+\label{classCellDouble}\index{CellDouble@{CellDouble}}
+
+
+A table cell which contains a double-\/precision floating point number.  
+
+
+
+
+{\ttfamily \#include $<$Cell\+Double.\+h$>$}
+
+Inheritance diagram for Cell\+Double\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCellDouble}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCellDouble_aebec6a7fbb1262d3bcbada87e2a18ab7}\label{classCellDouble_aebec6a7fbb1262d3bcbada87e2a18ab7}} 
+{\bfseries Cell\+Double} (double value)
+\item 
+\mbox{\hyperlink{classCellDouble_a9cf8a180a3dd6996cad5054ac3dc13af}{Cell\+Double}} (const char $\ast$str)
+\item 
+double \mbox{\hyperlink{classCellDouble_a088a191ea593642c944610f5332e1608}{get\+Numeral\+Value}} () const override
+\begin{DoxyCompactList}\small\item\em Returns the value of the cell as a double-\/precision floating point number. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCellDouble_aed48fc35c20b4dac5c595d55d03a460b}{get\+Value\+For\+Print}} () const override
+\begin{DoxyCompactList}\small\item\em Returns the value of the cell as a \mbox{\hyperlink{classString}{String}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellDouble_a3f977aa0c5b68736621b1ded0687574b}{parse\+And\+Set\+Value}} (const char $\ast$str) override
+\begin{DoxyCompactList}\small\item\em Parses given C-\/style string and stores value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellDouble_a00e0ee96789eeee92d56b4dd6c1c9d86}{write\+To\+File}} (std\+::ofstream \&file) override
+\begin{DoxyCompactList}\small\item\em Writes value to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A table cell which contains a double-\/precision floating point number. 
+
+Implements the \mbox{\hyperlink{classCell}{Cell}} class by implementing a value of type double. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCellDouble_a9cf8a180a3dd6996cad5054ac3dc13af}\label{classCellDouble_a9cf8a180a3dd6996cad5054ac3dc13af}} 
+\index{CellDouble@{CellDouble}!CellDouble@{CellDouble}}
+\index{CellDouble@{CellDouble}!CellDouble@{CellDouble}}
+\doxysubsubsection{\texorpdfstring{CellDouble()}{CellDouble()}}
+{\footnotesize\ttfamily Cell\+Double\+::\+Cell\+Double (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Accepts a C-\/style string in the form \char`\"{}$<$+/-\/$>$$<$digits$>$.$<$digits$>$\char`\"{} 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCellDouble_a088a191ea593642c944610f5332e1608}\label{classCellDouble_a088a191ea593642c944610f5332e1608}} 
+\index{CellDouble@{CellDouble}!getNumeralValue@{getNumeralValue}}
+\index{getNumeralValue@{getNumeralValue}!CellDouble@{CellDouble}}
+\doxysubsubsection{\texorpdfstring{getNumeralValue()}{getNumeralValue()}}
+{\footnotesize\ttfamily double Cell\+Double\+::get\+Numeral\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the value of the cell as a double-\/precision floating point number. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a10bf7a5e3486908f5e6b8b24c5a2e968}{Cell}}.
+
+\mbox{\Hypertarget{classCellDouble_aed48fc35c20b4dac5c595d55d03a460b}\label{classCellDouble_aed48fc35c20b4dac5c595d55d03a460b}} 
+\index{CellDouble@{CellDouble}!getValueForPrint@{getValueForPrint}}
+\index{getValueForPrint@{getValueForPrint}!CellDouble@{CellDouble}}
+\doxysubsubsection{\texorpdfstring{getValueForPrint()}{getValueForPrint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classString}{String}} Cell\+Double\+::get\+Value\+For\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the value of the cell as a \mbox{\hyperlink{classString}{String}}. 
+
+
+
+Implements \mbox{\hyperlink{classCell_aebc1f8f5965802b7a44ef3da7aa2ce75}{Cell}}.
+
+\mbox{\Hypertarget{classCellDouble_a3f977aa0c5b68736621b1ded0687574b}\label{classCellDouble_a3f977aa0c5b68736621b1ded0687574b}} 
+\index{CellDouble@{CellDouble}!parseAndSetValue@{parseAndSetValue}}
+\index{parseAndSetValue@{parseAndSetValue}!CellDouble@{CellDouble}}
+\doxysubsubsection{\texorpdfstring{parseAndSetValue()}{parseAndSetValue()}}
+{\footnotesize\ttfamily void Cell\+Double\+::parse\+And\+Set\+Value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Parses given C-\/style string and stores value. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a732fcaeea7050f4afb3bcd6377432b95}{Cell}}.
+
+\mbox{\Hypertarget{classCellDouble_a00e0ee96789eeee92d56b4dd6c1c9d86}\label{classCellDouble_a00e0ee96789eeee92d56b4dd6c1c9d86}} 
+\index{CellDouble@{CellDouble}!writeToFile@{writeToFile}}
+\index{writeToFile@{writeToFile}!CellDouble@{CellDouble}}
+\doxysubsubsection{\texorpdfstring{writeToFile()}{writeToFile()}}
+{\footnotesize\ttfamily void Cell\+Double\+::write\+To\+File (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Writes value to a text file. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a126ab727ef443f5fd8ef62832614f56b}{Cell}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Models/\mbox{\hyperlink{CellDouble_8h}{Cell\+Double.\+h}}\item 
+src/\+Models/Cell\+Double.\+cpp\end{DoxyCompactItemize}

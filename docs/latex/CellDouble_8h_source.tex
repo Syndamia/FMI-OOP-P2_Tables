@@ -1,0 +1,26 @@
+\hypertarget{CellDouble_8h_source}{}\doxysection{Cell\+Double.\+h}
+\label{CellDouble_8h_source}\index{src/Models/CellDouble.h@{src/Models/CellDouble.h}}
+\mbox{\hyperlink{CellDouble_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef HEADER\_CELLDOUBLE}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define HEADER\_CELLDOUBLE}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Cell_8h}{Cell.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classCellDouble}{CellDouble}} : \textcolor{keyword}{public} \mbox{\hyperlink{classCell}{Cell}} \{}
+\DoxyCodeLine{15     \textcolor{keywordtype}{double} value;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{classCellDouble}{CellDouble}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{19     \mbox{\hyperlink{classCellDouble}{CellDouble}}(\textcolor{keywordtype}{double} value);}
+\DoxyCodeLine{20     \mbox{\hyperlink{classCellDouble}{CellDouble}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordtype}{double} \mbox{\hyperlink{classCellDouble_a088a191ea593642c944610f5332e1608}{getNumeralValue}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{23     \mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCellDouble_aed48fc35c20b4dac5c595d55d03a460b}{getValueForPrint}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellDouble_a3f977aa0c5b68736621b1ded0687574b}{parseAndSetValue}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str) \textcolor{keyword}{override};}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellDouble_a00e0ee96789eeee92d56b4dd6c1c9d86}{writeToFile}}(std::ofstream\& file) \textcolor{keyword}{override};}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

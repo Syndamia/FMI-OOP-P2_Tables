@@ -1,0 +1,104 @@
+\hypertarget{classCellInt}{}\doxysection{Cell\+Int Class Reference}
+\label{classCellInt}\index{CellInt@{CellInt}}
+
+
+A table cell which contains an integer.  
+
+
+
+
+{\ttfamily \#include $<$Cell\+Int.\+h$>$}
+
+Inheritance diagram for Cell\+Int\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCellInt}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCellInt_a5c8aaf6d2fb7eb4752849e7afc8ab84b}\label{classCellInt_a5c8aaf6d2fb7eb4752849e7afc8ab84b}} 
+{\bfseries Cell\+Int} (int value)
+\item 
+\mbox{\Hypertarget{classCellInt_a28a5e1809c8f9d4f9f2f691cd30e7734}\label{classCellInt_a28a5e1809c8f9d4f9f2f691cd30e7734}} 
+{\bfseries Cell\+Int} (const char $\ast$str)
+\item 
+double \mbox{\hyperlink{classCellInt_a8417811309bda5886bb2f70d2b8357bd}{get\+Numeral\+Value}} () const override
+\begin{DoxyCompactList}\small\item\em Returns the value of the cell as a double-\/precision floating point number. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCellInt_a14a5b56f045b244ee4246edbfe851eb2}{get\+Value\+For\+Print}} () const override
+\begin{DoxyCompactList}\small\item\em Returns the value of the cell as a \mbox{\hyperlink{classString}{String}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellInt_a72788dc2ebadd13ae198e4e143403073}{parse\+And\+Set\+Value}} (const char $\ast$str) override
+\begin{DoxyCompactList}\small\item\em Parses given C-\/style string and stores value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellInt_a7a08dad97c474910e07c06f54bb2de94}{write\+To\+File}} (std\+::ofstream \&file) override
+\begin{DoxyCompactList}\small\item\em Writes value to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A table cell which contains an integer. 
+
+Impelements the \mbox{\hyperlink{classCell}{Cell}} class by implementing a value of type int 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCellInt_a8417811309bda5886bb2f70d2b8357bd}\label{classCellInt_a8417811309bda5886bb2f70d2b8357bd}} 
+\index{CellInt@{CellInt}!getNumeralValue@{getNumeralValue}}
+\index{getNumeralValue@{getNumeralValue}!CellInt@{CellInt}}
+\doxysubsubsection{\texorpdfstring{getNumeralValue()}{getNumeralValue()}}
+{\footnotesize\ttfamily double Cell\+Int\+::get\+Numeral\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the value of the cell as a double-\/precision floating point number. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a10bf7a5e3486908f5e6b8b24c5a2e968}{Cell}}.
+
+\mbox{\Hypertarget{classCellInt_a14a5b56f045b244ee4246edbfe851eb2}\label{classCellInt_a14a5b56f045b244ee4246edbfe851eb2}} 
+\index{CellInt@{CellInt}!getValueForPrint@{getValueForPrint}}
+\index{getValueForPrint@{getValueForPrint}!CellInt@{CellInt}}
+\doxysubsubsection{\texorpdfstring{getValueForPrint()}{getValueForPrint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classString}{String}} Cell\+Int\+::get\+Value\+For\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the value of the cell as a \mbox{\hyperlink{classString}{String}}. 
+
+
+
+Implements \mbox{\hyperlink{classCell_aebc1f8f5965802b7a44ef3da7aa2ce75}{Cell}}.
+
+\mbox{\Hypertarget{classCellInt_a72788dc2ebadd13ae198e4e143403073}\label{classCellInt_a72788dc2ebadd13ae198e4e143403073}} 
+\index{CellInt@{CellInt}!parseAndSetValue@{parseAndSetValue}}
+\index{parseAndSetValue@{parseAndSetValue}!CellInt@{CellInt}}
+\doxysubsubsection{\texorpdfstring{parseAndSetValue()}{parseAndSetValue()}}
+{\footnotesize\ttfamily void Cell\+Int\+::parse\+And\+Set\+Value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Parses given C-\/style string and stores value. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a732fcaeea7050f4afb3bcd6377432b95}{Cell}}.
+
+\mbox{\Hypertarget{classCellInt_a7a08dad97c474910e07c06f54bb2de94}\label{classCellInt_a7a08dad97c474910e07c06f54bb2de94}} 
+\index{CellInt@{CellInt}!writeToFile@{writeToFile}}
+\index{writeToFile@{writeToFile}!CellInt@{CellInt}}
+\doxysubsubsection{\texorpdfstring{writeToFile()}{writeToFile()}}
+{\footnotesize\ttfamily void Cell\+Int\+::write\+To\+File (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Writes value to a text file. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a126ab727ef443f5fd8ef62832614f56b}{Cell}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Models/\mbox{\hyperlink{CellInt_8h}{Cell\+Int.\+h}}\item 
+src/\+Models/Cell\+Int.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,35 @@
+\hypertarget{CellFormula_8h_source}{}\doxysection{Cell\+Formula.\+h}
+\label{CellFormula_8h_source}\index{src/Models/CellFormula.h@{src/Models/CellFormula.h}}
+\mbox{\hyperlink{CellFormula_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef HEADER\_CELLFORMULA}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define HEADER\_CELLFORMULA}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Cell_8h}{Cell.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{CellDouble_8h}{CellDouble.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}../Generic/List/List.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../Generic/Pair/Pair.hpp"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classCellFormula}{CellFormula}} : \textcolor{keyword}{public} \mbox{\hyperlink{classCell}{Cell}} \{}
+\DoxyCodeLine{18     \textcolor{keyword}{const} \mbox{\hyperlink{classList}{List<List<Cell*>}}>* tableCells;}
+\DoxyCodeLine{19     \mbox{\hyperlink{classList}{List<CellDouble>}} localCells;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \mbox{\hyperlink{classList}{List<Pair<Pair<int, int>}}, \textcolor{keywordtype}{char}>> formula;}
+\DoxyCodeLine{22     \mbox{\hyperlink{classString}{String}} rawFormula;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keyword}{const} \mbox{\hyperlink{classCell}{Cell}}* ptrByInd(\mbox{\hyperlink{structPair}{Pair<int, int>}} loc) \textcolor{keyword}{const};}
+\DoxyCodeLine{25     \textcolor{keywordtype}{double} calculate(\textcolor{keywordtype}{unsigned} index = 0) \textcolor{keyword}{const};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28     \mbox{\hyperlink{classCellFormula}{CellFormula}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{29     \mbox{\hyperlink{classCellFormula}{CellFormula}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str, \textcolor{keyword}{const} \mbox{\hyperlink{classList}{List}}<\mbox{\hyperlink{classList}{List<Cell*>}}>* tableCells);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keywordtype}{double} \mbox{\hyperlink{classCellFormula_aea7ea04991b4ef15aa80ff3182bf1e74}{getNumeralValue}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{32     \mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCellFormula_a2f55209057eb939f3688a1f02f9fcb3d}{getValueForPrint}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellFormula_afecaac674bfb6bc2bbe1796c74643e31}{parseAndSetValue}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str) \textcolor{keyword}{override};}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellFormula_a2883e300abc5153ce84f660f03050fdf}{writeToFile}}(std::ofstream\& file) \textcolor{keyword}{override};}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

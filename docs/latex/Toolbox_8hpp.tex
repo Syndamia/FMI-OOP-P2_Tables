@@ -1,0 +1,97 @@
+\hypertarget{Toolbox_8hpp}{}\doxysection{src/\+Generic/\+Console\+Interface/\+Toolbox.hpp File Reference}
+\label{Toolbox_8hpp}\index{src/Generic/ConsoleInterface/Toolbox.hpp@{src/Generic/ConsoleInterface/Toolbox.hpp}}
+
+
+Stores a wide range of functions for simpler/more automated printing.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}../\+List/\+List.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+String/\+String.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Toolbox_8hpp_a09f908aa6474fe2b1f82b1aaade947f6}\label{Toolbox_8hpp_a09f908aa6474fe2b1f82b1aaade947f6}} 
+\#define {\bfseries MAX\+\_\+\+LINE\+\_\+\+WIDTH}~1024
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{Toolbox_8hpp_a65477b86cd99f1670bf1234960255baf}{input\+Line\+Box}} (char $\ast$output, unsigned max\+Width, bool ignore=true)
+\begin{DoxyCompactList}\small\item\em Prints label, gets a whole line of input and stores it to output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Toolbox_8hpp_a138328aaa20f2a8a514e4d7e6fc9c325}{print\+Table}} (const \mbox{\hyperlink{classList}{List}}$<$ \mbox{\hyperlink{classString}{String}} $>$ \&items, unsigned columns)
+\begin{DoxyCompactList}\small\item\em Prints a string list as a table. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Toolbox_8hpp_a3c9098dc2b305107367c56ded5dec787}\label{Toolbox_8hpp_a3c9098dc2b305107367c56ded5dec787}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries read} (T $\ast$storage)
+\begin{DoxyCompactList}\small\item\em Reads user input and stores it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Toolbox_8hpp_a06ca09434be2a02543a2371d477acfa0}\label{Toolbox_8hpp_a06ca09434be2a02543a2371d477acfa0}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries read} (T \&storage)
+\begin{DoxyCompactList}\small\item\em Reads user input and stores it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Toolbox_8hpp_a5ca1093462d3266fceb8522e144c1e73}\label{Toolbox_8hpp_a5ca1093462d3266fceb8522e144c1e73}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries print} (const T $\ast$item)
+\begin{DoxyCompactList}\small\item\em Prints given item. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Toolbox_8hpp_a9c0a0d7d3210ca5f12f02ac4cb88476e}\label{Toolbox_8hpp_a9c0a0d7d3210ca5f12f02ac4cb88476e}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries print} (const T \&item)
+\begin{DoxyCompactList}\small\item\em Prints given item. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Toolbox_8hpp_a148d9d6b8b15bbfc2b1f4cdb16c2ee81}\label{Toolbox_8hpp_a148d9d6b8b15bbfc2b1f4cdb16c2ee81}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries print\+Line} (const T $\ast$item)
+\begin{DoxyCompactList}\small\item\em Prints given item and an endline character. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Toolbox_8hpp_a799f4cb5b4da3d40261e25d9e41995aa}\label{Toolbox_8hpp_a799f4cb5b4da3d40261e25d9e41995aa}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries print\+Line} (const T \&item)
+\begin{DoxyCompactList}\small\item\em Prints given item and an endline character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores a wide range of functions for simpler/more automated printing. 
+
+Adds a lot of functions for printing.
+
+\begin{DoxyRemark}{Remarks}
+iostream is included by necessity (templated functions), you should only use the provided functions, if you can. 
+\end{DoxyRemark}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Toolbox_8hpp_a65477b86cd99f1670bf1234960255baf}\label{Toolbox_8hpp_a65477b86cd99f1670bf1234960255baf}} 
+\index{Toolbox.hpp@{Toolbox.hpp}!inputLineBox@{inputLineBox}}
+\index{inputLineBox@{inputLineBox}!Toolbox.hpp@{Toolbox.hpp}}
+\doxysubsubsection{\texorpdfstring{inputLineBox()}{inputLineBox()}}
+{\footnotesize\ttfamily void input\+Line\+Box (\begin{DoxyParamCaption}\item[{char $\ast$}]{output,  }\item[{unsigned}]{max\+Width,  }\item[{bool}]{ignore }\end{DoxyParamCaption})}
+
+
+
+Prints label, gets a whole line of input and stores it to output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & C-\/style string, there are no size check so it could wrap \\
+\hline
+{\em output} & Pointer to a char array \\
+\hline
+{\em max\+Width} & Maximum count of characters to read from user input. output MUST be able to hold that many characters! \\
+\hline
+{\em ignore} & Whether or not to ignore the first new-\/line delimiter. true by default, should be set to false only when an input\+Line\+Box/\+Sub\+Box has been issued directly prior or when it\textquotesingle{}s the very first issued box command.\\
+\hline
+\end{DoxyParams}
+Prints \char`\"{}(+)\char`\"{} before the label. \mbox{\Hypertarget{Toolbox_8hpp_a138328aaa20f2a8a514e4d7e6fc9c325}\label{Toolbox_8hpp_a138328aaa20f2a8a514e4d7e6fc9c325}} 
+\index{Toolbox.hpp@{Toolbox.hpp}!printTable@{printTable}}
+\index{printTable@{printTable}!Toolbox.hpp@{Toolbox.hpp}}
+\doxysubsubsection{\texorpdfstring{printTable()}{printTable()}}
+{\footnotesize\ttfamily void print\+Table (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classList}{List}}$<$ \mbox{\hyperlink{classString}{String}} $>$ \&}]{items,  }\item[{unsigned}]{columns }\end{DoxyParamCaption})}
+
+
+
+Prints a string list as a table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Number} & The number by which column and row enumeration begins \\
+\hline
+{\em columns} & How many columns the table should have \\
+\hline
+{\em items} & C-\/style string, each cell is a single character from the string\\
+\hline
+\end{DoxyParams}
+Prints a string as a grid/table of characters from top to bottom, left to right. The first character is on the top left, the last one is on the bottom right.
+
+\mbox{\hyperlink{classTable}{Table}} is printed until a terminating zero is encountered. The rows are \char`\"{}calculated\char`\"{} from the columns count and the items length. 

@@ -1,7 +1,7 @@
 #ifndef HEADER_CELLDOUBLE
 #define HEADER_CELLDOUBLE
 
-/*! \file Cell.h
+/*! \file CellDouble.h
  *  \brief Stores the declaration of class CellDouble
  */
 

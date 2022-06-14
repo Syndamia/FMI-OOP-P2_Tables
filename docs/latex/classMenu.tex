@@ -1,0 +1,53 @@
+\hypertarget{classMenu}{}\doxysection{Menu Class Reference}
+\label{classMenu}\index{Menu@{Menu}}
+
+
+Handles navigation between multiple commands.  
+
+
+
+
+{\ttfamily \#include $<$Menu.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMenu_ad466dd83355124a6ed958430450bfe94}\label{classMenu_ad466dd83355124a6ed958430450bfe94}} 
+{\bfseries Menu} ()
+\begin{DoxyCompactList}\small\item\em Sets name as \char`\"{}\+Menu\char`\"{}, leaves all flags to false and creates an empty \mbox{\hyperlink{classCommand}{Command}} list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMenu_a429338a549cf1cb86c4b6a55488ea8e0}\label{classMenu_a429338a549cf1cb86c4b6a55488ea8e0}} 
+{\bfseries Menu} (const \mbox{\hyperlink{classCommand}{Command}} $\ast$commands, unsigned command\+Count)
+\begin{DoxyCompactList}\small\item\em Copies commands. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMenu_a1f022cc8b705369073f8fd7b90b30c8d}\label{classMenu_a1f022cc8b705369073f8fd7b90b30c8d}} 
+void {\bfseries add\+Command} (const \mbox{\hyperlink{classCommand}{Command}} \&command)
+\begin{DoxyCompactList}\small\item\em Adds a command to the internal \mbox{\hyperlink{classCommand}{Command}} list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a0400751da7f8583029b7a12d3003c36d}{navigate}} () const
+\begin{DoxyCompactList}\small\item\em Lists commands and after user input executes an appropriate command run() function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles navigation between multiple commands. 
+
+Shows the title, then below it an Error/\+Warning/\+Success message if set, lists all command options as an enumerated list, takes command index and calls the chosen command\textquotesingle{}s run() function. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMenu_a0400751da7f8583029b7a12d3003c36d}\label{classMenu_a0400751da7f8583029b7a12d3003c36d}} 
+\index{Menu@{Menu}!navigate@{navigate}}
+\index{navigate@{navigate}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{navigate()}{navigate()}}
+{\footnotesize\ttfamily void Menu\+::navigate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Lists commands and after user input executes an appropriate command run() function. 
+
+Prints the title, then an Error/\+Warning/\+Sucess message (if set), prints all command names as an ordered list (starting from 1), waits for user input to select one of those commands (by list number) and finally executes the appropriate command\textquotesingle{}s run() function.
+
+After the run() function exists, everything is reprinted. The 0 list index is always \char`\"{}\+Go Back\char`\"{}/\char`\"{}\+Exit\char`\"{} and it always stops the reprinting loop.
+
+If there are no commands, prints \char`\"{}\+Menu is empty!\char`\"{}. If user input doesn\textquotesingle{}t correspond to any command, registers an error message and reprints. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Generic/\+Console\+Interface/\mbox{\hyperlink{Menu_8h}{Menu.\+h}}\item 
+src/\+Generic/\+Console\+Interface/Menu.\+cpp\end{DoxyCompactItemize}

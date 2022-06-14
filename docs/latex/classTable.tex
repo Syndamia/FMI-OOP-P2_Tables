@@ -1,0 +1,41 @@
+\hypertarget{classTable}{}\doxysection{Table Class Reference}
+\label{classTable}\index{Table@{Table}}
+
+
+A 2D collection of \mbox{\hyperlink{classCell}{Cell}} instances.  
+
+
+
+
+{\ttfamily \#include $<$Table.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTable_a809ac66faf915c7592e16f1e19db3dc7}\label{classTable_a809ac66faf915c7592e16f1e19db3dc7}} 
+{\bfseries Table} (const char $\ast$file\+Path)
+\item 
+\mbox{\Hypertarget{classTable_a8d2cec43247d091c9b2eb82fadc1a40b}\label{classTable_a8d2cec43247d091c9b2eb82fadc1a40b}} 
+unsigned {\bfseries get\+\_\+rows} () const
+\begin{DoxyCompactList}\small\item\em Returns count of rows. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTable_af6dce3e4e7be8c073cef6b1a6876d41d}\label{classTable_af6dce3e4e7be8c073cef6b1a6876d41d}} 
+unsigned {\bfseries get\+\_\+cols} () const
+\begin{DoxyCompactList}\small\item\em Returns largest count of columns in all rows. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTable_a83388586d16c5b42029298b72ed698a5}\label{classTable_a83388586d16c5b42029298b72ed698a5}} 
+void {\bfseries put\+Cell} (unsigned row, unsigned col, const char $\ast$raw\+Value)
+\begin{DoxyCompactList}\small\item\em Parses raw\+Value and replaces the value at row and col with it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTable_a654a6b6617a91dc96dde9038220967d8}\label{classTable_a654a6b6617a91dc96dde9038220967d8}} 
+\mbox{\hyperlink{classList}{List}}$<$ \mbox{\hyperlink{classString}{String}} $>$ {\bfseries get\+All\+Cells} () const
+\begin{DoxyCompactList}\small\item\em Returns a \mbox{\hyperlink{classList}{List}} of \mbox{\hyperlink{classString}{String}} with \mbox{\hyperlink{classString}{String}} representation of every cell in order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTable_a8a29a5f941369c8b61c56b4d6507a9fa}\label{classTable_a8a29a5f941369c8b61c56b4d6507a9fa}} 
+void {\bfseries save\+To\+File} (const char $\ast$file\+Path) const
+\begin{DoxyCompactList}\small\item\em Saves all cells to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A 2D collection of \mbox{\hyperlink{classCell}{Cell}} instances. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Models/\mbox{\hyperlink{Table_8h}{Table.\+h}}\item 
+src/\+Models/Table.\+cpp\end{DoxyCompactItemize}

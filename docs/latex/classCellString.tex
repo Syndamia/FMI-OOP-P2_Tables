@@ -1,0 +1,99 @@
+\hypertarget{classCellString}{}\doxysection{Cell\+String Class Reference}
+\label{classCellString}\index{CellString@{CellString}}
+
+
+A table cell which contains a \mbox{\hyperlink{classString}{String}} value.  
+
+
+
+
+{\ttfamily \#include $<$Cell\+String.\+h$>$}
+
+Inheritance diagram for Cell\+String\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCellString}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCellString_a5b88cbbbc037cec6b8b50fa6dde6a683}\label{classCellString_a5b88cbbbc037cec6b8b50fa6dde6a683}} 
+{\bfseries Cell\+String} (const char $\ast$str)
+\item 
+double \mbox{\hyperlink{classCellString_ad1f27d1929c2cc8a7a657f72c6640803}{get\+Numeral\+Value}} () const override
+\begin{DoxyCompactList}\small\item\em Returns the value of the cell as a double-\/precision floating point number. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCellString_a2d88b600e72b4eeca9c933a540343a8b}{get\+Value\+For\+Print}} () const override
+\begin{DoxyCompactList}\small\item\em Returns the value of the cell as a \mbox{\hyperlink{classString}{String}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellString_a8152beac5329e170bf2c225ac189fba4}{parse\+And\+Set\+Value}} (const char $\ast$str) override
+\begin{DoxyCompactList}\small\item\em Parses given C-\/style string and stores value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellString_ac9f11804de3e600c4a86b253fac9edcf}{write\+To\+File}} (std\+::ofstream \&file) override
+\begin{DoxyCompactList}\small\item\em Writes value to a text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A table cell which contains a \mbox{\hyperlink{classString}{String}} value. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCellString_ad1f27d1929c2cc8a7a657f72c6640803}\label{classCellString_ad1f27d1929c2cc8a7a657f72c6640803}} 
+\index{CellString@{CellString}!getNumeralValue@{getNumeralValue}}
+\index{getNumeralValue@{getNumeralValue}!CellString@{CellString}}
+\doxysubsubsection{\texorpdfstring{getNumeralValue()}{getNumeralValue()}}
+{\footnotesize\ttfamily double Cell\+String\+::get\+Numeral\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the value of the cell as a double-\/precision floating point number. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a10bf7a5e3486908f5e6b8b24c5a2e968}{Cell}}.
+
+\mbox{\Hypertarget{classCellString_a2d88b600e72b4eeca9c933a540343a8b}\label{classCellString_a2d88b600e72b4eeca9c933a540343a8b}} 
+\index{CellString@{CellString}!getValueForPrint@{getValueForPrint}}
+\index{getValueForPrint@{getValueForPrint}!CellString@{CellString}}
+\doxysubsubsection{\texorpdfstring{getValueForPrint()}{getValueForPrint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classString}{String}} Cell\+String\+::get\+Value\+For\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the value of the cell as a \mbox{\hyperlink{classString}{String}}. 
+
+
+
+Implements \mbox{\hyperlink{classCell_aebc1f8f5965802b7a44ef3da7aa2ce75}{Cell}}.
+
+\mbox{\Hypertarget{classCellString_a8152beac5329e170bf2c225ac189fba4}\label{classCellString_a8152beac5329e170bf2c225ac189fba4}} 
+\index{CellString@{CellString}!parseAndSetValue@{parseAndSetValue}}
+\index{parseAndSetValue@{parseAndSetValue}!CellString@{CellString}}
+\doxysubsubsection{\texorpdfstring{parseAndSetValue()}{parseAndSetValue()}}
+{\footnotesize\ttfamily void Cell\+String\+::parse\+And\+Set\+Value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Parses given C-\/style string and stores value. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a732fcaeea7050f4afb3bcd6377432b95}{Cell}}.
+
+\mbox{\Hypertarget{classCellString_ac9f11804de3e600c4a86b253fac9edcf}\label{classCellString_ac9f11804de3e600c4a86b253fac9edcf}} 
+\index{CellString@{CellString}!writeToFile@{writeToFile}}
+\index{writeToFile@{writeToFile}!CellString@{CellString}}
+\doxysubsubsection{\texorpdfstring{writeToFile()}{writeToFile()}}
+{\footnotesize\ttfamily void Cell\+String\+::write\+To\+File (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Writes value to a text file. 
+
+
+
+Implements \mbox{\hyperlink{classCell_a126ab727ef443f5fd8ef62832614f56b}{Cell}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Models/\mbox{\hyperlink{CellString_8h}{Cell\+String.\+h}}\item 
+src/\+Models/Cell\+String.\+cpp\end{DoxyCompactItemize}

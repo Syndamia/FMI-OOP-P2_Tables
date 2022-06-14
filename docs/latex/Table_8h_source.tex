@@ -1,0 +1,32 @@
+\hypertarget{Table_8h_source}{}\doxysection{Table.\+h}
+\label{Table_8h_source}\index{src/Models/Table.h@{src/Models/Table.h}}
+\mbox{\hyperlink{Table_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MODELS\_TABLE}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MODELS\_TABLE}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Cell_8h}{Cell.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}../Generic/List/List.hpp"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classTable}{Table}} \{}
+\DoxyCodeLine{15     \mbox{\hyperlink{classList}{List<List<Cell*>}}> cells;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{unsigned} longestRow;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} readFromFile(std::ifstream\& inFile);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \mbox{\hyperlink{classTable}{Table}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* filePath);}
+\DoxyCodeLine{21     \mbox{\hyperlink{classTable}{\string~Table}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{classTable_a8d2cec43247d091c9b2eb82fadc1a40b}{get\_rows}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{26     \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{classTable_af6dce3e4e7be8c073cef6b1a6876d41d}{get\_cols}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{classTable_a83388586d16c5b42029298b72ed698a5}{putCell}}(\textcolor{keywordtype}{unsigned} row, \textcolor{keywordtype}{unsigned} col, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* rawValue);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{32     \mbox{\hyperlink{classList}{List<String>}} \mbox{\hyperlink{classTable_a654a6b6617a91dc96dde9038220967d8}{getAllCells}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} \mbox{\hyperlink{classTable_a8a29a5f941369c8b61c56b4d6507a9fa}{saveToFile}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* filePath) \textcolor{keyword}{const};}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

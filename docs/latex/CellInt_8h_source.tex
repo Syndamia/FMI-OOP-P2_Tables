@@ -1,0 +1,26 @@
+\hypertarget{CellInt_8h_source}{}\doxysection{Cell\+Int.\+h}
+\label{CellInt_8h_source}\index{src/Models/CellInt.h@{src/Models/CellInt.h}}
+\mbox{\hyperlink{CellInt_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef HEADER\_CELLINT}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define HEADER\_CELLINT}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Cell_8h}{Cell.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classCellInt}{CellInt}} : \textcolor{keyword}{public} \mbox{\hyperlink{classCell}{Cell}} \{}
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} value;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{classCellInt}{CellInt}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{19     \mbox{\hyperlink{classCellInt}{CellInt}}(\textcolor{keywordtype}{int} value);}
+\DoxyCodeLine{20     \mbox{\hyperlink{classCellInt}{CellInt}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordtype}{double} \mbox{\hyperlink{classCellInt_a8417811309bda5886bb2f70d2b8357bd}{getNumeralValue}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{23     \mbox{\hyperlink{classString}{String}} \mbox{\hyperlink{classCellInt_a14a5b56f045b244ee4246edbfe851eb2}{getValueForPrint}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellInt_a72788dc2ebadd13ae198e4e143403073}{parseAndSetValue}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* str) \textcolor{keyword}{override};}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellInt_a7a08dad97c474910e07c06f54bb2de94}{writeToFile}}(std::ofstream\& file) \textcolor{keyword}{override};}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

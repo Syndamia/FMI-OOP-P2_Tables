@@ -88,8 +88,9 @@ void D(const char*& str, List<char>& buffer) {
 }
 
 void O(const char*& str, char& buffer) {
-	if (*str == '+' || *str == '-' || *str == '*' || *str == '/' || *str == '^')
+	if (*str == '+' || *str == '-' || *str == '*' || *str == '/' || *str == '^' || *str == '\0')
 		buffer = *(str++);
+	else buffer = -2;
 }
 
 void CellFormula::parseAndSetValue(const char* str) {
@@ -99,7 +100,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 	localCells.clear();
 	localCells.add(CellDouble(0.0));
 	Pair<int, int> loc;
-	char currOp = 0;
+	char currOp = -2;
 
 	str++; // Removes = from the beginning
 	while (*str != '\0') {
@@ -114,7 +115,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 			D(str, buffer);
 			loc.right = atoi(buffer.raw_data()) - 1;
 			if (loc.left < 0 || loc.right < 0
-				|| tableCells->get_count() - 1 < loc.left || tableCells[loc.left].get_count() - 1 < loc.right) {
+				|| loc.left > tableCells->get_count() - 1 || loc.right > tableCells[loc.left].get_count() - 1) {
 				loc.left = -1;
 				loc.right = 0;
 			}
@@ -137,7 +138,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 		W(str);
 		O(str, currOp);
-		if (currOp == 0) throw std::logic_error("Error: Could not find operand!");
+		if (currOp == -2) throw std::logic_error("Error: Could not find operand!");
 
 		// Operator priority magic
 		if (currOp == '^') currOp *= -1;

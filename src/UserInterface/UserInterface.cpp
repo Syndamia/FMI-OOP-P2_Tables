@@ -55,14 +55,15 @@ void UserInterface::com_saveas(const char* params) {
 }
 
 void UserInterface::com_help(const char* params) {
-	std::cout << "The following commands are supported:" << std::endl
-	
-	          << "open <file>      opens <file>" << std::endl
-	          << "close            closes currently opened file" << std::endl
-	          << "save             saves the currently open file" << std::endl
-	          << "saveas <file>    saves the currently open file in <file>" << std::endl
-	          << "help             prints this information" << std::endl
-	          << "exit             exists the program" << std::endl;
+	std::cout << "The following commands are supported:"                                           << std::endl
+	          << "print              prints the whole table"                                       << std::endl
+	          << "edit RxCy <data>   Replaces the value on row x and column y with the given data" << std::endl
+	          << "open <file>        opens <file>"                                                 << std::endl
+	          << "close              closes currently opened file"                                 << std::endl
+	          << "save               saves the currently open file"                                << std::endl
+	          << "saveas <file>      saves the currently open file in <file>"                      << std::endl
+	          << "help               prints this information"                                      << std::endl
+	          << "exit               exists the program"                                           << std::endl;
 }
 
 void UserInterface::com_exit(const char* params) {

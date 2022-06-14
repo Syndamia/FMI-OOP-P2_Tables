@@ -13,7 +13,7 @@ CellInt::CellInt(const char* str) {
 	if (*str == '-' || *str == '+') str++;
 
 	while (*str != '\0')
-		value = value * 10 + '0' - *(str++);
+		value = value * 10 + (*(str++) - '0');
 
 	if (negative) value *= -1;
 }

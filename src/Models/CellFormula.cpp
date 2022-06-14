@@ -8,8 +8,8 @@ const Cell* CellFormula::ptrByInd(Pair<int, int> loc) const {
 	return (loc.left < 0) ? &localCells[loc.right] : (*tableCells)[loc.left][loc.right];
 }
 
-double pow(double x, unsigned y) {
-	if (y == 0) return 1;
+double pow(double x, int y) {
+	if (y <= 0) return 1;
 
 	double res = x;
 	for (unsigned i = 1; i < y; i++)

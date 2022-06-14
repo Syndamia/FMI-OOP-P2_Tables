@@ -72,9 +72,8 @@ void Table::readFromFile(std::ifstream& inFile) {
 			W(inFile);
 
 			if (inFile.peek() == ',') inFile.get();
-			else if (inFile.peek() != '\n' || inFile.peek() != EOF)
+			else if (inFile.peek() != '\n' && inFile.peek() != EOF)
 				throwException(inFile, row);
-			inFile.get();
 
 			cells[row].add((buffer[0] == '=')
 				? (Cell*)new CellFormula(buffer.raw_data(), &cells)
@@ -93,16 +92,18 @@ void Table::readFromFile(std::ifstream& inFile) {
 				buffer.add('\0');
 				W(inFile);
 
-				if (inFile.peek() != ',') throwException(inFile, row);
-				inFile.get();
+				if (inFile.peek() == ',') inFile.get();
+				else if (inFile.peek() != '\n' && inFile.peek() != EOF)
+					throwException(inFile, row);
 
 				cells[row].add((Cell*)new CellDouble(buffer.raw_data()));
 			}
 			else {
 				buffer.add('\0');
 				W(inFile);
-				if (inFile.peek() != ',') throwException(inFile, row);
-				inFile.get();
+				if (inFile.peek() == ',') inFile.get();
+				else if (inFile.peek() != '\n' && inFile.peek() != EOF)
+					throwException(inFile, row);
 
 				cells[row].add((Cell*)new CellInt(buffer.raw_data()));
 			}
@@ -182,8 +183,8 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 List<String> Table::getAllCells() const {
 	List<String> toRet;
 	for (unsigned i = 0; i < cells.get_count(); i++) {
-		for (unsigned j = 0; j < cells[i].get_count(); j++) {
-			if (cells[i][j] != nullptr)
+		for (unsigned j = 0; j < get_cols(); j++) {
+			if (cells[i].get_count() - 1 >= j && cells[i][j] != nullptr)
 				toRet.add(cells[i][j]->getValueForPrint());
 			else
 				toRet.add("");

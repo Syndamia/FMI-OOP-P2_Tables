@@ -12,7 +12,7 @@
 
 // Rough implementation of the grammar
 //
-// S -> W"=A"S | W"A"S | WPDS | WPD.DS | epsilon
+// S -> W"=A",S | W"A",S | WPD,S | WPD.D,S | ,S | epsilon
 // A -> Aa | Ab | ... | AZ | A0 | A1 | ... | A* | ... | a | b | ... | epsilon
 // D -> D0 | D1 | ... | D9 | 0 | 1 | ... | 9
 // P -> + | - | epsilon
@@ -63,7 +63,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 		List<char> buffer;
 
 		W(inFile);
-		if (inFile.peek() == '"') { // W"=A"S | W"A"S
+		if (inFile.peek() == '"') { // W"=A",S | W"A",S
 			inFile.get();
 			A(inFile, buffer);
 			buffer.add('\0');
@@ -71,18 +71,20 @@ void Table::readFromFile(std::ifstream& inFile) {
 			inFile.get();
 			W(inFile);
 
-			if (inFile.peek() != ',') throwException(inFile, row);
+			if (inFile.peek() == ',') inFile.get();
+			else if (inFile.peek() != '\n' || inFile.peek() != EOF)
+				throwException(inFile, row);
 			inFile.get();
 
 			cells[row].add((buffer[0] == '=')
 				? (Cell*)new CellFormula(buffer.raw_data(), &cells)
 				: (Cell*)new CellString(buffer.raw_data()));
 		}
-		else if (inFile.peek() == ',') { // epsilon
+		else if (inFile.peek() == ',') { // ,S
 			inFile.get();
 			cells[row].add(nullptr);
 		}
-		else { // WPDS | WPD.DS
+		else { // WPD,S | WPD.D,S
 			P(inFile, buffer);
 			D(inFile, buffer);
 			if (inFile.peek() == '.') {

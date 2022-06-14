@@ -5,6 +5,12 @@
 #include <stdexcept>
 
 const Cell* CellFormula::ptrByInd(Pair<int, int> loc) const {
+	if (loc.left < 0) {
+		if (loc.right < 0 || &localCells.get_count() - 1 < loc.right) return nullptr;
+		return &localCells[loc.right];
+	}
+	if (loc.right < 0
+		|| )
 	return (loc.left < 0) ? &localCells[loc.right] : (*tableCells)[loc.left][loc.right];
 }
 
@@ -98,7 +104,6 @@ void CellFormula::parseAndSetValue(const char* str) {
 
 	formula.clear();
 	localCells.clear();
-	localCells.add(CellDouble(0.0));
 	Pair<int, int> loc;
 	char currOp = -2;
 
@@ -114,11 +119,6 @@ void CellFormula::parseAndSetValue(const char* str) {
 			buffer.clear();
 			D(str, buffer);
 			loc.right = atoi(buffer.raw_data()) - 1;
-			if (loc.left < 0 || loc.right < 0
-				|| loc.left > tableCells->get_count() - 1 || loc.right > tableCells[loc.left].get_count() - 1) {
-				loc.left = -1;
-				loc.right = 0;
-			}
 		}
 		else if (*str >= '0' && *str <= '9') {
 			D(str, buffer);

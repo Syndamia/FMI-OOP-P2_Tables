@@ -55,7 +55,7 @@ double CellFormula::getNumeralValue() const {
 	try {
 		return calculate();
 	}
-	catch (std::logic_error) {
+	catch (std::logic_error e) {
 		return 0;
 	}
 }
@@ -64,7 +64,7 @@ String CellFormula::getValueForPrint() const {
 	try {
 		return String() += calculate();
 	}
-	catch (std::logic_error) {
+	catch (std::logic_error e) {
 		return "Error";
 	}
 }

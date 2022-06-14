@@ -98,6 +98,7 @@ void CellFormula::parseAndSetValue(const char* str) {
 	Pair<int, int> loc;
 	char currOp = 0;
 
+	str++; // Removes = from the beginning
 	while (*str != '\0') {
 		List<char> buffer;
 		W(str);
@@ -129,7 +130,6 @@ void CellFormula::parseAndSetValue(const char* str) {
 		W(str);
 		O(str, currOp);
 		if (currOp == 0) throw std::logic_error("Error: Could not find operand!");
-		W(str);
 
 		// Operator priority magic
 		if (currOp == '^') currOp *= -1;
@@ -138,11 +138,14 @@ void CellFormula::parseAndSetValue(const char* str) {
 				if (formula[i].right > 0) formula[i].right *= -1;
 		}
 
-		if (currOp == '-') {
+		if (currOp == '-') { // a - b turns into a + -1 * b
 			formula.add({loc, '+'});
 			localCells.add(CellDouble(-1.0));
-			formula.add({{-1, (int)(localCells.get_count() - 1)}, '*' * -1});
+			loc.left = -1;
+			loc.right = (int)(localCells.get_count() - 1);
+			currOp = '*' * -1;
 		}
+
 		formula.add(Pair<Pair<int, int>, char>(loc, currOp));
 	}
 }

@@ -124,6 +124,14 @@ unsigned Table::get_cols() const {
 void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	Cell* newCell;
 
+	while (*rawValue == ' ') rawValue++;
+
+	if (*rawValue == '"') {
+		rawValue++;
+		newCell = (*rawValue == '=')
+					? (Cell*)new CellFormula(rawValue, &cells)
+					: (Cell*)new CellString(rawValue);
+	}
 	if (containsNumber(rawValue)) {
 		double doubleParse = atof(rawValue);
 		unsigned intPart = abs(doubleParse);
@@ -131,11 +139,7 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 		newCell = (abs(doubleParse) - intPart > FLOATING_POINT_PRECISION)
 					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
 	}
-	else if (*rawValue == '"') {
-		rawValue++;
-		newCell = (*rawValue == '=')
-					? (Cell*)new CellFormula(rawValue, &cells) : (Cell*)new CellString(rawValue);
-	}
+
 	else
 		throw std::logic_error("Error: Could not determine data type.");
 

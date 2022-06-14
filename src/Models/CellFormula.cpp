@@ -71,7 +71,7 @@ String CellFormula::getValueForPrint() const {
 
 // Rough implementation of the grammar
 //
-// S -> WDS | WD.DS | WRDCDS | WOS | W
+// S -> WDWOS | WD.DWOS | WRDCDWOS | W
 // O -> + | - | * | / | ^
 // D -> D0 | D1 | ... | D9 | 0 | 1 | ... | 9
 // W -> W | epsilon
@@ -96,26 +96,26 @@ void CellFormula::parseAndSetValue(const char* str) {
 	rawFormula = String(str);
 
 	Pair<int, int> loc;
-	char currOp;
+	char currOp = 0;
 
 	while (*str != '\0') {
 		List<char> buffer;
 		W(str);
 		if (*str == 'R') {
 			D(str, buffer);
-			int row = atoi(buffer.raw_data());
+			loc.left = atoi(buffer.raw_data());
 			if (*str != 'C') throw std::logic_error("Error: Invalid character!");
 			str++;
 			buffer.clear();
 			D(str, buffer);
-			int col = atoi(buffer.raw_data());
+			loc.right = atoi(buffer.raw_data());
 			W(str);
 
 			O(str, currOp);
+			if (currOp == 0) throw std::logic_error("Error: Could not find operand!");
 			W(str);
-			loc = {row, col};
 		}
-		else {
+		else if (*str >= '0' && *str <= '9') {
 			double val = atof(str);
 			while ((*str >= '0' && *str <= '9') || *str == ' ' || *str == '.') str++;
 
@@ -123,6 +123,8 @@ void CellFormula::parseAndSetValue(const char* str) {
 			localCells.add(CellDouble(val));
 			loc = {-1, (int)(localCells.get_count() - 1)};
 		}
+		else
+			throw std::logic_error("Error: Invalid value!");
 
 		if (currOp == '^') currOp *= -1;
 		else if ((currOp == '+' || currOp == '-') && formula.get_count() != 0) {

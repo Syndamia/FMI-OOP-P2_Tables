@@ -49,6 +49,8 @@ public:
 	const T& operator[](unsigned index) const;
 	//! Returns raw array of data
 	const T* raw_data() const;
+	//! Removes all data
+	void clear();
 
 	//! Appends elements from other list
 	List<T>& operator+=(const List<T> other);
@@ -206,6 +208,14 @@ const T& List<T>::operator[](unsigned index) const {
 template <typename T>
 const T* List<T>::raw_data() const {
 	return elements;
+}
+
+template <typename T>
+void List<T>::clear() {
+	free();
+	length = 8;
+	count = 0;
+	this->elements = new T[length];
 }
 
 template <typename T>

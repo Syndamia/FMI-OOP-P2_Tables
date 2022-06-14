@@ -174,9 +174,9 @@ int String::compare(const String& other) const {
  * \warning It takes at most 1024 characters from the stream!
  * \note Best used with std::cin or text std::ifstream
  */
-std::istream& operator>>(std::istream& istr, String& event) {
-	istr.getline(event.str, 1024);
-	event.length = strlen(event.str);
+std::istream& operator>>(std::istream& istr, String& str) {
+	istr.getline(str.str, 1024);
+	str.length = strlen(str.str);
 
 	return istr;
 }
@@ -186,6 +186,6 @@ std::istream& operator>>(std::istream& istr, String& event) {
  *
  * \note Best used with std::cout or text std::ofstream
  */
-std::ostream& operator<<(std::ostream& ostr, const String& event) {
-	return ostr << event.str;
+std::ostream& operator<<(std::ostream& ostr, const String& str) {
+	return ostr << str.str;
 }

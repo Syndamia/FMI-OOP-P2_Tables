@@ -155,7 +155,7 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 		rawValue++;
 		while (*rawValue != '"' && *rawValue != '\0') {
 			if (*rawValue == '\\') rawValue++;
-			buffer.add(*rawValue);
+			buffer.add(*(rawValue++));
 		}
 		if (*rawValue == '"' && *(rawValue + 1) != '\0')
 			throw std::logic_error("Error: Text after closing (inescaped) brace!");

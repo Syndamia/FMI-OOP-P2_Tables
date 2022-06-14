@@ -18,5 +18,6 @@ void CellString::parseAndSetValue(const char* str) {
 }
 
 void CellString::writeToFile(std::ofstream& file) {
-	file << '"' << value << '"';
+	file << '"';
+	const char* strCpy = value.get_cstr();
 }

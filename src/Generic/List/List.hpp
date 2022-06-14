@@ -204,6 +204,11 @@ const T& List<T>::operator[](unsigned index) const {
 }
 
 template <typename T>
+const T* List<T>::raw_data() const {
+	return elements;
+}
+
+template <typename T>
 List<T>& List<T>::operator+=(const List<T> other) {
 	for (unsigned i = 0; i < other.length; i++)
 		add(other[i]);

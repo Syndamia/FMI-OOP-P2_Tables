@@ -51,7 +51,7 @@ void Table::readFromFile(std::ifstream& inFile) {
 	cells.add(List<Cell*>());
 
 	while (inFile.peek() != EOF) {
-		if (inFile.peek() == '\0') {
+		if (inFile.peek() == '\n') {
 			row++;
 			inFile.get();
 			cells.add(List<Cell*>());
@@ -121,6 +121,9 @@ unsigned Table::get_cols() const {
 	return cells[0].get_length();
 }
 
+#define abs(a) ((a < 0) ? -a : a)
+#define FLOATING_POINT_PRECISION 0.0001f
+
 void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 	Cell* newCell;
 
@@ -132,12 +135,13 @@ void Table::putCell(unsigned row, unsigned col, const char* rawValue) {
 					? (Cell*)new CellFormula(rawValue, &cells)
 					: (Cell*)new CellString(rawValue);
 	}
-	if (containsNumber(rawValue)) {
+	else if ((*rawValue == '+' || *rawValue == '-') || (*rawValue >= '0' && *rawValue <= '9')) {
 		double doubleParse = atof(rawValue);
 		unsigned intPart = abs(doubleParse);
 
 		newCell = (abs(doubleParse) - intPart > FLOATING_POINT_PRECISION)
-					? (Cell*)new CellDouble(doubleParse) : (Cell*)new CellInt(intPart);
+					? (Cell*)new CellDouble(doubleParse)
+					: (Cell*)new CellInt(intPart);
 	}
 
 	else
